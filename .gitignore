@@ -1,0 +1,8 @@
+# Local scratch / render artifacts
+_preview.html
+_preview.png
+_dryrun.html
+
+# Python
+__pycache__/
+*.pyc

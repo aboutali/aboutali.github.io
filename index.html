@@ -2,79 +2,235 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <title>:: Ali's Home Page ::</title>
+    <title>:: Angelo's Home Page ::</title>
+    <style type="text/css">
+      /* --- Status LEDs (set by the refresh Action) --- */
+      .led { font-style: normal; }
+      .led-up   { color: #33AA33; }
+      .led-down { color: #CC2222; animation: blink 1.1s steps(2, start) infinite; }
+      .led-unknown { color: #BBBBBB; }
+      @keyframes blink { 50% { opacity: 0.25; } }
+
+      /* --- Night Shift toggle button --- */
+      .nightshift {
+        font: bold 11px Geneva, Helvetica, Arial, sans-serif;
+        background: #ECECEC; color: #333333;
+        border: 1px solid #999999; border-radius: 3px;
+        padding: 2px 8px; cursor: pointer;
+      }
+      .nightshift:hover { background: #DDDDDD; }
+
+      /* --- "Night Shift" CRT amber theme (toggled by JS, saved to localStorage) --- */
+      body.crt { background: #0A0A0A !important; color: #FFB000 !important; }
+      body.crt > center > table { background: #0A0A0A !important; border-color: #FFB000 !important; }
+      body.crt font { color: #FFB000 !important; }
+      body.crt a { color: #FFD24A !important; }
+      body.crt h1 font, body.crt h2 font { color: #FFB000 !important; text-shadow: 0 0 6px rgba(255,176,0,0.7); }
+      body.crt .nightshift { background: #1A1A1A; color: #FFB000; border-color: #FFB000; }
+      body.crt .counter { background: #111111 !important; color: #33FF33 !important; border-color: #FFB000 !important; }
+      body.crt .led-up { color: #33FF66 !important; }
+      body.crt .led-down { color: #FF5555 !important; }
+
+      /* --- CRT scanline overlay (only in Night Shift mode) --- */
+      #scanlines {
+        position: fixed; inset: 0; pointer-events: none; z-index: 9000; display: none;
+        background: repeating-linear-gradient(to bottom,
+          rgba(0,0,0,0) 0, rgba(0,0,0,0) 2px, rgba(0,0,0,0.22) 3px, rgba(0,0,0,0) 4px);
+      }
+      body.crt #scanlines { display: block; }
+
+      /* --- Konami screensaver (flying toasters) --- */
+      #screensaver { position: fixed; inset: 0; background: #000033; z-index: 9999; display: none; overflow: hidden; }
+      #screensaver .hint { position: fixed; bottom: 12px; left: 0; right: 0; text-align: center;
+        color: #8888AA; font: 11px Geneva, Helvetica, Arial, sans-serif; }
+      #screensaver .toaster { position: absolute; will-change: transform;
+        animation-name: fly; animation-timing-function: linear; animation-iteration-count: infinite; }
+      @keyframes fly { from { transform: translate(0, 0) rotate(0deg); }
+                       to   { transform: translate(-130vw, 38vh) rotate(-18deg); } }
+
+      /* --- Night Shift coherence: monochrome the Apple stripe + dividers to amber phosphor --- */
+      body.crt .stripe td:nth-child(odd)  { background: #FFB000 !important; }
+      body.crt .stripe td:nth-child(even) { background: #6E4E00 !important; }
+      body.crt .rule { background: #5A3F00 !important; }
+      body.crt .led-unknown { color: #8C7A33 !important; }
+
+      /* --- Respect reduced-motion preferences --- */
+      @media (prefers-reduced-motion: reduce) {
+        .led-down { animation: none !important; }
+        #screensaver .toaster { animation: none !important; }
+      }
+    </style>
   </head>
-  <body bgcolor="#000080" text="#FFFF00" link="#00FFFF" vlink="#FF00FF" alink="#FF0000">
+  <body bgcolor="#DCDCDC" text="#333333" link="#2A4D8E" vlink="#663399" alink="#CC0000">
     <center>
-      <table width="640" cellpadding="8" cellspacing="0" border="2" bgcolor="#C0C0C0">
+      <table width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="border:2px solid #999999;">
+
+        <!-- Apple six-color rainbow stripe (top) -->
         <tr><td>
-          <font face="Times New Roman" color="#000000">
+          <table class="stripe" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+            <td bgcolor="#61BB46" height="5"></td>
+            <td bgcolor="#FDB827" height="5"></td>
+            <td bgcolor="#F5821F" height="5"></td>
+            <td bgcolor="#E03A3E" height="5"></td>
+            <td bgcolor="#963D97" height="5"></td>
+            <td bgcolor="#009DDC" height="5"></td>
+          </tr></table>
+        </td></tr>
+
+        <tr><td style="padding:24px;">
+          <font face="Geneva, Helvetica, Arial, sans-serif" color="#333333">
+
+            <div align="right"><button type="button" class="nightshift" onclick="toggleTheme()" title="Toggle the amber CRT theme">&#9789; Night Shift</button></div>
 
             <center>
-              <h1><font color="#FF0000">Welcome to Ali's Home Page!!!</font></h1>
-              <marquee behavior="scroll" direction="left" scrollamount="5">
-                <font color="#0000FF"><b>*** Under Construction *** Best viewed in Netscape Navigator 4.0 at 800x600 ***</b></font>
+              <h1 style="margin-bottom:4px;"><font color="#1A3C6E">Welcome to Angelo's Home Page</font></h1>
+              <marquee behavior="scroll" direction="left" scrollamount="4">
+                <font color="#888888"><b><!--ACTIVITY:BEGIN-->* * * Under Construction &nbsp;&middot;&nbsp; Best viewed at 800x600 &nbsp;&middot;&nbsp; Thanks for stopping by * * *<!--ACTIVITY:END--></b></font>
               </marquee>
-              <hr noshade size="4" width="90%">
-              <p><b><i>This is the master index of all my projects on the World Wide Web.</i></b></p>
-              <hr noshade size="4" width="90%">
+              <p><i>The master index of all my projects on the World Wide Web.</i></p>
             </center>
 
-            <h2><font color="#008000">&gt;&gt; My Projects &lt;&lt;</font></h2>
+            <!-- soft divider -->
+            <table width="90%" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td class="rule" bgcolor="#CCCCCC" height="1"></td></tr></table>
+
+            <h2><font color="#1A3C6E">&gt;&gt; My Projects &lt;&lt;</font></h2>
 
             <!-- PROJECTS:BEGIN -- keep one <li> per project. To add a new project, copy a block, swap REPO and the description. -->
             <ul>
               <li>
+                <!--LED:life-improver--><span class="led led-unknown">&#9679;</span><!--/LED-->
                 <b><a href="https://aboutali.github.io/life-improver/">life-improver</a></b>
                 <font size="2">[<a href="https://github.com/aboutali/life-improver">source</a>]</font><br>
                 An interactive framework of meaningful life practices, rooted in psychology, philosophy, and the world's contemplative traditions.
               </li>
               <br>
               <li>
+                <!--LED:bxl_eda_worker--><span class="led led-unknown">&#9679;</span><!--/LED-->
                 <b><a href="https://aboutali.github.io/bxl_eda_worker/">bxl_eda_worker</a></b>
                 <font size="2">[<a href="https://github.com/aboutali/bxl_eda_worker">source</a>]</font><br>
-                Event-driven worker.
+                A scheduled worker that compiles a daily digest of EU foreign-policy, Middle East, and sanctions news from Brussels &mdash; framed for a Swiss (SECO/EDA) reader &mdash; and publishes it as a static site.
               </li>
               <br>
               <li>
+                <!--LED:fit-schedule--><span class="led led-unknown">&#9679;</span><!--/LED-->
                 <b><a href="https://aboutali.github.io/fit-schedule/">fit-schedule</a></b>
                 <font size="2">[<a href="https://github.com/aboutali/fit-schedule">source</a>]</font><br>
-                Help organize sports classes and routine. <i>(private)</i>
+                Help organize sports classes and routine.
               </li>
               <br>
               <li>
+                <!--LED:cloudy-plag--><span class="led led-unknown">&#9679;</span><!--/LED-->
                 <b><a href="https://aboutali.github.io/cloudy-plag/">cloudy-plag</a></b>
                 <font size="2">[<a href="https://github.com/aboutali/cloudy-plag">source</a>]</font><br>
                 A successor to VroniPlag Wiki documenting credibility issues in dissertations across plagiarism, originality, and methodological rigor.
               </li>
               <br>
               <li>
+                <!--LED:edition-guru--><span class="led led-unknown">&#9679;</span><!--/LED-->
                 <b><a href="https://aboutali.github.io/edition-guru/">edition-guru</a></b>
                 <font size="2">[<a href="https://github.com/aboutali/edition-guru">source</a>]</font><br>
                 Scrapes art print-gallery sites, enriches drops with LiveArt market data and Claude-generated descriptions, and emails subscribers a newsletter.
               </li>
             </ul>
             <!-- PROJECTS:END -->
+            <font size="1" color="#6E6E6E">&#9679; green = the live link responded &middot; red = down &middot; grey = not yet checked (status refreshed daily)</font>
 
-            <hr noshade size="4" width="90%">
+            <!-- soft divider -->
+            <table width="90%" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td class="rule" bgcolor="#CCCCCC" height="1"></td></tr></table>
+
+            <h2><font color="#1A3C6E">&gt;&gt; Guestbook &lt;&lt;</font></h2>
+            <p>
+              <font size="2">Drop a note &mdash; it is rendered straight from this site's GitHub Issues.
+              <a href="https://github.com/aboutali/aboutali/issues/new?labels=guestbook&title=A+note+for+Angelo&body=Write+your+message+below%2C+then+click+Submit.+Keep+it+kind%21%0A%0A">&#9998; Sign the guestbook</a></font>
+            </p>
+            <!--GUESTBOOK:BEGIN-->
+            <p><i>Be the first to sign the guestbook!</i></p>
+            <!--GUESTBOOK:END-->
+
+            <!-- soft divider -->
+            <table width="90%" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td class="rule" bgcolor="#CCCCCC" height="1"></td></tr></table>
+
             <center>
               <font size="2">
                 <b>You are visitor #</b>
-                <font face="Courier New" style="background:#000000;color:#00FF00;padding:2px 4px;">0000001</font>
+                <font class="counter" face="Courier New, monospace" style="background:#E8E8E8;color:#333333;border:1px solid #999999;padding:2px 5px;">0000001</font>
                 <br><br>
-                <i>This page was last updated on May 6, 2026.</i><br>
-                Made with <font color="#FF0000">&lt;3</font> in Notepad.<br>
+                <i>This page was last updated on <!--UPDATED:BEGIN-->June 5, 2026<!--UPDATED:END-->.</i><br>
+                Made with <font color="#CC0000">&lt;3</font> in Notepad.<br>
                 <a href="mailto:webmaster@aboutali.github.io">webmaster@aboutali.github.io</a>
+                <br><br>
+                <font size="1" color="#8C8C8C">psst &mdash; try the Konami code: &uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr; B A</font>
               </font>
             </center>
 
           </font>
         </td></tr>
+
+        <!-- Apple six-color rainbow stripe (bottom) -->
+        <tr><td>
+          <table class="stripe" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+            <td bgcolor="#61BB46" height="5"></td>
+            <td bgcolor="#FDB827" height="5"></td>
+            <td bgcolor="#F5821F" height="5"></td>
+            <td bgcolor="#E03A3E" height="5"></td>
+            <td bgcolor="#963D97" height="5"></td>
+            <td bgcolor="#009DDC" height="5"></td>
+          </tr></table>
+        </td></tr>
+
       </table>
       <br>
-      <font face="Times New Roman" color="#FFFF00" size="2">
-        Source: <a href="https://github.com/aboutali/aboutali"><font color="#00FFFF">aboutali/aboutali</font></a>
+      <font face="Geneva, Helvetica, Arial, sans-serif" color="#555555" size="2">
+        Source: <a href="https://github.com/aboutali/aboutali">aboutali/aboutali</a>
       </font>
     </center>
+
+    <!-- CRT scanline overlay + Konami screensaver -->
+    <div id="scanlines"></div>
+    <div id="screensaver"><div class="hint">press any key to wake the monitor</div></div>
+
+    <script type="text/javascript">
+      /* Night Shift: amber CRT theme, remembered across visits */
+      function toggleTheme() {
+        var on = document.body.classList.toggle('crt');
+        try { localStorage.setItem('theme', on ? 'crt' : 'light'); } catch (e) {}
+      }
+      (function () {
+        try { if (localStorage.getItem('theme') === 'crt') document.body.classList.add('crt'); } catch (e) {}
+      })();
+
+      /* Konami code -> flying-toasters screensaver (After Dark tribute) */
+      (function () {
+        var seq = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65], pos = 0;
+        var ss = document.getElementById('screensaver');
+        function launch() {
+          for (var i = 0; i < 20; i++) {
+            var t = document.createElement('div');
+            t.className = 'toaster';
+            /* U+1F35E bread + U+1F426 bird = flying toast, kept as code points so the file stays ASCII */
+            t.textContent = String.fromCodePoint((i % 4 === 0) ? 0x1F35E : 0x1F426);
+            t.style.left = (100 + Math.random() * 25) + '%';
+            t.style.top = (Math.random() * 100) + '%';
+            t.style.fontSize = (24 + Math.random() * 30) + 'px';
+            t.style.animationDuration = (4 + Math.random() * 5) + 's';
+            t.style.animationDelay = (Math.random() * 3) + 's';
+            ss.appendChild(t);
+          }
+          ss.style.display = 'block';
+        }
+        function close() {
+          ss.style.display = 'none';
+          var kids = ss.querySelectorAll('.toaster');
+          for (var i = 0; i < kids.length; i++) kids[i].remove();
+        }
+        document.addEventListener('keydown', function (e) {
+          if (ss.style.display === 'block') { close(); return; }
+          var code = e.keyCode || e.which;
+          if (code === seq[pos]) { pos++; if (pos === seq.length) { pos = 0; launch(); } }
+          else { pos = (code === seq[0]) ? 1 : 0; }
+        });
+        ss.addEventListener('click', close);
+      })();
+    </script>
   </body>
 </html>

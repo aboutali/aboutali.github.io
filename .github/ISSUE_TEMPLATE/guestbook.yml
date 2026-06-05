@@ -1,0 +1,15 @@
+name: "Sign the guestbook"
+description: "Leave a note that shows up on aboutali.github.io/aboutali/"
+title: "A note for Angelo"
+labels: ["guestbook"]
+body:
+  - type: markdown
+    attributes:
+      value: "Your message is rendered as plain text on the site (HTML is escaped). Keep it kind!"
+  - type: textarea
+    id: message
+    attributes:
+      label: Your message
+      placeholder: "Hello from the World Wide Web!"
+    validations:
+      required: true
