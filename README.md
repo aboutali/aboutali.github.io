@@ -1,4 +1,4 @@
-# aboutali/aboutali
+# aboutali/aboutali.github.io
 
 Source for [aboutali.github.io](https://aboutali.github.io/) — a master index
 of all my projects.

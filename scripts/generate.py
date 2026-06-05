@@ -24,7 +24,7 @@ import urllib.request
 import urllib.error
 
 OWNER = "aboutali"
-INDEX_REPO = "aboutali"  # this repo, where guestbook issues live
+INDEX_REPO = "aboutali.github.io"  # this repo, where guestbook issues live
 
 # repo slug -> live URL the status dot pings
 PROJECTS = {
