@@ -27,19 +27,31 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Regenerate index.html
+      - name: Refresh and publish (race-safe)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/generate.py
-
-      - name: Commit if changed
         run: |
-          if [ -n "$(git status --porcelain index.html)" ]; then
-            git config user.name  "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Re-sync to the freshest remote and regenerate before each push attempt,
+          # so concurrent issue events / pushes can't leave a stale page behind
+          # (e.g. a deleted issue lingering because that run's push was rejected).
+          for attempt in 1 2 3 4 5; do
+            git fetch --quiet origin main
+            git reset --hard --quiet origin/main
+            python3 scripts/generate.py
+            if git diff --quiet -- index.html; then
+              echo "No changes to publish."
+              exit 0
+            fi
             git add index.html
-            git commit -m "Refresh index (status, activity, guestbook)"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+            git commit --quiet -m "Refresh index (status, activity, guestbook)"
+            if git push origin HEAD:main; then
+              echo "Published on attempt $attempt."
+              exit 0
+            fi
+            echo "Push raced with another update; re-syncing and retrying ($attempt/5)."
+            sleep $((attempt * 3))
+          done
+          echo "::error::Failed to publish after 5 attempts."
+          exit 1
