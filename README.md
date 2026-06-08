@@ -6,7 +6,7 @@ of all my projects.
 The site is a single `index.html` with a mid-'90s Apple/Mac "platinum" look —
 light gray, dark text, and the classic six-color rainbow stripe. The static
 markup needs no build; the live bits are refreshed by one GitHub Action, and
-two small extras use vanilla JS (no frameworks, no package manager).
+a few small extras use vanilla JS (no frameworks, no package manager).
 
 ## Features
 
@@ -23,6 +23,9 @@ two small extras use vanilla JS (no frameworks, no package manager).
   light theme with JS off.
 - **Konami code** — `↑ ↑ ↓ ↓ ← → ← → B A` launches a flying-toasters
   screensaver (After Dark tribute). Press any key to dismiss.
+- **Visitor counter** — a live global hit count via the third-party Abacus API
+  (a CountAPI successor); shown in the retro LCD, with the static number as a
+  fallback if the service is ever unreachable.
 
 ## How the live bits work
 

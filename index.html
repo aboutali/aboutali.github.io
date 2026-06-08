@@ -153,11 +153,10 @@
             <center>
               <font size="2">
                 <b>You are visitor #</b>
-                <font class="counter" face="Courier New, monospace" style="background:#E8E8E8;color:#333333;border:1px solid #999999;padding:2px 5px;">0000001</font>
+                <font class="counter" id="visitorCount" face="Courier New, monospace" style="background:#E8E8E8;color:#333333;border:1px solid #999999;padding:2px 5px;">0000001</font>
                 <br><br>
                 <i>This page was last updated on <!--UPDATED:BEGIN-->June 7, 2026<!--UPDATED:END-->.</i><br>
-                Made with <font color="#CC0000">&lt;3</font> in Notepad.<br>
-                <a href="mailto:webmaster@aboutali.github.io">webmaster@aboutali.github.io</a>
+                Made with <font color="#CC0000">&lt;3</font> in Notepad.
                 <br><br>
                 <font size="1" color="#8C8C8C">psst &mdash; try the Konami code: &uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr; B A</font>
               </font>
@@ -230,6 +229,18 @@
           else { pos = (code === seq[0]) ? 1 : 0; }
         });
         ss.addEventListener('click', close);
+      })();
+
+      /* Visitor counter - global hit count via Abacus (a CountAPI successor) */
+      (function () {
+        var el = document.getElementById('visitorCount');
+        if (!el) return;
+        fetch('https://abacus.jasoncameron.dev/hit/aboutali-github-io/pageviews')
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (d && typeof d.value === 'number') el.textContent = String(d.value).padStart(7, '0');
+          })
+          .catch(function () { /* service unreachable - keep the static fallback number */ });
       })();
     </script>
   </body>
