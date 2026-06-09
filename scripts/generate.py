@@ -33,6 +33,7 @@ PROJECTS = {
     "fit-schedule": "https://aboutali.github.io/fit-schedule/",
     "cloudy-plag": "https://aboutali.github.io/cloudy-plag/",
     "edition-guru": "https://aboutali.github.io/edition-guru/",
+    "iKoyomi": "https://ikoyomi.netlify.app/",
 }
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
