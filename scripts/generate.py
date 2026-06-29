@@ -113,8 +113,7 @@ def set_activity(text):
     if parts:
         ticker = " &nbsp;&nbsp;&#10022;&nbsp;&nbsp; ".join(parts)
     else:
-        ticker = ("* * * Under Construction &nbsp;&middot;&nbsp; Best viewed at 800x600 "
-                  "&nbsp;&middot;&nbsp; Thanks for stopping by * * *")
+        ticker = "Latest commits will appear here."
     return re.sub(
         r"(<!--ACTIVITY:BEGIN-->).*?(<!--ACTIVITY:END-->)",
         lambda m: m.group(1) + ticker + m.group(2),
@@ -144,11 +143,11 @@ def set_guestbook(text):
         if not body:
             body = "<i>(no message)</i>"
         rows.append(
-            '<p style="margin:8px 0;"><b>%s</b> '
-            '<font size="2" color="#888888">(%s)</font><br>%s</p>'
+            '<p class="gb-entry"><b>%s</b> '
+            '<span class="gb-date">%s</span><br>%s</p>'
             % (user, date, body)
         )
-    block = "\n".join(rows) if rows else "<p><i>Be the first to sign the guestbook!</i></p>"
+    block = "\n".join(rows) if rows else '<p class="gb-empty">Be the first to sign the guestbook.</p>'
     return re.sub(
         r"(<!--GUESTBOOK:BEGIN-->).*?(<!--GUESTBOOK:END-->)",
         lambda m: m.group(1) + "\n" + block + "\n" + m.group(2),
