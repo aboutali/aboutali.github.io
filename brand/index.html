@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Angelo Boutalikakis — Brand Foundation v1</title>
+<title>Angelo Boutalikakis — Brand Foundation v2</title>
 <style>
   :root{
     --ink:#17171A; --paper:#FAF8F4; --stone:#9B9890; --hair:#E6E2DA;
-    --cobalt:#2C46C8; --oxblood:#8A2B2B; --forest:#1F5E46;
-    --accent:var(--cobalt);
+    --green:#18A05E;        /* bright forest — primary accent */
+    --green-deep:#0E4D33;   /* deep forest — companion / dark panels */
+    --accent:var(--green);
     --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
     --serif:"Newsreader","Fraunces",Georgia,"Times New Roman",serif;
     --mono:"JetBrains Mono","SFMono-Regular","Courier New",monospace;
@@ -20,7 +21,6 @@
   a{color:var(--accent)}
   .wrap{max-width:1100px;margin:0 auto;padding:0 var(--pad)}
 
-  /* section frame */
   section{padding-block:clamp(40px,6vw,84px);border-top:1px solid var(--hair)}
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
   h2{margin:14px 0 0;font-size:clamp(24px,3.4vw,40px);font-weight:650;letter-spacing:-.02em;line-height:1.04}
@@ -30,9 +30,20 @@
   header.cover{padding:clamp(44px,7vw,96px) 0 clamp(36px,5vw,60px)}
   .cover .tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
   .cover h1{margin:18px 0 0;font-size:clamp(40px,9vw,128px);font-weight:680;letter-spacing:-.04em;line-height:.9}
+  .cover h1 .dot{color:var(--green)}
   .cover .state{margin:26px 0 0;font-family:var(--serif);font-size:clamp(20px,3vw,34px);font-style:italic;
-    color:var(--ink);max-width:24ch;line-height:1.15}
-  .cover .state b{font-style:normal;font-weight:600}
+    color:var(--ink);max-width:26ch;line-height:1.18}
+  .cover .state b{font-style:normal;font-weight:600;color:var(--green-deep)}
+
+  /* tagline options */
+  .taglines{display:grid;gap:12px;grid-template-columns:1fr;margin-top:24px;max-width:760px}
+  .tl{display:flex;align-items:center;gap:14px;border:1px solid var(--hair);border-radius:10px;
+    background:#fff;padding:16px 18px}
+  .tl.is-default{border-color:var(--green);box-shadow:0 0 0 1px var(--green)}
+  .tl .pick{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--stone);width:74px;flex:none}
+  .tl.is-default .pick{color:var(--green-deep)}
+  .tl .txt{font-family:var(--serif);font-size:clamp(17px,2.2vw,22px);font-style:italic}
 
   /* foundation grid */
   .found{display:grid;gap:30px 48px;grid-template-columns:repeat(2,1fr);margin-top:26px}
@@ -40,62 +51,64 @@
   .found h3{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--stone);margin:0 0 12px}
   .traits{display:flex;flex-wrap:wrap;gap:8px}
   .traits span{border:1px solid var(--hair);border-radius:999px;padding:7px 14px;font-size:14px}
-  .traits span b{color:var(--accent)}
+  .traits span b{color:var(--green-deep)}
   .found p{margin:0;font-size:16px;color:#39383a;line-height:1.6;max-width:42ch}
   ol.princ{margin:0;padding-left:20px}
   ol.princ li{margin-bottom:9px;font-size:16px;color:#39383a}
 
-  /* logo lab */
-  .logos{display:grid;gap:16px;grid-template-columns:repeat(2,1fr);margin-top:26px}
-  @media(max-width:720px){.logos{grid-template-columns:1fr}}
-  .lt{border:1px solid var(--hair);border-radius:10px;background:#fff;padding:clamp(26px,3.4vw,44px);
-    min-height:190px;display:flex;flex-direction:column;justify-content:space-between;gap:22px}
-  .lt.dark{background:var(--ink);color:var(--paper)}
+  /* logo lock */
+  .logo-primary{margin-top:26px;border:1px solid var(--hair);border-radius:14px;background:#fff;
+    padding:clamp(34px,6vw,72px);display:flex;align-items:center;gap:clamp(24px,5vw,64px);flex-wrap:wrap}
+  .lock{display:inline-flex;flex-direction:column;line-height:.9}
+  .lock b{font-weight:700;letter-spacing:-.04em;font-size:clamp(34px,6vw,68px);display:block}
+  .lock .sur{color:var(--green)}
+  .badge{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--green-deep);
+    border:1px solid var(--green);border-radius:999px;padding:6px 12px}
+
+  .logo-alts{display:grid;gap:16px;grid-template-columns:repeat(3,1fr);margin-top:16px}
+  @media(max-width:720px){.logo-alts{grid-template-columns:1fr}}
+  .lt{border:1px solid var(--hair);border-radius:10px;padding:28px;min-height:150px;
+    display:flex;flex-direction:column;justify-content:space-between;gap:18px;background:#fff}
   .lt .cap{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--stone)}
-  /* logo forms */
-  .wm{font-weight:660;letter-spacing:-.035em;font-size:clamp(22px,3.2vw,34px);line-height:1}
-  .wm .dot{color:var(--accent)}
-  .wm-stack b{display:block;font-weight:680;letter-spacing:-.035em;font-size:clamp(26px,3.6vw,40px);line-height:.92}
-  .wm-stack .kick{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--stone);margin-top:12px}
-  .mono-AB{display:flex;align-items:center;gap:18px}
-  .glyph{width:74px;height:74px;border-radius:12px;background:var(--ink);color:var(--paper);
-    display:flex;align-items:center;justify-content:center;font-weight:680;font-size:30px;letter-spacing:-.04em}
-  .glyph.ring{background:transparent;border:2px solid var(--ink);color:var(--ink);border-radius:50%;
-    font-weight:600;font-size:26px;letter-spacing:-.02em;text-transform:lowercase}
-  .glyph.acc{background:var(--accent)}
-  .sig{font-family:var(--serif);font-size:clamp(26px,3.6vw,40px);font-style:italic;letter-spacing:-.01em}
-  .sig .b{font-style:normal}
+  .lt.green{background:var(--green);border-color:var(--green)}
+  .lt.green .cap{color:rgba(255,255,255,.8)}
+  .lt.green .lock b{color:var(--paper)}
+  .lt .lock b{font-size:clamp(20px,2.4vw,26px)}
+  .lt .lock .sur{color:var(--green)}
+  .lt.green .lock .sur{color:var(--paper)}
+  .mono-row{display:flex;align-items:center;gap:14px}
+  .glyph{width:60px;height:60px;border-radius:11px;background:var(--green);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;letter-spacing:-.04em}
+  .glyph.ink{background:var(--ink)}
+  .glyph.ring{background:transparent;border:2px solid var(--green);color:var(--green-deep);border-radius:50%;
+    font-weight:650;font-size:21px;text-transform:lowercase}
+  .fav{display:flex;gap:10px;align-items:center}
+  .fav .g{border-radius:5px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;letter-spacing:-.04em}
 
   /* colour */
-  .pal{display:grid;gap:14px;grid-template-columns:repeat(4,1fr);margin-top:26px}
+  .pal{display:grid;gap:14px;grid-template-columns:repeat(5,1fr);margin-top:26px}
   @media(max-width:720px){.pal{grid-template-columns:repeat(2,1fr)}}
   .sw{border:1px solid var(--hair);border-radius:10px;overflow:hidden;background:#fff}
-  .sw .chip{height:90px}
+  .sw .chip{height:88px}
   .sw .m{padding:11px 13px;font-family:var(--mono);font-size:11px;line-height:1.6}
   .sw .m b{display:block;font-size:12.5px;letter-spacing:.02em}
   .sw .m span{color:var(--stone)}
-  .accents{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-  .accents .lbl{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--stone)}
-  .achip{display:flex;align-items:center;gap:9px;border:1px solid var(--hair);border-radius:999px;padding:7px 13px;font-size:13px}
-  .achip i{width:15px;height:15px;border-radius:50%}
-  .achip.is-default{border-color:var(--ink)}
 
   /* type */
   .spec > div{padding:18px 0;border-bottom:1px solid var(--hair);display:flex;gap:24px;align-items:baseline;flex-wrap:wrap}
   .spec .k{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--stone);width:170px;flex:none}
   .spec .k em{display:block;font-style:normal;color:var(--ink);margin-top:4px;text-transform:none;letter-spacing:0;font-size:12px}
 
-  /* applied preview */
+  /* applied */
   .preview{border:1px solid var(--hair);border-radius:12px;overflow:hidden;margin-top:26px;background:var(--paper)}
   .pv-bar{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--hair)}
-  .pv-bar .l{font-weight:660;letter-spacing:-.02em}
-  .pv-bar .l .dot{color:var(--accent)}
+  .pv-bar .l{font-weight:680;letter-spacing:-.03em}
+  .pv-bar .l .sur{color:var(--green)}
   .pv-bar nav a{margin-left:20px;font-size:13px;color:var(--stone);text-decoration:none}
   .pv-body{padding:clamp(26px,4vw,52px) 22px}
   .pv-body .h{font-size:clamp(28px,5vw,56px);font-weight:680;letter-spacing:-.03em;line-height:.98;max-width:18ch}
-  .pv-body .h em{font-family:var(--serif);font-weight:500}
-  .pv-body p{margin:18px 0 0;color:#39383a;max-width:52ch;font-size:16px}
+  .pv-body .h em{font-family:var(--serif);font-weight:500;color:var(--green-deep)}
+  .pv-body .sub{margin:18px 0 0;font-family:var(--serif);font-style:italic;color:#39383a;max-width:46ch;font-size:clamp(17px,2.2vw,21px)}
   .pv-body .meta{margin-top:22px;font-family:var(--mono);font-size:12px;color:var(--stone);letter-spacing:.04em}
 
   footer{padding:36px var(--pad) 60px;font-family:var(--mono);font-size:12px;color:var(--stone)}
@@ -105,128 +118,100 @@
 <div class="wrap">
 
   <header class="cover">
-    <div class="tag">Brand Foundation · v1 · 2026</div>
-    <h1>Angelo<br>Boutalikakis</h1>
-    <p class="state">A curious mind<br>that <b>ships.</b></p>
+    <div class="tag">Brand Foundation · v2 · 2026</div>
+    <h1>Angelo<br>Boutalikakis<span class="dot">.</span></h1>
+    <p class="state">Curiosity and skill,<br><b>funneled into things that work.</b></p>
   </header>
 
-  <!-- 01 FOUNDATION -->
+  <!-- TAGLINE -->
   <section>
-    <div class="eyebrow">01 — Foundation</div>
-    <h2>Range, held together by a way of thinking.</h2>
-    <p class="lede">You build across improbably different fields — EU foreign-policy news, a Zen
-      seasonal calendar, a life-design framework, a city's fitness schedule — and turn that
-      curiosity into small, finished software. The brand makes that breadth read as depth.</p>
-    <div class="found">
-      <div>
-        <h3>Positioning</h3>
-        <p><strong>Independent builder.</strong> Designs and ships small, sharp web products
-          across policy, culture, and wellbeing.</p>
+    <div class="eyebrow">01 — Tagline · pick a phrasing</div>
+    <h2>Funneling curiosity &amp; skill.</h2>
+    <p class="lede">Not a job title — a through-line. The breadth (policy, culture, wellbeing)
+      is the curiosity; the finished, shipped products are the skill. Three phrasings of the
+      same idea — pick one or steer it:</p>
+    <div class="taglines">
+      <div class="tl is-default"><span class="pick">Default</span><span class="txt">Curiosity and skill, funneled into things that work.</span></div>
+      <div class="tl"><span class="pick">Alt 1</span><span class="txt">Funneling curiosity and skill into finished things.</span></div>
+      <div class="tl"><span class="pick">Alt 2</span><span class="txt">Where curiosity and skill become software.</span></div>
+    </div>
+  </section>
+
+  <!-- LOGO -->
+  <section>
+    <div class="eyebrow">02 — Logo · locked: stacked, brighter, no tagline</div>
+    <h2>The mark.</h2>
+    <p class="lede">Direction B, brightened: the stacked wordmark, surname in bright forest, no
+      kicker line. The name is the logo.</p>
+
+    <div class="logo-primary">
+      <span class="lock"><b>Angelo</b><b class="sur">Boutalikakis</b></span>
+      <span class="badge">Primary lockup</span>
+    </div>
+
+    <div class="logo-alts">
+      <div class="lt green">
+        <span class="cap">Reversed — on forest</span>
+        <span class="lock"><b>Angelo</b><b class="sur">Boutalikakis</b></span>
       </div>
-      <div>
-        <h3>Personality</h3>
-        <div class="traits">
-          <span><b>Precise</b></span><span><b>Literate</b></span>
-          <span><b>Quietly&nbsp;playful</b></span><span><b>Human</b></span>
+      <div class="lt">
+        <span class="cap">Monogram — avatar</span>
+        <div class="mono-row"><div class="glyph">AB</div><div class="glyph ink">AB</div><div class="glyph ring">ab</div></div>
+      </div>
+      <div class="lt">
+        <span class="cap">Favicon — 16 / 32 / 64</span>
+        <div class="fav">
+          <div class="g" style="width:16px;height:16px;font-size:9px">A</div>
+          <div class="g" style="width:32px;height:32px;font-size:16px">A</div>
+          <div class="g" style="width:64px;height:64px;font-size:32px">A</div>
         </div>
-      </div>
-      <div>
-        <h3>Voice</h3>
-        <p>Plain and exact. Short sentences. Explains, never sells. Wit used like seasoning,
-          not the meal.</p>
-      </div>
-      <div>
-        <h3>Principles</h3>
-        <ol class="princ">
-          <li>Type does the work.</li>
-          <li>One accent, used with intent.</li>
-          <li>Range is the structure.</li>
-          <li>Warm details, rigorous frame.</li>
-        </ol>
       </div>
     </div>
   </section>
 
-  <!-- 02 LOGO -->
+  <!-- COLOUR -->
   <section>
-    <div class="eyebrow">02 — Logo · pick one direction</div>
-    <h2>A typographic mark.</h2>
-    <p class="lede">No icon needed — the name is the mark. A tight grotesque wordmark for primary
-      use, a compact <b>AB</b> for avatars and favicons, and a friendlier lowercase form. Four
-      starting directions:</p>
-    <div class="logos">
-      <div class="lt">
-        <span class="cap">A — Primary wordmark</span>
-        <div class="wm">Angelo Boutalikakis<span class="dot">.</span></div>
-      </div>
-      <div class="lt dark">
-        <span class="cap">B — Stacked lockup (on ink)</span>
-        <div class="wm-stack"><b>Angelo</b><b>Boutalikakis</b><div class="kick">Independent builder</div></div>
-      </div>
-      <div class="lt">
-        <span class="cap">C — Monogram for avatar / favicon</span>
-        <div class="mono-AB">
-          <div class="glyph">AB</div>
-          <div class="glyph acc">AB</div>
-          <div class="glyph ring">ab</div>
-        </div>
-      </div>
-      <div class="lt">
-        <span class="cap">D — Lowercase signature</span>
-        <div class="sig">angelo&nbsp;<span class="b">b.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 03 COLOUR -->
-  <section>
-    <div class="eyebrow">03 — Colour · pick the mood</div>
-    <h2>Warm ink, one intentional accent.</h2>
-    <p class="lede">A warm near-black on warm paper — never stark white — with a single accent.
-      Default is Cobalt; two alternate moods shown below it.</p>
+    <div class="eyebrow">03 — Colour</div>
+    <h2>Warm ink, bright forest.</h2>
+    <p class="lede">Warm near-black on warm paper, a muted stone grey, and one bright forest
+      accent — with a deep-forest companion for text on light and for dark panels.</p>
     <div class="pal">
+      <div class="sw"><div class="chip" style="background:#18A05E"></div><div class="m"><b>Forest</b><span>#18A05E · accent</span></div></div>
+      <div class="sw"><div class="chip" style="background:#0E4D33"></div><div class="m"><b>Forest deep</b><span>#0E4D33</span></div></div>
       <div class="sw"><div class="chip" style="background:#17171A"></div><div class="m"><b>Ink</b><span>#17171A</span></div></div>
       <div class="sw"><div class="chip" style="background:#FAF8F4"></div><div class="m"><b>Paper</b><span>#FAF8F4</span></div></div>
       <div class="sw"><div class="chip" style="background:#9B9890"></div><div class="m"><b>Stone</b><span>#9B9890</span></div></div>
-      <div class="sw"><div class="chip" style="background:#2C46C8"></div><div class="m"><b>Cobalt</b><span>#2C46C8 · accent</span></div></div>
-    </div>
-    <div class="accents">
-      <span class="lbl">Accent options →</span>
-      <span class="achip is-default"><i style="background:#2C46C8"></i>Cobalt · default</span>
-      <span class="achip"><i style="background:#8A2B2B"></i>Oxblood · literary</span>
-      <span class="achip"><i style="background:#1F5E46"></i>Forest · grounded</span>
     </div>
   </section>
 
-  <!-- 04 TYPE -->
+  <!-- TYPE -->
   <section>
-    <div class="eyebrow">04 — Typography</div>
+    <div class="eyebrow">04 — Typography · confirmed</div>
     <h2>One grotesque, a serif for moments, a mono for data.</h2>
-    <p class="lede">A clean workhorse sans does most of the work; an editorial serif adds warmth
-      to display moments; a monospace labels data and metadata. Recommended free pairing below
-      (shown here in system fallbacks).</p>
+    <p class="lede">Recommended free pairing (shown here in system fallbacks): <b>Inter / Inter
+      Tight</b> for sans, <b>Newsreader</b> or <b>Fraunces</b> for the serif moments, <b>JetBrains
+      Mono</b> for data and labels.</p>
     <div class="spec">
-      <div><span class="k">Display / sans<em>Inter Tight (rec.)</em></span><span style="font-size:clamp(28px,5vw,52px);font-weight:680;letter-spacing:-.03em">Builds things that ship</span></div>
-      <div><span class="k">Serif accent<em>Newsreader / Fraunces (rec.)</em></span><span style="font-family:var(--serif);font-size:clamp(24px,4vw,40px);font-style:italic">A curious mind</span></div>
-      <div><span class="k">Body<em>Inter (rec.)</em></span><span style="font-size:18px;max-width:46ch">Small, opinionated products at the intersection of policy, culture, and wellbeing.</span></div>
-      <div><span class="k">Mono / labels<em>JetBrains Mono (rec.)</em></span><span style="font-family:var(--mono);font-size:14px;letter-spacing:.03em">STATUS · LIVE — ZURICH / BRUSSELS — 06 PROJECTS</span></div>
+      <div><span class="k">Display / sans<em>Inter Tight</em></span><span style="font-size:clamp(28px,5vw,52px);font-weight:680;letter-spacing:-.03em">Builds things that ship</span></div>
+      <div><span class="k">Serif accent<em>Newsreader / Fraunces</em></span><span style="font-family:var(--serif);font-size:clamp(24px,4vw,40px);font-style:italic">Curiosity and skill</span></div>
+      <div><span class="k">Body<em>Inter</em></span><span style="font-size:18px;max-width:46ch">Small, opinionated products at the intersection of policy, culture, and wellbeing.</span></div>
+      <div><span class="k">Mono / labels<em>JetBrains Mono</em></span><span style="font-family:var(--mono);font-size:14px;letter-spacing:.03em">STATUS · LIVE — ZURICH / BRUSSELS — 06 PROJECTS</span></div>
     </div>
   </section>
 
-  <!-- 05 APPLIED -->
+  <!-- APPLIED -->
   <section>
     <div class="eyebrow">05 — A glimpse, applied</div>
     <h2>How it coheres.</h2>
-    <p class="lede">Not the site design — just the anchors working together, so the foundation
-      feels real.</p>
+    <p class="lede">Just the locked anchors working together — not the site design yet.</p>
     <div class="preview">
       <div class="pv-bar">
-        <span class="l">Angelo Boutalikakis<span class="dot">.</span></span>
+        <span class="l">Angelo<span class="sur"> Boutalikakis</span></span>
         <nav><a href="#">Work</a><a href="#">About</a><a href="#">Writing</a><a href="#">Contact</a></nav>
       </div>
       <div class="pv-body">
-        <div class="h">I build small, sharp <em>web things</em> — across policy, culture &amp; wellbeing.</div>
-        <p>Independent builder. Concept to shipped product, usually static, always finished.</p>
+        <div class="h">I build small, sharp <em>web things</em>.</div>
+        <p class="sub">Curiosity and skill, funneled into things that work — across policy, culture, and wellbeing.</p>
         <div class="meta">SELECTED WORK · 2024—2026 · ZURICH / BRUSSELS</div>
       </div>
     </div>
@@ -234,8 +219,8 @@
 
 </div>
 <footer>
-  Angelo Boutalikakis — Brand Foundation v1 · self-contained, dependency-free ·
-  branch claude/personal-brand-mockups-727pz2 · not live. Full write-up in brand/foundation.md
+  Angelo Boutalikakis — Brand Foundation v2 · self-contained, dependency-free ·
+  branch claude/personal-brand-mockups-727pz2 · not live · write-up in brand/foundation.md
 </footer>
 </body>
 </html>
