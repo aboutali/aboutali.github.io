@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angelo Boutalikakis — Editorial Index (mockup)</title>
+<style>
+  :root{
+    --ink:#111111; --paper:#FAFAF8; --white:#FFFFFF;
+    --hair:#E3E3DF; --muted:#6E6E6A; --signal:#E8542F;
+    --pad:clamp(20px,5vw,72px);
+    --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.45}
+  a{color:inherit;text-decoration:none}
+
+  /* ---- top bar ---- */
+  .bar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;
+    align-items:center;padding:18px var(--pad);background:rgba(250,250,248,.86);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--hair);font-size:14px}
+  .bar .mark{font-weight:700;letter-spacing:-.02em}
+  .bar nav a{margin-left:22px;color:var(--muted)}
+  .bar nav a:hover{color:var(--ink)}
+
+  /* ---- masthead ---- */
+  .head{padding:clamp(48px,9vw,120px) var(--pad) clamp(28px,5vw,56px)}
+  .head h1{margin:0;font-weight:700;letter-spacing:-.03em;line-height:.92;
+    font-size:clamp(44px,11.5vw,168px)}
+  .head .lede{max-width:46ch;margin:28px 0 0;font-size:clamp(17px,2.2vw,24px);
+    color:var(--ink);font-weight:500;line-height:1.35}
+  .head .meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 26px;
+    font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+  /* ---- filter row ---- */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;padding:0 var(--pad) 26px}
+  .chip{font-size:13px;padding:7px 14px;border:1px solid var(--hair);border-radius:999px;
+    color:var(--muted);background:var(--white);cursor:default}
+  .chip[data-on]{background:var(--ink);color:var(--white);border-color:var(--ink)}
+
+  /* ---- grid ---- */
+  .grid{padding:0 var(--pad) 64px;display:grid;gap:clamp(22px,3vw,44px);
+    grid-template-columns:repeat(12,1fr)}
+  .card{grid-column:span 6;display:block}
+  .card.tall{grid-row:span 1}
+  .card:nth-child(3n+1){grid-column:span 7}
+  .card:nth-child(3n+2){grid-column:span 5}
+  .cover{position:relative;aspect-ratio:16/10;border-radius:4px;overflow:hidden;
+    background:var(--white);border:1px solid var(--hair);transition:transform .35s ease}
+  .card:hover .cover{transform:translateY(-4px)}
+  .cover .idx{position:absolute;left:16px;top:14px;font-size:12px;letter-spacing:.1em;
+    font-family:"SFMono-Regular","Courier New",monospace;mix-blend-mode:difference;color:#fff}
+  .cover .live{position:absolute;right:14px;top:14px;width:9px;height:9px;border-radius:50%}
+  .live.up{background:#33aa55} .live.down{background:#cc3333}
+  .c-meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:14px 2px 0}
+  .c-meta h3{margin:0;font-size:clamp(18px,2vw,24px);font-weight:700;letter-spacing:-.01em}
+  .c-meta .yr{font-size:13px;color:var(--muted);font-family:"SFMono-Regular","Courier New",monospace}
+  .card p{margin:6px 2px 0;color:var(--muted);font-size:15px;max-width:54ch}
+  .tags{margin:12px 2px 0;display:flex;flex-wrap:wrap;gap:7px}
+  .tags span{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);
+    border:1px solid var(--hair);padding:4px 9px;border-radius:3px}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--hair);padding:clamp(40px,7vw,90px) var(--pad);
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px}
+  footer h2{margin:0;font-size:clamp(28px,5vw,64px);font-weight:700;letter-spacing:-.03em;line-height:1}
+  footer h2 a{border-bottom:3px solid var(--signal)}
+  footer .cols{display:flex;gap:60px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+  footer .cols a{display:block;margin-top:8px}
+  footer .cols a:hover{color:var(--ink)}
+  .tag-note{font-size:12px;color:var(--muted);padding:4px var(--pad) 40px}
+
+  /* ---- CSS-art covers (no external images) ---- */
+  .cv-life{background:
+    radial-gradient(circle at 50% 50%,transparent 0 13%,#2F7D55 13% 14%,transparent 14% 24%,#2F7D55 24% 25%,transparent 25% 35%,#2F7D55 35% 36%,transparent 36% 46%,#2F7D55 46% 47%,transparent 47%),#EAF3EE}
+  .cv-bxl{background:
+    repeating-linear-gradient(90deg,#1A3C6E 0 2px,transparent 2px 22px),
+    linear-gradient(180deg,#EAF0F7,#DCE6F2)}
+  .cv-fit{background:
+    repeating-linear-gradient(135deg,#E8542F 0 14px,transparent 14px 40px),#FBE9E2}
+  .cv-plag{background:
+    repeating-linear-gradient(0deg,#6B4FA0 0 1px,transparent 1px 16px),
+    repeating-linear-gradient(90deg,#6B4FA0 0 1px,transparent 1px 16px),#F0ECF6}
+  .cv-edn{background:
+    conic-gradient(from 210deg at 30% 40%,#C0392B,#E07A5F,#C0392B 60%,#7d231a),#F6E7E4}
+  .cv-koyo{background:
+    radial-gradient(circle at 72% 30%,#F4D58D 0 8%,transparent 8.5%),
+    linear-gradient(160deg,#2B3A67,#4A5A8A)}
+
+  @media(max-width:760px){
+    .card,.card:nth-child(3n+1),.card:nth-child(3n+2){grid-column:span 12}
+    .bar nav{display:none}
+  }
+</style>
+</head>
+<body>
+
+  <div class="bar">
+    <a class="mark" href="#">Angelo Boutalikakis</a>
+    <nav>
+      <a href="#work">Work</a><a href="#">About</a><a href="#">Writing</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <header class="head">
+    <h1>Angelo<br>Boutalikakis</h1>
+    <p class="lede">Independent builder. I design and ship small, opinionated web
+      products at the intersection of policy, culture, and wellbeing.</p>
+    <div class="meta">
+      <span>Selected Work · 2024—26</span><span>Zurich / Brussels</span><span>Six projects</span>
+    </div>
+  </header>
+
+  <div class="filters" aria-label="Filter by discipline">
+    <span class="chip" data-on>All</span>
+    <span class="chip">Product</span><span class="chip">Automation</span>
+    <span class="chip">Research</span><span class="chip">Culture</span>
+    <span class="chip">Wellbeing</span><span class="chip">Policy</span>
+  </div>
+
+  <main class="grid" id="work">
+
+    <a class="card" href="https://aboutali.github.io/life-improver/">
+      <div class="cover cv-life"><span class="idx">01</span><span class="live up"></span></div>
+      <div class="c-meta"><h3>life-improver</h3><span class="yr">2025</span></div>
+      <p>An interactive framework mapping a full life into seven domains and 300+
+        practices drawn from psychology, philosophy, and contemplative traditions.</p>
+      <div class="tags"><span>Framework</span><span>Wellbeing</span><span>Web</span></div>
+    </a>
+
+    <a class="card" href="https://aboutali.github.io/bxl_eda_worker/">
+      <div class="cover cv-bxl"><span class="idx">02</span><span class="live up"></span></div>
+      <div class="c-meta"><h3>bxl_eda_worker</h3><span class="yr">2026</span></div>
+      <p>A scheduled worker compiling a daily digest of EU foreign-policy, Middle
+        East, and sanctions news from Brussels.</p>
+      <div class="tags"><span>Automation</span><span>Policy</span><span>News</span></div>
+    </a>
+
+    <a class="card" href="https://aboutali.github.io/fit-schedule/">
+      <div class="cover cv-fit"><span class="idx">03</span><span class="live down"></span></div>
+      <div class="c-meta"><h3>fit-schedule</h3><span class="yr">2025</span></div>
+      <p>Aggregates bookable fitness classes from three Zurich studios into one
+        live, filterable schedule.</p>
+      <div class="tags"><span>Product</span><span>Web App</span><span>Cities</span></div>
+    </a>
+
+    <a class="card" href="https://aboutali.github.io/cloudy-plag/">
+      <div class="cover cv-plag"><span class="idx">04</span><span class="live down"></span></div>
+      <div class="c-meta"><h3>cloudy-plag</h3><span class="yr">2025</span></div>
+      <p>A VroniPlag-style wiki documenting — without accusing — credibility
+        issues in public figures' dissertations.</p>
+      <div class="tags"><span>Research</span><span>Wiki</span><span>Integrity</span></div>
+    </a>
+
+    <a class="card" href="https://aboutali.github.io/edition-guru/">
+      <div class="cover cv-edn"><span class="idx">05</span><span class="live down"></span></div>
+      <div class="c-meta"><h3>edition-guru</h3><span class="yr">2025</span></div>
+      <p>A newsletter bot scraping art-edition galleries for new drops, enriched
+        with market data and Claude-written notes.</p>
+      <div class="tags"><span>Culture</span><span>Bot</span><span>Newsletter</span></div>
+    </a>
+
+    <a class="card" href="https://ikoyomi.netlify.app/">
+      <div class="cover cv-koyo"><span class="idx">06</span><span class="live up"></span></div>
+      <div class="c-meta"><h3>iKoyomi</h3><span class="yr">2024</span></div>
+      <p>A minimalist Zen PWA presenting Japan's 72 microseasons as full-screen
+        scenes — kanji, a poetic line, a daily contemplation.</p>
+      <div class="tags"><span>PWA</span><span>Design</span><span>Calendar</span></div>
+    </a>
+
+  </main>
+  <p class="tag-note">● live · ● offline — status mirrors the indicators on the current site.</p>
+
+  <footer id="contact">
+    <h2><a href="mailto:hello@example.com">Let's build →</a></h2>
+    <div class="cols">
+      <div><strong style="color:var(--ink)">Contact</strong>
+        <a href="mailto:hello@example.com">hello@example.com</a>
+        <a href="#">LinkedIn</a><a href="#">GitHub</a></div>
+      <div><strong style="color:var(--ink)">Index</strong>
+        <a href="#work">Work</a><a href="#">About</a><a href="#">Writing</a></div>
+    </div>
+  </footer>
+
+</body>
+</html>
