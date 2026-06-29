@@ -2,6 +2,7 @@
 _preview.html
 _preview.png
 _dryrun.html
+mockups/*.png
 
 # Python
 __pycache__/
