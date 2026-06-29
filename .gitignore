@@ -7,3 +7,4 @@ mockups/*.png
 # Python
 __pycache__/
 *.pyc
+brand/*.png
