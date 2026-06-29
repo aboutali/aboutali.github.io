@@ -12,22 +12,22 @@ seasonal calendar, a life-design framework, a city's fitness schedule, an
 art-editions tracker — and turns that curiosity into small, **finished**
 software.
 
-> **Curiosity and skill, funneled into things that work.**
+> **Curiosity meets rigor.**
 
-The brand's one job: make that *range read as depth*, not scatter. Breadth
-(policy, culture, wellbeing) is the curiosity; the finished, shipped products are
-the skill. The tagline is the funnel between them.
+The brand's one job: make that *range read as depth*, not scatter. The breadth
+(policy, culture, wellbeing) is the **curiosity**; the finished, exacting, shipped
+products are the **rigor**.
 
 ---
 
-## Tagline
+## Tagline — locked
 
-The line is about **funneling curiosity and skill** — not a job title. Three
-phrasings of the same idea (pick one or steer it):
+> **Curiosity meets rigor.**
 
-- **Default —** *Curiosity and skill, funneled into things that work.*
-- Alt 1 — *Funneling curiosity and skill into finished things.*
-- Alt 2 — *Where curiosity and skill become software.*
+The short form is the line. Two longer phrasings if a full sentence is ever needed:
+
+- *Where curiosity meets rigor — and ships.*
+- *Wide-ranging curiosity, exacting craft.*
 
 (Descriptor, if a job-title is ever needed: "builder / maker" — but it is **not**
 the tagline.)
@@ -66,15 +66,15 @@ not the meal.
 | Anchor | v2 decision |
 |--------|-------------|
 | **Logo** | **Locked — Direction B, brightened.** Stacked `Angelo / Boutalikakis` wordmark, surname in bright forest, **no kicker/tagline** in the lockup. `AB` monogram (forest / ink / lowercase ring) for avatars; favicon = `A` in forest. The name is the logo. |
-| **Type** | **Confirmed.** Workhorse grotesque + editorial serif for display moments + mono for data/labels: **Inter / Inter Tight** (sans), **Newsreader** or **Fraunces** (serif), **JetBrains Mono** (mono). Rendered here in system fallbacks. |
-| **Colour** | **Locked — Forest.** Warm **Ink** on warm **Paper**, muted **Stone** grey, and one **bright Forest** accent, with a **deep-forest** companion for text on light + dark panels. |
+| **Type** | **Locked — Akzidenz-style grotesque.** Primary face **Archivo** (free, OFL; a grotesque drawn after late-19th-c. models — the Akzidenz-Grotesk lineage). Close free alternatives: **Hanken Grotesk**, **Geist**. Paired with **Newsreader** (serif moments) + **JetBrains Mono** (data/labels). |
+| **Colour** | **Locked — Cobalt.** Warm **Ink** on warm **Paper**, muted **Stone** grey, and one **cobalt** accent, with a **deep-cobalt** companion for accent text on light + dark panels. |
 
-### Palette (v2)
+### Palette (v3)
 
 | Token | Hex | Role |
 |-------|-----|------|
-| **Forest** (accent) | `#18A05E` | Links, surname, the one highlight |
-| Forest deep | `#0E4D33` | Accent text on light; dark panels |
+| **Cobalt** (accent) | `#2C46C8` | Links, surname, the one highlight |
+| Cobalt deep | `#1B2E8F` | Accent text on light; dark panels |
 | Ink | `#17171A` | Text, wordmark |
 | Paper | `#FAF8F4` | Background (warm off-white) |
 | Stone | `#9B9890` | Secondary text, captions |
