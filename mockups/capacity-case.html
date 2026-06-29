@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>life-improver — Case Study (mockup) · Angelo Boutalikakis</title>
+<style>
+  :root{
+    --ink:#111111; --paper:#FAFAF8; --white:#fff; --hair:#E3E3DF; --muted:#6E6E6A; --signal:#E8542F;
+    --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"SFMono-Regular","Courier New",monospace;
+    --pad:clamp(20px,5vw,64px);
+    --col:760px; /* reading measure */
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* top bar */
+  .bar{position:sticky;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center;
+    padding:16px var(--pad);background:rgba(250,250,248,.85);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hair);font-size:14px}
+  .bar .mark{font-weight:700;letter-spacing:-.02em}
+  .bar .back{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .bar .back:hover{color:var(--ink)}
+
+  /* hero */
+  .hero-visual{height:clamp(320px,62vh,720px);width:100%}
+  .hero-head{padding:clamp(36px,6vw,72px) var(--pad) clamp(20px,3vw,40px);
+    display:grid;grid-template-columns:1fr;gap:28px;border-bottom:1px solid var(--hair)}
+  .hero-head h1{margin:0;font-size:clamp(40px,8vw,104px);font-weight:700;letter-spacing:-.035em;line-height:.92}
+  .hero-head .tag{font-size:clamp(18px,2.6vw,28px);font-weight:500;max-width:30ch;color:var(--ink)}
+  .disc{display:flex;flex-wrap:wrap;gap:8px}
+  .disc span{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.07em;
+    color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:6px 13px}
+  @media(min-width:880px){
+    .hero-head{grid-template-columns:1.1fr .9fr;align-items:end}
+    .hero-head .right{justify-self:end;text-align:right;display:flex;flex-direction:column;gap:18px;align-items:flex-end}
+  }
+
+  /* generic blocks */
+  section{padding-block:clamp(40px,7vw,96px)}
+  .center{max-width:var(--col);margin-inline:auto;padding-inline:var(--pad)}
+  .lead{font-size:clamp(22px,3vw,34px);font-weight:500;letter-spacing:-.015em;line-height:1.25}
+  .body{font-size:clamp(16px,2vw,19px);line-height:1.65;color:#23231f}
+  .body p{margin:0 0 1.1em}
+  .kicker{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--muted);margin-bottom:18px}
+
+  .full{width:100%}
+  .full .panel{height:clamp(280px,56vw,640px);width:100%}
+  .cap{max-width:var(--col);margin:14px auto 0;padding-inline:var(--pad);
+    font-size:13px;color:var(--muted);font-family:var(--mono)}
+
+  .twoup{display:grid;gap:clamp(10px,1.4vw,18px);grid-template-columns:1fr;padding-inline:var(--pad)}
+  .twoup .panel{height:clamp(220px,40vw,440px)}
+  @media(min-width:760px){.twoup{grid-template-columns:1fr 1fr}}
+
+  .quote{padding-block:clamp(48px,9vw,120px)}
+  .quote blockquote{max-width:1100px;margin:0 auto;padding-inline:var(--pad);
+    font-size:clamp(28px,5.4vw,68px);font-weight:700;letter-spacing:-.03em;line-height:1.04}
+  .quote .who{max-width:1100px;margin:26px auto 0;padding-inline:var(--pad);
+    font-family:var(--mono);font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+  /* credits */
+  .credits{border-top:1px solid var(--ink);padding:clamp(40px,6vw,72px) var(--pad)}
+  .credits .grid{display:grid;gap:28px 40px;grid-template-columns:repeat(2,1fr);max-width:1100px}
+  @media(min-width:760px){.credits .grid{grid-template-columns:repeat(4,1fr)}}
+  .credits dt{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  .credits dd{margin:8px 0 0;font-size:15px;font-weight:500}
+  .credits dd a{border-bottom:1px solid var(--signal)}
+
+  /* next */
+  .next{border-top:1px solid var(--hair);padding:clamp(36px,5vw,64px) var(--pad);
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+  .next .lbl{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  .next a{font-size:clamp(24px,4vw,48px);font-weight:700;letter-spacing:-.02em}
+  .next a:hover{color:var(--signal)}
+
+  /* ---- CSS-art panels (no external images) ---- */
+  /* seven-domain wheel */
+  .art-wheel{background:
+    conic-gradient(#2F7D55 0 51.4deg,#1A3C6E 0 102.8deg,#E8542F 0 154.2deg,#6B4FA0 0 205.7deg,
+    #C0392B 0 257.1deg,#2B3A67 0 308.5deg,#C9962F 0 360deg);
+    position:relative}
+  .art-wheel::after{content:"";position:absolute;inset:0;margin:auto;width:34%;aspect-ratio:1;
+    border-radius:50%;background:var(--paper)}
+  /* practice-card grid */
+  .art-cards{background:#11110D;display:grid;grid-template-columns:repeat(8,1fr);
+    grid-auto-rows:1fr;gap:8px;padding:8px}
+  .art-cards i{display:block;border-radius:3px;background:#1c1c17}
+  .art-cards i:nth-child(3n){background:#2F7D55}
+  .art-cards i:nth-child(5n){background:#C9962F}
+  .art-cards i:nth-child(7n){background:#6B4FA0}
+  .art-cards i:nth-child(11n){background:#E8542F}
+  /* concentric rings (domain depth) */
+  .art-rings{background:
+    radial-gradient(circle at 50% 50%,#EAF3EE 0 8%,#2F7D55 8% 9%,#EAF3EE 9% 18%,#2F7D55 18% 19%,
+    #EAF3EE 19% 28%,#2F7D55 28% 29%,#EAF3EE 29% 38%,#2F7D55 38% 39%,#EAF3EE 39% 48%,#2F7D55 48% 49%,#EAF3EE 49%)}
+  /* type specimen panel */
+  .art-type{background:#2F7D55;color:#EAF3EE;display:flex;align-items:center;justify-content:center;
+    flex-direction:column;text-align:center;padding:24px}
+  .art-type b{font-size:clamp(40px,9vw,96px);font-weight:700;letter-spacing:-.04em;line-height:.85}
+  .art-type span{font-family:var(--mono);font-size:12px;letter-spacing:.2em;margin-top:18px;opacity:.8}
+</style>
+</head>
+<body>
+
+  <div class="bar">
+    <a class="mark" href="capacity-home.html">Angelo Boutalikakis</a>
+    <a class="back" href="capacity-home.html">← Index</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero-visual art-wheel" role="img" aria-label="Seven-domain wheel"></div>
+  <header class="hero-head">
+    <div>
+      <h1>life-improver</h1>
+      <p class="tag">A framework for designing a deliberate life — seven domains, three hundred practices.</p>
+    </div>
+    <div class="right">
+      <div class="disc">
+        <span>Framework</span><span>Product Design</span><span>Wellbeing</span><span>Web</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- LEAD -->
+  <section class="center">
+    <p class="kicker">Overview</p>
+    <p class="lead">Most self-improvement is a pile of disconnected tips. life-improver
+      treats a whole life as a system — seven domains, each with its own practices,
+      drawn from psychology, philosophy, and contemplative traditions.</p>
+  </section>
+
+  <!-- FULL BLEED 1 -->
+  <div class="full">
+    <div class="panel art-cards" aria-label="A grid of practice cards">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+  <p class="cap">300+ practices, each a card — filterable by domain, effort, and tradition.</p>
+
+  <!-- BODY -->
+  <section class="center body">
+    <p class="kicker">The problem</p>
+    <p>Advice rarely fails because it is wrong. It fails because it arrives without a
+      map — no sense of where it fits, what it trades against, or what you are already
+      neglecting. People optimise one corner of life while another quietly collapses.</p>
+    <p>life-improver starts from the opposite premise: name the whole territory first,
+      then place every practice on it. The seven domains — body, mind, craft, relationships,
+      meaning, resources, and play — become a shared vocabulary you can actually reason with.</p>
+  </section>
+
+  <!-- TWO UP -->
+  <div class="twoup">
+    <div class="panel art-rings" aria-label="Concentric rings showing depth within a domain"></div>
+    <div class="panel art-type"><b>Seven<br>domains</b><span>ONE SYSTEM</span></div>
+  </div>
+  <p class="cap">Left: depth within a single domain. Right: the system as a whole.</p>
+
+  <!-- QUOTE -->
+  <section class="quote">
+    <blockquote>"A life isn't improved tip by tip. It's improved by seeing the whole board."</blockquote>
+    <p class="who">— Design principle, life-improver</p>
+  </section>
+
+  <!-- BODY 2 -->
+  <section class="center body">
+    <p class="kicker">The build</p>
+    <p>The whole thing is a single static site — no backend, no accounts. Practices live
+      in a structured data file; the interface is a fast, filterable index that works
+      offline and loads instantly. The constraint is the point: a tool about a deliberate
+      life shouldn't demand a login to begin.</p>
+  </section>
+
+  <!-- CREDITS -->
+  <section class="credits">
+    <p class="kicker">Credits</p>
+    <dl class="grid">
+      <div><dt>Role</dt><dd>Concept, design &amp; build</dd></div>
+      <div><dt>Year</dt><dd>2025</dd></div>
+      <div><dt>Disciplines</dt><dd>Framework · Product · Wellbeing</dd></div>
+      <div><dt>Stack</dt><dd>Static HTML/JS · no backend</dd></div>
+      <div><dt>Status</dt><dd>Live ●</dd></div>
+      <div><dt>Source</dt><dd><a href="https://github.com/aboutali/life-improver">github.com/aboutali</a></dd></div>
+      <div><dt>Link</dt><dd><a href="https://aboutali.github.io/life-improver/">life-improver →</a></dd></div>
+      <div><dt>By</dt><dd>Angelo Boutalikakis</dd></div>
+    </dl>
+  </section>
+
+  <!-- NEXT -->
+  <div class="next">
+    <span class="lbl">Next project</span>
+    <a href="capacity-home.html#work">bxl_eda_worker →</a>
+  </div>
+
+</body>
+</html>

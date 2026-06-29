@@ -92,13 +92,28 @@ The system is **ink on paper**; project accents supply the colour.
 
 ---
 
-## 6. Three directions (the mockups)
+## 6. Chosen direction — Case study (à la `pentagram.com/work/capacity`)
+
+The site reads like a **Pentagram case study**, not just a project list:
+long vertical scroll, full-bleed visuals alternating with text blocks, a large
+pull-quote, and a structured credits block at the foot.
+
+| File | Page | Structure |
+|------|------|-----------|
+| `capacity-home.html` | **Homepage** | Big hero statement → work as full-bleed alternating sections → pull-quote statement → credits-style contact. |
+| `capacity-case.html` | **Project case study** | Hero visual → title + tagline + discipline tags → lead → full-bleed media → two-up grid → pull-quote → body → credits → next project. |
+
+Every project gets its own case-study page in this template; the homepage strings
+them together. Visuals are pure CSS "brand-system" art (domain wheel, practice-card
+grid, type specimens) standing in for real project imagery.
+
+### Earlier explorations (superseded, kept for reference)
 
 | File | Direction | Feel |
 |------|-----------|------|
-| `direction-01-editorial.html` | **Editorial Index** | Closest to Pentagram /work — giant wordmark, masonry project grid, category tags, filter row. |
-| `direction-02-specimen.html`  | **Type Specimen** | Ultra-minimal, type-driven. Projects as a numbered editorial list/table with hover. Most restrained. |
-| `direction-03-modular.html`   | **Modular Colour** | The expressive side — bold modular colour panels, playful but systematic. |
+| `direction-01-editorial.html` | Editorial Index | Giant wordmark + masonry project grid. |
+| `direction-02-specimen.html`  | Type Specimen | Ultra-minimal, type-driven index. |
+| `direction-03-modular.html`   | Modular Colour | Bold modular colour panels. |
 
 Open `mockups/index.html` for a side-by-side overview.
 
