@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angelo Boutalikakis — Visual Identity System (mockup)</title>
+<style>
+  :root{
+    --ink:#15140F; --cream:#F4EFE3; --paper:#FBF8F1; --hair:#DED7C6; --muted:#7C7565;
+    --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"SFMono-Regular","Courier New",monospace;
+    --pad:clamp(20px,5vw,72px);
+    /* discipline / "domain" hues — the joyful, structured accent set */
+    --c1:#E4572E; --c2:#F4B400; --c3:#178A7E; --c4:#2E5EAA; --c5:#7A4FA0; --c6:#D6557F; --c7:#2B3A67;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+  svg{display:block}
+
+  /* section scaffolding */
+  section{padding-block:clamp(40px,6vw,88px);border-top:1px solid var(--hair)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);display:flex;gap:10px;align-items:center}
+  .eyebrow b{color:var(--ink);font-weight:700}
+  h2.t{margin:14px 0 0;font-size:clamp(26px,4vw,46px);font-weight:700;letter-spacing:-.025em;line-height:1.02}
+  .desc{margin:14px 0 0;max-width:62ch;font-size:clamp(15px,1.8vw,18px);color:#2c2a22;line-height:1.6}
+
+  /* cover */
+  .cover{padding:clamp(40px,7vw,96px) 0 clamp(36px,5vw,64px);border-top:0;position:relative;overflow:hidden}
+  .cover .id-line{font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .cover h1{margin:18px 0 0;font-weight:700;letter-spacing:-.04em;line-height:.9;font-size:clamp(40px,10vw,150px)}
+  .cover .sub{margin:24px 0 0;font-size:clamp(17px,2.3vw,24px);font-weight:500;max-width:40ch}
+  .cover .markrow{margin-top:clamp(28px,4vw,48px);display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .cover .markrow .lbl{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+  /* logotype */
+  .lockups{display:grid;gap:18px;grid-template-columns:repeat(2,1fr);margin-top:30px}
+  @media(max-width:760px){.lockups{grid-template-columns:1fr}}
+  .panel{border:1px solid var(--hair);border-radius:8px;background:var(--paper);padding:clamp(22px,3vw,40px);
+    display:flex;flex-direction:column;gap:16px;min-height:180px;justify-content:center}
+  .panel.dark{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .panel .cap{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .panel.dark .cap{color:#9a927f}
+  /* the wordmark itself */
+  .wm{font-weight:700;letter-spacing:-.03em;line-height:1}
+  .wm-deco{font-weight:600;letter-spacing:.34em;text-transform:uppercase;line-height:1.1;font-size:clamp(13px,1.7vw,18px)}
+  .wm-stack b{display:block;font-weight:700;letter-spacing:-.03em;font-size:clamp(22px,3.4vw,38px);line-height:.94}
+  .lockmark{display:flex;align-items:center;gap:16px}
+
+  /* generators */
+  .gen{display:grid;gap:22px;grid-template-columns:1.1fr .9fr;margin-top:28px;align-items:start}
+  @media(max-width:860px){.gen{grid-template-columns:1fr}}
+  .gen .stage{border:1px solid var(--hair);border-radius:10px;background:var(--paper);padding:24px;
+    display:flex;align-items:center;justify-content:center;min-height:300px}
+  .gen .stage.dark{background:var(--ink)}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  button.btn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    background:var(--ink);color:var(--cream);border:0;border-radius:999px;padding:10px 16px;cursor:pointer}
+  button.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--hair)}
+  button.btn:hover{opacity:.88}
+  .variants{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+  @media(max-width:560px){.variants{grid-template-columns:repeat(2,1fr)}}
+  .vtile{aspect-ratio:1;border:1px solid var(--hair);border-radius:10px;background:var(--paper);
+    display:flex;align-items:center;justify-content:center;padding:14px}
+
+  /* charts */
+  .charts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+  @media(max-width:860px){.charts{grid-template-columns:1fr}}
+  .chart{border:1px solid var(--hair);border-radius:10px;background:var(--paper);padding:24px}
+  .chart h4{margin:0 0 4px;font-size:15px;font-weight:700}
+  .chart .note{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .chart .holder{margin-top:18px;display:flex;justify-content:center}
+
+  /* palette */
+  .swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:26px}
+  @media(max-width:760px){.swatches{grid-template-columns:repeat(3,1fr)}}
+  .sw{border:1px solid var(--hair);border-radius:8px;overflow:hidden;background:var(--paper)}
+  .sw .chip{height:84px}
+  .sw .meta{padding:10px 12px;font-family:var(--mono);font-size:11px;line-height:1.5}
+  .sw .meta b{display:block;font-size:12px;letter-spacing:.02em}
+  .sw .meta span{color:var(--muted)}
+
+  /* type */
+  .typescale > div{border-bottom:1px solid var(--hair);padding:18px 0;display:flex;align-items:baseline;
+    gap:20px;flex-wrap:wrap}
+  .typescale .lbl{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;
+    letter-spacing:.08em;width:120px;flex:none}
+  .typescale .ex{letter-spacing:-.02em}
+
+  /* applications */
+  .apps{display:grid;gap:18px;grid-template-columns:repeat(6,1fr);margin-top:28px}
+  .app{border:1px solid var(--hair);border-radius:10px;overflow:hidden;background:var(--paper)}
+  .app .cap{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;
+    letter-spacing:.08em;padding:10px 14px;border-top:1px solid var(--hair)}
+  .app.avatar{grid-column:span 2}
+  .app.fav{grid-column:span 2}
+  .app.badge{grid-column:span 2}
+  .app.card{grid-column:span 3}
+  .app.banner{grid-column:span 3}
+  @media(max-width:760px){
+    .apps{grid-template-columns:repeat(2,1fr)}
+    .app.avatar,.app.fav,.app.badge,.app.card,.app.banner{grid-column:span 2}
+  }
+  .pad{padding:22px}
+  /* business card face */
+  .bizcard{aspect-ratio:1.75;background:var(--ink);color:var(--cream);padding:22px;
+    display:flex;flex-direction:column;justify-content:space-between}
+  .bizcard .nm{font-weight:700;letter-spacing:-.02em;font-size:18px}
+  .bizcard .ro{font-family:var(--mono);font-size:11px;color:#a9a08c;letter-spacing:.08em;margin-top:4px;text-transform:uppercase}
+  .bizcard .bot{font-family:var(--mono);font-size:11px;color:#cfc7b3;display:flex;justify-content:space-between;gap:10px}
+  /* social banner */
+  .banner-face{aspect-ratio:3;position:relative;background:var(--ink);overflow:hidden;
+    display:flex;align-items:center;padding:0 26px}
+  .banner-face .wm{color:var(--cream);font-size:clamp(16px,3vw,30px);position:relative;z-index:2}
+  .banner-face .patt{position:absolute;inset:0;opacity:.9}
+  /* project badge */
+  .badge-face{padding:22px;display:flex;align-items:center;gap:16px}
+  .badge-face .nm{font-weight:700;font-size:16px}
+  .badge-face .mt{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:3px}
+
+  footer{padding:40px var(--pad) 64px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  footer a{color:var(--ink)}
+  .principle{font-size:clamp(22px,3.4vw,40px);font-weight:700;letter-spacing:-.025em;line-height:1.1;max-width:24ch}
+  .principle em{font-style:normal;color:var(--c1)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- COVER -->
+  <header class="cover" id="top">
+    <div class="id-line">Visual Identity System · v0.1 · 2026</div>
+    <h1>Angelo<br>Boutalikakis</h1>
+    <p class="sub">An identity where the work is drawn as data — generative marks,
+      patterns, and charts from one small system.</p>
+    <div class="markrow">
+      <span class="lbl">Signature mark →</span>
+      <span id="cover-mark"></span>
+      <span id="cover-mark-2"></span>
+      <span id="cover-mark-3"></span>
+    </div>
+  </header>
+
+  <!-- IDEA -->
+  <section>
+    <div class="eyebrow"><b>01</b> The idea</div>
+    <h2 class="t">Data, made human.</h2>
+    <p class="desc">Angelo builds small, opinionated web products across policy, culture,
+      and wellbeing — work that is really about turning messy human things into something
+      legible. The identity does the same to <em>him</em>: every project, discipline, and
+      year becomes a mark. Inspired by Pentagram &amp; Giorgia Lupi's data-driven identity
+      for <a href="https://www.pentagram.com/work/capacity" target="_blank" rel="noopener">Capacity</a>
+      — not copied: the system, palette, and marks here are original.</p>
+    <p class="principle" style="margin-top:30px">A life and a body of work,<br><em>drawn as data.</em></p>
+  </section>
+
+  <!-- LOGOTYPE -->
+  <section>
+    <div class="eyebrow"><b>02</b> Logotype</div>
+    <h2 class="t">Wordmark &amp; lockups</h2>
+    <p class="desc">A tight neo-grotesque wordmark for primary use; a tracked, Art-Deco-flavoured
+      caps line for headers and spines (a nod to the arts-and-culture lineage); and a stacked
+      lockup pairing the name with the data mark.</p>
+    <div class="lockups">
+      <div class="panel">
+        <span class="cap">Primary wordmark</span>
+        <div class="wm" style="font-size:clamp(22px,3.4vw,38px)">Angelo Boutalikakis</div>
+      </div>
+      <div class="panel">
+        <span class="cap">Deco caps — headers / spine</span>
+        <div class="wm-deco">Angelo&nbsp;Boutalikakis</div>
+      </div>
+      <div class="panel dark">
+        <span class="cap">Lockup — mark + name</span>
+        <div class="lockmark"><span id="lock-mark"></span>
+          <div class="wm-stack"><b>Angelo</b><b>Boutalikakis</b></div></div>
+      </div>
+      <div class="panel">
+        <span class="cap">Monogram</span>
+        <div class="lockmark"><span id="mono-mark"></span>
+          <div class="wm" style="font-size:28px;letter-spacing:-.02em">AB</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARK GENERATOR -->
+  <section>
+    <div class="eyebrow"><b>03</b> The mark · generator</div>
+    <h2 class="t">Data-portrait</h2>
+    <p class="desc">The signature mark is a small matrix of dots, bars, and rings — a "data
+      portrait." Each cell encodes an attribute (discipline, status, intensity); colour is
+      drawn from the discipline palette. It is generative: one tool, endless on-brand marks,
+      so every project or page can carry its own while staying unmistakably the system.</p>
+    <div class="gen">
+      <div class="stage" id="mark-stage"></div>
+      <div>
+        <p class="desc" style="margin-top:0">Press generate to see the system produce fresh,
+          consistent marks — the way Capacity's identity ships with a pattern/chart generator
+          rather than a fixed logo lock.</p>
+        <div class="controls">
+          <button class="btn" onclick="rollMark()">↻ Generate mark</button>
+          <button class="btn ghost" onclick="rollVariants()">↻ Variants</button>
+        </div>
+        <div class="variants" id="variants"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATTERN GENERATOR -->
+  <section>
+    <div class="eyebrow"><b>04</b> Pattern · generator</div>
+    <h2 class="t">Data pattern</h2>
+    <p class="desc">Zoom the mark logic out and it tiles into a pattern — a seating-chart-like
+      field of marks for backgrounds, covers, and banners. Same rules, different scale.</p>
+    <div class="gen">
+      <div class="stage dark" id="pattern-stage" style="padding:0;overflow:hidden"></div>
+      <div>
+        <div class="controls" style="margin-top:0">
+          <button class="btn" onclick="rollPattern()">↻ Generate pattern</button>
+          <button class="btn ghost" onclick="rollPattern(true)">↻ On cream</button>
+        </div>
+        <p class="desc">Density, colour mix, and mark types stay within the system, so any
+          generated field reads as the same brand.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHART LANGUAGE -->
+  <section>
+    <div class="eyebrow"><b>05</b> Chart language</div>
+    <h2 class="t">Branded data forms</h2>
+    <p class="desc">Charts are part of the identity, not an afterthought — donut, bar, and
+      dot-matrix, all styled in the palette. This is how Angelo presents his own work: the
+      portfolio as a small dataset.</p>
+    <div class="charts">
+      <div class="chart">
+        <h4>Disciplines</h4><span class="note">share of work · donut</span>
+        <div class="holder" id="chart-donut"></div>
+      </div>
+      <div class="chart">
+        <h4>Projects per year</h4><span class="note">2024—26 · bar</span>
+        <div class="holder" id="chart-bar"></div>
+      </div>
+      <div class="chart">
+        <h4>Status by project</h4><span class="note">live / offline · dot-matrix</span>
+        <div class="holder" id="chart-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOUR -->
+  <section>
+    <div class="eyebrow"><b>06</b> Colour</div>
+    <h2 class="t">Warm ink, joyful accents</h2>
+    <p class="desc">A warm ink-on-cream base (a vintage-print warmth, not stark white) carries
+      a seven-hue accent set — one per discipline. Colour is structured, never decorative: a
+      mark's hues always mean something.</p>
+    <div class="swatches" id="swatches"></div>
+  </section>
+
+  <!-- TYPE -->
+  <section>
+    <div class="eyebrow"><b>07</b> Typography</div>
+    <h2 class="t">One grotesque, two voices</h2>
+    <p class="desc">A neo-grotesque does the heavy lifting (tight for display, plain for body);
+      a monospace labels the data. Set in system fonts here so the site stays dependency-free —
+      recommended licensed pairing: a geometric grotesque (e.g. a Futura/Mona-style display)
+      with a humanist mono.</p>
+    <div class="typescale">
+      <div><span class="lbl">Display 700</span><span class="ex" style="font-size:clamp(30px,6vw,64px);font-weight:700">Drawn as data</span></div>
+      <div><span class="lbl">Deco caps</span><span class="ex" style="font-weight:600;letter-spacing:.32em;text-transform:uppercase;font-size:clamp(14px,2vw,22px)">Collected work</span></div>
+      <div><span class="lbl">Heading 700</span><span class="ex" style="font-size:24px;font-weight:700">Seven disciplines, one system</span></div>
+      <div><span class="lbl">Body 400</span><span class="ex" style="font-size:18px;max-width:48ch">Small, opinionated products at the intersection of policy, culture, and wellbeing.</span></div>
+      <div><span class="lbl">Mono / labels</span><span class="ex" style="font-family:var(--mono);font-size:14px;letter-spacing:.04em">STATUS · LIVE — 2026 — 06 PROJECTS</span></div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section>
+    <div class="eyebrow"><b>08</b> Applications</div>
+    <h2 class="t">The system, applied</h2>
+    <p class="desc">Avatar, favicon, project badge, business card, and a social banner — all
+      generated from the same marks and pattern.</p>
+    <div class="apps">
+      <div class="app avatar"><div class="pad" style="display:flex;justify-content:center"><div id="app-avatar"></div></div><div class="cap">Avatar — round</div></div>
+      <div class="app fav"><div class="pad" style="display:flex;justify-content:center;gap:12px;align-items:center" id="app-favs"></div><div class="cap">Favicon — 16 / 32 / 64</div></div>
+      <div class="app badge"><div class="badge-face"><span id="app-badge-mark"></span><div><div class="nm">life-improver</div><div class="mt">Framework · Wellbeing · ● live</div></div></div><div class="cap">Project badge</div></div>
+      <div class="app card"><div class="bizcard"><div><div class="nm">Angelo Boutalikakis</div><div class="ro">Independent builder</div></div><div class="bot"><span>hello@example.com</span><span id="card-mark"></span><span>@aboutali</span></div></div><div class="cap">Business card</div></div>
+      <div class="app banner"><div class="banner-face"><div class="patt" id="banner-patt"></div><div class="wm">Angelo Boutalikakis</div></div><div class="cap">Social banner</div></div>
+    </div>
+  </section>
+
+</div>
+<footer>
+  Angelo Boutalikakis — Visual Identity System · mockup · self-contained, dependency-free ·
+  branch <a href="https://github.com/aboutali/aboutali.github.io">claude/personal-brand-mockups-727pz2</a> ·
+  inspired by <a href="https://www.pentagram.com/work/capacity">Pentagram × Giorgia Lupi · Capacity</a>, not copied.
+</footer>
+
+<script>
+(function(){
+  var PALETTE=['#E4572E','#F4B400','#178A7E','#2E5EAA','#7A4FA0','#D6557F','#2B3A67'];
+  var INK='#15140F', CREAM='#F4EFE3', PAPER='#FBF8F1';
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);
+    t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};}
+
+  // ---- the data-portrait mark ----
+  function mark(seed, size, opts){
+    opts=opts||{};
+    var cells=opts.cells||5, fill=opts.fill||0.62, bg=opts.bg||null, mono=opts.mono||null;
+    var rnd=mulberry32(seed|0), g=size/cells, s='';
+    s+='<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" xmlns="http://www.w3.org/2000/svg">';
+    if(bg) s+='<rect width="'+size+'" height="'+size+'" rx="'+(opts.round||0)+'" fill="'+bg+'"/>';
+    for(var r=0;r<cells;r++){for(var c=0;c<cells;c++){
+      if(rnd()>fill) continue;
+      var cx=c*g+g/2, cy=r*g+g/2, col=mono||PALETTE[Math.floor(rnd()*PALETTE.length)], t=rnd();
+      if(t<0.42){ s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(g*0.30)+'" fill="'+col+'"/>'; }
+      else if(t<0.72){ var bw=g*0.24, bh=g*0.62; s+='<rect x="'+(cx-bw/2)+'" y="'+(cy-bh/2)+'" width="'+bw+'" height="'+bh+'" rx="'+(bw/2)+'" fill="'+col+'"/>'; }
+      else { s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(g*0.28)+'" fill="none" stroke="'+col+'" stroke-width="'+(g*0.12)+'"/>'; }
+    }}
+    s+='</svg>'; return s;
+  }
+  function put(id,html){var el=document.getElementById(id); if(el) el.innerHTML=html;}
+
+  // cover + lockups (fixed, hand-picked good seeds)
+  put('cover-mark', mark(7, 92, {cells:5,fill:0.66}));
+  put('cover-mark-2', mark(23, 92, {cells:5,fill:0.66}));
+  put('cover-mark-3', mark(58, 92, {cells:5,fill:0.66}));
+  put('lock-mark', mark(7, 64, {cells:4,fill:0.7,mono:CREAM}));
+  put('mono-mark', mark(41, 56, {cells:3,fill:0.8}));
+
+  // mark generator
+  var markSeed=11;
+  function rollMark(){ markSeed=Math.floor(Math.random()*99999); put('mark-stage', mark(markSeed, 240, {cells:5,fill:0.64})); }
+  function rollVariants(){
+    var html='';
+    for(var i=0;i<4;i++){ var sd=Math.floor(Math.random()*99999);
+      html+='<div class="vtile">'+mark(sd, 110, {cells:i+3,fill:0.66})+'</div>'; }
+    put('variants', html);
+  }
+  window.rollMark=rollMark; window.rollVariants=rollVariants;
+  rollMark(); rollVariants();
+
+  // pattern generator
+  function patternSVG(w,h,seed,onCream){
+    var rnd=mulberry32(seed|0), step=34, s='';
+    var back=onCream?CREAM:INK;
+    s+='<svg width="100%" height="100%" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">';
+    s+='<rect width="'+w+'" height="'+h+'" fill="'+back+'"/>';
+    for(var y=step/2;y<h;y+=step){ for(var x=step/2;x<w;x+=step){
+      if(rnd()>0.78) continue;
+      var col=PALETTE[Math.floor(rnd()*PALETTE.length)], t=rnd();
+      if(t<0.45){ s+='<circle cx="'+x+'" cy="'+y+'" r="'+(step*0.20)+'" fill="'+col+'"/>'; }
+      else if(t<0.75){ s+='<rect x="'+(x-step*0.08)+'" y="'+(y-step*0.24)+'" width="'+(step*0.16)+'" height="'+(step*0.48)+'" rx="'+(step*0.08)+'" fill="'+col+'"/>'; }
+      else { s+='<circle cx="'+x+'" cy="'+y+'" r="'+(step*0.19)+'" fill="none" stroke="'+col+'" stroke-width="'+(step*0.07)+'"/>'; }
+    }}
+    s+='</svg>'; return s;
+  }
+  function rollPattern(onCream){ put('pattern-stage', patternSVG(560,300,Math.floor(Math.random()*99999),onCream)); }
+  window.rollPattern=rollPattern;
+  rollPattern(false);
+  put('banner-patt', patternSVG(720,240,9,false));
+
+  // ---- charts ----
+  // donut
+  (function(){
+    var data=[['Product',3,PALETTE[0]],['Automation',2,PALETTE[3]],['Research',2,PALETTE[4]],
+              ['Editorial',2,PALETTE[2]],['Wellbeing',1,PALETTE[1]],['Design',2,PALETTE[6]]];
+    var total=0; data.forEach(function(d){total+=d[1];});
+    var R=64, C=2*Math.PI*R, off=0, S='';
+    S+='<svg width="170" height="170" viewBox="0 0 170 170" xmlns="http://www.w3.org/2000/svg">';
+    S+='<g transform="rotate(-90 85 85)">';
+    data.forEach(function(d){ var frac=d[1]/total, len=frac*C;
+      S+='<circle cx="85" cy="85" r="'+R+'" fill="none" stroke="'+d[2]+'" stroke-width="26" '+
+         'stroke-dasharray="'+(len-3)+' '+(C-len+3)+'" stroke-dashoffset="'+(-off)+'"/>'; off+=len; });
+    S+='</g><text x="85" y="90" text-anchor="middle" font-family="SFMono-Regular,monospace" font-size="13" fill="#15140F">12 TAGS</text></svg>';
+    put('chart-donut',S);
+  })();
+  // bar
+  (function(){
+    var data=[['24',1],['25',4],['26',1]], max=4, S='';
+    S+='<svg width="200" height="170" viewBox="0 0 200 170" xmlns="http://www.w3.org/2000/svg">';
+    var bw=40, gap=22, x=14;
+    data.forEach(function(d,i){ var h=(d[1]/max)*120, y=140-h, col=PALETTE[i%PALETTE.length];
+      S+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+h+'" rx="4" fill="'+col+'"/>';
+      S+='<text x="'+(x+bw/2)+'" y="158" text-anchor="middle" font-family="SFMono-Regular,monospace" font-size="12" fill="#7C7565">’'+d[0]+'</text>';
+      S+='<text x="'+(x+bw/2)+'" y="'+(y-8)+'" text-anchor="middle" font-family="SFMono-Regular,monospace" font-size="12" fill="#15140F">'+d[1]+'</text>';
+      x+=bw+gap; });
+    S+='</svg>'; put('chart-bar',S);
+  })();
+  // dot-matrix status
+  (function(){
+    var rows=[['life-improver',1],['bxl_eda_worker',1],['fit-schedule',0],
+              ['cloudy-plag',0],['edition-guru',0],['iKoyomi',1]], S='';
+    S+='<svg width="210" height="170" viewBox="0 0 210 170" xmlns="http://www.w3.org/2000/svg">';
+    rows.forEach(function(r,i){ var y=18+i*24;
+      S+='<circle cx="12" cy="'+y+'" r="6" fill="'+(r[1]?PALETTE[2]:'#C0392B')+'"/>';
+      S+='<text x="28" y="'+(y+4)+'" font-family="SFMono-Regular,monospace" font-size="12" fill="#15140F">'+r[0]+'</text>'; });
+    S+='</svg>'; put('chart-dots',S);
+  })();
+
+  // palette swatches
+  (function(){
+    var names=[['Vermillion',PALETTE[0]],['Marigold',PALETTE[1]],['Teal',PALETTE[2]],
+               ['Cobalt',PALETTE[3]],['Plum',PALETTE[4]],['Rose',PALETTE[5]],
+               ['Midnight',PALETTE[6]],['Ink',INK],['Cream',CREAM]];
+    var html='';
+    names.forEach(function(n){ html+='<div class="sw"><div class="chip" style="background:'+n[1]+'"></div>'+
+      '<div class="meta"><b>'+n[0]+'</b><span>'+n[1].toUpperCase()+'</span></div></div>'; });
+    put('swatches',html);
+  })();
+
+  // applications
+  put('app-avatar', mark(7, 120, {cells:5,fill:0.66,bg:INK,round:60}));
+  put('app-favs', mark(7,16,{cells:3,fill:0.85,bg:INK,round:4})+mark(7,32,{cells:3,fill:0.85,bg:INK,round:7})+mark(7,64,{cells:4,fill:0.8,bg:INK,round:12}));
+  put('app-badge-mark', mark(19,52,{cells:4,fill:0.72}));
+  put('card-mark', mark(7,28,{cells:3,fill:0.85,mono:CREAM}));
+})();
+</script>
+</body>
+</html>

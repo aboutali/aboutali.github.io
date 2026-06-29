@@ -92,7 +92,32 @@ The system is **ink on paper**; project accents supply the colour.
 
 ---
 
-## 6. Chosen direction — Case study (à la `pentagram.com/work/capacity`)
+## 6. Visual identity system — "Drawn as data" (the deliverable)
+
+> See **`identity.html`** — the actual brand identity, inspired by Pentagram &
+> Giorgia Lupi's [Capacity](https://www.pentagram.com/work/capacity) work, whose
+> signature is that **data *is* the brand** (generative patterns + chart forms,
+> two custom generator tools, a refined logotype, a joyful structured palette).
+> Original here — system, marks, and palette are not copied.
+
+**Concept:** *A life and a body of work, drawn as data.* Every project, discipline,
+and year becomes a mark from one small generative system.
+
+The system contains:
+- **Logotype** — tight grotesque wordmark; a tracked Art-Deco caps variant (arts-and-culture nod); a mark-+-name lockup; an `AB` monogram.
+- **The mark** — a generative "data-portrait": a 3–5 cell matrix of dots, bars, and rings; colour from the discipline palette. One generator, endless on-brand marks (no fixed logo lock — like Capacity).
+- **Pattern** — the mark logic tiled into a seating-chart-like field for backgrounds/banners.
+- **Chart language** — branded donut, bar, and dot-matrix; the portfolio presented as a small dataset.
+- **Colour** — warm **Ink** `#15140F` on **Cream** `#F4EFE3`, plus a seven-hue discipline set: Vermillion `#E4572E`, Marigold `#F4B400`, Teal `#178A7E`, Cobalt `#2E5EAA`, Plum `#7A4FA0`, Rose `#D6557F`, Midnight `#2B3A67`. Colour always *means* something.
+- **Type** — one neo-grotesque (display + body) + a mono for data labels; system fonts for now (recommended licensed pairing noted in-page).
+- **Applications** — avatar, favicon set, project badge, business card, social banner.
+
+A live **mark generator** and **pattern generator** are built into the page, echoing
+Capacity's generator-tool approach.
+
+---
+
+### Page-layout direction — Case study (à la `pentagram.com/work/capacity`)
 
 The site reads like a **Pentagram case study**, not just a project list:
 long vertical scroll, full-bleed visuals alternating with text blocks, a large
