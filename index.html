@@ -24,32 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="assets/site.css">
   <style>
-    :root{
-      --ink:#17171A; --paper:#FAF8F4; --stone:#6E6A60; --stone-soft:#9B9890; --hair:#E6E2DA;
-      --blue:#2C46C8; --blue-deep:#1B2E8F;
-      --up:#1F9D57; --down:#C0563D; --unknown:#C9C5BB;
-      --sans:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
-      --serif:"Newsreader",Georgia,"Times New Roman",serif;
-      --mono:"JetBrains Mono","SFMono-Regular","Courier New",monospace;
-      --pad:clamp(22px,5vw,80px);
-      --max:1080px;
-    }
-    *{box-sizing:border-box}
-    html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;font-size:17px}
-    a{color:var(--blue-deep)}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-
-    /* top bar */
-    .topbar{position:sticky;top:0;z-index:5;background:rgba(250,248,244,.86);backdrop-filter:blur(8px);
-      border-bottom:1px solid var(--hair)}
-    .topbar .row{display:flex;justify-content:space-between;align-items:center;padding:15px 0}
-    .wm{font-weight:700;letter-spacing:-.03em;font-size:18px;text-decoration:none;color:var(--ink)}
-    .wm .sur{color:var(--blue)} .wm .dot{color:var(--blue)}
-    .topnav a{margin-left:22px;font-size:14px;color:var(--stone);text-decoration:none}
-    .topnav a:hover{color:var(--ink)}
-    @media(max-width:560px){.topnav a{margin-left:16px}}
+    /* ---- homepage-specific ---- */
 
     /* hero */
     .hero{padding:clamp(48px,9vw,120px) 0 clamp(36px,5vw,64px)}
@@ -62,34 +39,35 @@
     .hero .meta{margin:24px 0 0;font-family:var(--mono);font-size:13px;letter-spacing:.06em;
       text-transform:uppercase;color:var(--stone-soft)}
 
-    /* activity */
+    /* activity ticker (scrolls horizontally; fade edges signal overflow) */
     .activity{border-block:1px solid var(--hair);padding:14px 0}
     .activity .inner{display:flex;align-items:baseline;gap:16px;max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
     .activity .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
       color:var(--blue-deep);flex:none}
-    .activity .ticker{font-family:var(--mono);font-size:13px;color:var(--stone);
-      white-space:nowrap;overflow-x:auto;scrollbar-width:none}
+    .ticker-wrap{position:relative;flex:1;min-width:0}
+    .ticker-wrap::before,.ticker-wrap::after{content:"";position:absolute;top:0;bottom:0;width:34px;
+      pointer-events:none;z-index:1}
+    .ticker-wrap::before{left:0;background:linear-gradient(90deg,var(--paper),transparent)}
+    .ticker-wrap::after{right:0;background:linear-gradient(270deg,var(--paper),transparent)}
+    .activity .ticker{display:block;font-family:var(--mono);font-size:13px;color:var(--stone);
+      white-space:nowrap;overflow-x:auto;scrollbar-width:none;padding:0 24px}
     .activity .ticker::-webkit-scrollbar{display:none}
-    .activity .ticker a{color:var(--stone);text-decoration:none}
 
-    /* sections */
-    section.block{padding-block:clamp(44px,6vw,80px)}
-    .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
-      border-bottom:1px solid var(--ink);padding-bottom:14px;margin-bottom:8px}
-    .sec-head h2{margin:0;font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.02em}
-    .sec-head .count{font-family:var(--mono);font-size:12px;color:var(--stone-soft);letter-spacing:.06em}
-
-    /* projects */
+    /* projects — whole row clickable (stretched link), hover feedback */
     .projects{list-style:none;margin:0;padding:0}
-    .projects > li{padding:24px 0;border-bottom:1px solid var(--hair);
-      display:grid;grid-template-columns:22px 1fr;gap:4px 14px;align-items:start}
+    .projects > li{position:relative;padding:24px 14px;margin:0 -14px;border-bottom:1px solid var(--hair);
+      display:grid;grid-template-columns:22px 1fr;gap:4px 14px;align-items:start;
+      border-radius:8px;transition:background .18s ease}
+    .projects > li:hover{background:#fff}
     .projects .led{grid-row:1;font-size:12px;line-height:1.7}
     .led-up{color:var(--up)} .led-down{color:var(--down)} .led-unknown{color:var(--unknown)}
     .p-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
     .p-head .name{font-size:clamp(20px,2.6vw,28px);font-weight:700;letter-spacing:-.02em;
       color:var(--ink);text-decoration:none}
-    .p-head .name:hover{color:var(--blue)}
-    .p-head .src{font-family:var(--mono);font-size:12px;color:var(--stone-soft);text-decoration:none}
+    .p-head .name::after{content:"";position:absolute;inset:0;border-radius:8px}
+    .projects > li:hover .name{color:var(--blue)}
+    .p-head .src{position:relative;z-index:1;font-family:var(--mono);font-size:12px;
+      color:var(--stone-soft);text-decoration:none;padding:4px 2px}
     .p-head .src:hover{color:var(--ink)}
     .projects p{grid-column:2;margin:8px 0 0;color:#34322c;max-width:64ch;font-size:15.5px;line-height:1.6}
     .tags{grid-column:2;margin-top:12px;display:flex;flex-wrap:wrap;gap:7px}
@@ -106,34 +84,29 @@
     .gb-entry b{color:var(--ink)}
     .gb-date{font-family:var(--mono);font-size:12px;color:var(--stone-soft)}
     .gb-empty{margin:0;color:var(--stone-soft);font-style:italic}
-    .btn{display:inline-block;margin-top:4px;font-family:var(--mono);font-size:13px;letter-spacing:.04em;
-      text-transform:uppercase;color:var(--paper);background:var(--blue);text-decoration:none;
-      border-radius:999px;padding:9px 16px}
-    .btn:hover{background:var(--blue-deep)}
-
-    /* footer */
-    footer{border-top:1px solid var(--hair);padding:36px 0 64px;margin-top:20px}
-    footer .row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
-      font-family:var(--mono);font-size:12.5px;color:var(--stone-soft)}
-    footer a{color:var(--stone)}
-    footer a:hover{color:var(--ink)}
-    footer .tag{font-style:normal;color:var(--blue-deep)}
   </style>
 </head>
 <body>
 
+  <a class="skip" href="#main">Skip to content</a>
+
   <header class="topbar">
     <div class="wrap row">
-      <a class="wm" href="#top">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></a>
-      <nav class="topnav">
-        <a href="#work">Work</a>
-        <a href="#guestbook">Guestbook</a>
+      <a class="wm" href="/" aria-label="Angelo Boutalikakis — home">
+        <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
+        <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
+      </a>
+      <nav class="topnav" aria-label="Site">
+        <a href="#work" aria-current="page">Work</a>
+        <a href="about/">About</a>
+        <a href="writing/">Writing</a>
+        <a href="cv/">CV</a>
         <a href="https://github.com/aboutali">GitHub</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
+  <main id="main">
 
     <section class="hero wrap">
       <h1 class="lockup">Angelo<br><span class="sur">Boutalikakis</span><span class="dot">.</span></h1>
@@ -146,8 +119,10 @@
     <!-- live activity: the Action rewrites between the markers -->
     <div class="activity">
       <div class="inner">
-        <span class="k">Latest</span>
-        <span class="ticker"><!--ACTIVITY:BEGIN-->life-improver &middot; Add fluid responsive type scale for desktop/tablet/mobile (2026-06-17) &nbsp;&nbsp;&#10022;&nbsp;&nbsp; bxl_eda_worker &middot; Daily digest: 2026-07-02 (2026-07-02) &nbsp;&nbsp;&#10022;&nbsp;&nbsp; fit-schedule &middot; Overhaul UI: streaming load, location filters, class moda... (2026-04-27)<!--ACTIVITY:END--></span>
+        <span class="k" id="activity-label">Latest</span>
+        <div class="ticker-wrap">
+          <span class="ticker" role="region" aria-labelledby="activity-label" tabindex="0"><!--ACTIVITY:BEGIN-->life-improver &middot; Add fluid responsive type scale for desktop/tablet/mobile (2026-06-17) &nbsp;&nbsp;&#10022;&nbsp;&nbsp; bxl_eda_worker &middot; Daily digest: 2026-07-02 (2026-07-02) &nbsp;&nbsp;&#10022;&nbsp;&nbsp; fit-schedule &middot; Overhaul UI: streaming load, location filters, class moda... (2026-04-27)<!--ACTIVITY:END--></span>
+        </div>
       </div>
     </div>
 
@@ -245,10 +220,19 @@
   </main>
 
   <footer>
-    <div class="wrap row">
-      <span>Last updated <!--UPDATED:BEGIN-->July 2, 2026<!--UPDATED:END--></span>
-      <span class="tag">Curiosity meets rigor.</span>
-      <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
+    <div class="wrap">
+      <!-- TODO: swap real addresses (email + LinkedIn) -->
+      <div class="f-contact">
+        <span class="f-k">Contact</span>
+        <a href="mailto:hello@REPLACE-ME.com">hello@REPLACE-ME.com</a><span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/REPLACE-ME/">LinkedIn</a><span class="sep">·</span>
+        <a href="https://github.com/aboutali">GitHub</a>
+      </div>
+      <div class="row">
+        <span>Last updated <!--UPDATED:BEGIN-->July 2, 2026<!--UPDATED:END--></span>
+        <span class="tag">Curiosity meets rigor.</span>
+        <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
+      </div>
     </div>
   </footer>
 

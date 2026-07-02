@@ -1,0 +1,85 @@
+/* Angelo Boutalikakis — shared brand styles (v3 identity)
+   Tokens + chrome (topbar, footer, sections) used by every page.
+   Page-specific rules live inline in each page's <head>. */
+
+:root{
+  --ink:#17171A; --paper:#FAF8F4; --stone:#6E6A60; --stone-soft:#9B9890; --hair:#E6E2DA;
+  --blue:#2C46C8; --blue-deep:#1B2E8F;
+  --up:#1F9D57; --down:#C0563D; --unknown:#C9C5BB;
+  --sans:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono","SFMono-Regular","Courier New",monospace;
+  --pad:clamp(22px,5vw,80px);
+  --max:1080px;
+}
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;font-size:17px}
+a{color:var(--blue-deep)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+/* accessibility */
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+[id]{scroll-margin-top:70px}
+.skip{position:absolute;left:-9999px;top:0;z-index:20;background:var(--blue);color:var(--paper);
+  padding:10px 16px;font-family:var(--mono);font-size:13px;text-decoration:none}
+.skip:focus{left:0}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:5;background:rgba(250,248,244,.86);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--hair)}
+.topbar .row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 0}
+.wm{font-weight:700;letter-spacing:-.03em;font-size:18px;text-decoration:none;color:var(--ink);flex:none}
+.wm .sur{color:var(--blue)} .wm .dot{color:var(--blue)}
+.wm .wm-mini{display:none}
+.topnav{display:flex;flex-wrap:nowrap;white-space:nowrap}
+.topnav a{margin-left:22px;font-size:14px;color:var(--stone);text-decoration:none}
+.topnav a:hover{color:var(--ink)}
+.topnav a[aria-current="page"]{color:var(--ink);font-weight:600}
+@media(max-width:640px){
+  .wm .wm-full{display:none}
+  .wm .wm-mini{display:inline}
+  .topnav a{margin-left:14px;font-size:13px}
+}
+
+/* section frame */
+section.block{padding-block:clamp(44px,6vw,80px)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  border-bottom:1px solid var(--ink);padding-bottom:14px;margin-bottom:8px}
+.sec-head h2{margin:0;font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.02em}
+.sec-head .count{font-family:var(--mono);font-size:12px;color:var(--stone-soft);letter-spacing:.06em}
+
+/* subpage header + prose */
+.page-head{padding:clamp(44px,7vw,88px) 0 clamp(20px,3vw,36px)}
+.page-head .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--blue-deep)}
+.page-head h1{margin:12px 0 0;font-size:clamp(34px,6vw,64px);font-weight:700;
+  letter-spacing:-.03em;line-height:.95}
+.page-head .lede{margin:18px 0 0;max-width:56ch;font-size:clamp(16.5px,2vw,19px);color:#34322c}
+.prose{max-width:68ch}
+.prose p{margin:0 0 1.15em;color:#2c2a24;line-height:1.7}
+.prose h2{margin:1.8em 0 .5em;font-size:clamp(19px,2.4vw,24px);font-weight:700;letter-spacing:-.015em}
+.prose ul{margin:0 0 1.15em;padding-left:22px}
+.prose li{margin-bottom:.45em;color:#2c2a24}
+.prose .aside{font-family:var(--serif);font-style:italic;color:var(--blue-deep)}
+
+/* button */
+.btn{display:inline-block;margin-top:4px;font-family:var(--mono);font-size:13px;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--paper);background:var(--blue);text-decoration:none;
+  border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
+.btn:hover{background:var(--blue-deep)}
+
+/* footer (with contact row) */
+footer{border-top:1px solid var(--hair);padding:32px 0 64px;margin-top:20px}
+.f-contact{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;padding-bottom:22px;
+  margin-bottom:22px;border-bottom:1px solid var(--hair)}
+.f-contact .f-k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--blue-deep)}
+.f-contact a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:500}
+.f-contact a:hover{color:var(--blue)}
+.f-contact .sep{color:var(--hair)}
+footer .row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:12.5px;color:var(--stone-soft)}
+footer .row a{color:var(--stone)}
+footer .row a:hover{color:var(--ink)}
+footer .tag{font-style:normal;color:var(--blue-deep)}
