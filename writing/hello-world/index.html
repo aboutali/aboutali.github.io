@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello, world — what this site is · Angelo Boutalikakis</title>
+  <meta name="description" content="Why this site exists, how it's built, and what 'curiosity meets rigor' means in practice.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand/assets/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Hello, world — what this site is">
+  <meta property="og:description" content="Why this site exists and how it's built.">
+  <meta property="og:image" content="https://aboutali.github.io/brand/assets/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <style>
+    /* post layout — this file doubles as the post template:
+       copy this folder, change the <title>, metas, date, h1, and the prose. */
+    .post-head{padding:clamp(44px,7vw,88px) 0 clamp(16px,2.4vw,28px);max-width:68ch}
+    .post-head .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;
+      text-transform:uppercase;color:var(--blue-deep)}
+    .post-head h1{margin:12px 0 0;font-size:clamp(30px,5vw,52px);font-weight:700;
+      letter-spacing:-.03em;line-height:1}
+    .post-head .meta{margin:16px 0 0;font-family:var(--mono);font-size:12.5px;color:var(--stone-soft)}
+    .back{font-family:var(--mono);font-size:13px;text-decoration:none}
+  </style>
+</head>
+<body>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="wrap row">
+      <a class="wm" href="../../" aria-label="Angelo Boutalikakis — home">
+        <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
+        <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
+      </a>
+      <nav class="topnav" aria-label="Site">
+        <a href="../../#work">Work</a>
+        <a href="../../about/">About</a>
+        <a href="../" aria-current="page">Writing</a>
+        <a href="../../cv/">CV</a>
+        <a href="https://github.com/aboutali">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+
+    <div class="post-head">
+      <div class="kicker">Note · 01</div>
+      <h1>Hello, world — what this site is</h1>
+      <p class="meta">2026-07-02 · 2 min read</p>
+    </div>
+
+    <!-- TODO: edit freely — this is starter copy that also serves as the post template. -->
+    <article class="prose block" style="padding-top:0">
+      <p>This site is an index of things I've built and, from now on, an occasional place
+        to write about building them. The projects range wider than a portfolio probably
+        should — EU foreign-policy digests, a Zen calendar, a life-design framework — and
+        that's the point. <span class="aside">Curiosity meets rigor</span>: follow the
+        interesting thing, then finish it properly.</p>
+
+      <h2>How it's built</h2>
+      <p>Deliberately boring, in the best way. Plain HTML and CSS, no frameworks, no build
+        step. A single GitHub Action runs daily: it pings each project to light a status
+        dot, pulls the latest commits into the ticker on the homepage, and renders the
+        guestbook straight from GitHub issues. The identity — Archivo, cobalt, warm paper —
+        was designed first as a small brand system, then the site was built to follow it.</p>
+
+      <h2>What to expect here</h2>
+      <p>Short notes, mostly: decisions and trade-offs from the projects, occasional
+        thoughts on policy and technology, things worth paying attention to. No schedule,
+        no newsletter — when there's something worth writing, it shows up here.</p>
+    </article>
+
+    <p class="block" style="padding-top:0"><a class="back" href="../">← All writing</a></p>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <!-- TODO: add email when ready -->
+      <div class="f-contact">
+        <span class="f-k">Contact</span>
+        <a href="https://www.linkedin.com/in/angelo-boutalikakis/">LinkedIn</a><span class="sep">·</span>
+        <a href="https://github.com/aboutali">GitHub</a>
+      </div>
+      <div class="row">
+        <span><a href="../../">← Home</a></span>
+        <span class="tag">Curiosity meets rigor.</span>
+        <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

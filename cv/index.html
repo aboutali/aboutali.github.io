@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV — Angelo Boutalikakis</title>
+  <meta name="description" content="CV of Angelo Boutalikakis — independent builder. Curiosity meets rigor.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand/assets/apple-touch-icon.png">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="CV — Angelo Boutalikakis">
+  <meta property="og:description" content="Independent builder. Curiosity meets rigor.">
+  <meta property="og:image" content="https://aboutali.github.io/brand/assets/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    .cv{max-width:820px}
+    .cv-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+    .cv-contact{font-family:var(--mono);font-size:12.5px;color:var(--stone);line-height:2;text-align:right}
+    .cv-contact a{color:var(--stone);text-decoration:none}
+    .cv-contact a:hover{color:var(--ink)}
+    .cv h2{margin:2.2em 0 .2em;font-family:var(--mono);font-size:12px;font-weight:500;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--blue-deep);
+      border-bottom:1px solid var(--ink);padding-bottom:10px}
+    .cv-item{padding:16px 0;border-bottom:1px solid var(--hair);
+      display:grid;grid-template-columns:1fr auto;gap:2px 18px;align-items:baseline}
+    .cv-item .role{font-weight:700;font-size:17px;letter-spacing:-.01em}
+    .cv-item .role a{color:var(--ink);text-decoration:none}
+    .cv-item .role a:hover{color:var(--blue)}
+    .cv-item .org{color:var(--stone);font-size:14.5px}
+    .cv-item .when{font-family:var(--mono);font-size:12px;color:var(--stone-soft);white-space:nowrap}
+    .cv-item p{grid-column:1 / -1;margin:6px 0 0;font-size:14.5px;color:#34322c;max-width:64ch;line-height:1.55}
+    .cv-skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+    .cv-skills span{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;
+      color:var(--stone);border:1px solid var(--hair);border-radius:3px;padding:5px 10px}
+    .replace{background:#FFF3C4;border-radius:3px;padding:0 4px}
+    .print-hint{margin-top:26px}
+
+    /* print → clean A4 resume */
+    @media print{
+      .topbar,footer,.skip,.print-hint{display:none !important}
+      body{background:#fff;color:#000;font-size:11pt}
+      .wrap{max-width:100%;padding:0}
+      .page-head{padding:0 0 8pt}
+      .page-head h1{font-size:22pt}
+      .page-head .kicker{color:#000}
+      .cv h2{color:#000;border-color:#000}
+      .cv-item{break-inside:avoid;border-color:#ddd}
+      a{color:#000 !important;text-decoration:none !important}
+      .replace{background:none;outline:1pt dashed #999}
+      @page{margin:18mm}
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="wrap row">
+      <a class="wm" href="../" aria-label="Angelo Boutalikakis — home">
+        <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
+        <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
+      </a>
+      <nav class="topnav" aria-label="Site">
+        <a href="../#work">Work</a>
+        <a href="../about/">About</a>
+        <a href="../writing/">Writing</a>
+        <a href="./" aria-current="page">CV</a>
+        <a href="https://github.com/aboutali">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap cv">
+
+    <div class="page-head cv-top">
+      <div>
+        <div class="kicker">Curriculum vitae</div>
+        <h1>Angelo<br>Boutalikakis<span style="color:var(--blue)">.</span></h1>
+      </div>
+      <!-- TODO: add email when ready -->
+      <div class="cv-contact">
+        Zurich / Brussels<br>
+        <a href="https://www.linkedin.com/in/angelo-boutalikakis/">linkedin.com/in/angelo-boutalikakis</a><br>
+        <a href="https://github.com/aboutali">github.com/aboutali</a>
+      </div>
+    </div>
+
+    <p class="lede" style="margin-top:0;max-width:60ch">Independent builder — small, sharp web
+      products across policy, culture, and wellbeing. Curiosity meets rigor.</p>
+
+    <!-- ===================================================================
+         TODO: the Experience and Education entries below are PLACEHOLDERS.
+         Replace the highlighted [REPLACE] parts with your real history.
+         =================================================================== -->
+
+    <h2>Experience</h2>
+    <div class="cv-item">
+      <span class="role"><span class="replace">[REPLACE] Role title</span></span>
+      <span class="when"><span class="replace">[2023 — present]</span></span>
+      <span class="org"><span class="replace">[Organisation, City]</span></span>
+      <p><span class="replace">[One or two lines: what you did, what changed because you did it.]</span></p>
+    </div>
+    <div class="cv-item">
+      <span class="role"><span class="replace">[REPLACE] Earlier role</span></span>
+      <span class="when"><span class="replace">[2020 — 2023]</span></span>
+      <span class="org"><span class="replace">[Organisation, City]</span></span>
+      <p><span class="replace">[Impact line.]</span></p>
+    </div>
+
+    <h2>Independent projects</h2>
+    <div class="cv-item">
+      <span class="role"><a href="https://aboutali.github.io/life-improver/">life-improver</a></span>
+      <span class="when">2025</span>
+      <span class="org">Framework · Wellbeing</span>
+      <p>Interactive framework mapping a full life into seven domains and 300+ practices from
+        psychology, philosophy, and contemplative traditions.</p>
+    </div>
+    <div class="cv-item">
+      <span class="role"><a href="https://aboutali.github.io/bxl_eda_worker/">bxl_eda_worker</a></span>
+      <span class="when">2026</span>
+      <span class="org">Automation · Policy</span>
+      <p>Scheduled worker compiling a daily digest of EU foreign-policy, Middle East, and
+        sanctions news from Brussels.</p>
+    </div>
+    <div class="cv-item">
+      <span class="role"><a href="https://aboutali.github.io/fit-schedule/">fit-schedule</a></span>
+      <span class="when">2025</span>
+      <span class="org">Product · Web app</span>
+      <p>Aggregates bookable fitness classes from three Zurich studios into one live schedule.</p>
+    </div>
+    <div class="cv-item">
+      <span class="role"><a href="https://ikoyomi.netlify.app/">iKoyomi</a></span>
+      <span class="when">2024</span>
+      <span class="org">Design · PWA</span>
+      <p>Minimalist Zen PWA presenting Japan's 72 microseasons as full-screen daily scenes.</p>
+    </div>
+
+    <h2>Education</h2>
+    <div class="cv-item">
+      <span class="role"><span class="replace">[REPLACE] Degree, Field</span></span>
+      <span class="when"><span class="replace">[Years]</span></span>
+      <span class="org"><span class="replace">[University, City]</span></span>
+    </div>
+
+    <h2>Skills</h2>
+    <div class="cv-skills">
+      <span>HTML / CSS / JS</span><span>Python</span><span>GitHub Actions</span>
+      <span>LLM tooling</span><span>Product design</span><span>Automation</span>
+      <span class="replace">[+ your own]</span>
+    </div>
+
+    <p class="print-hint">
+      <button class="btn" onclick="window.print()">Print / save as PDF</button>
+    </p>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <!-- TODO: add email when ready -->
+      <div class="f-contact">
+        <span class="f-k">Contact</span>
+        <a href="https://www.linkedin.com/in/angelo-boutalikakis/">LinkedIn</a><span class="sep">·</span>
+        <a href="https://github.com/aboutali">GitHub</a>
+      </div>
+      <div class="row">
+        <span><a href="../">← Home</a></span>
+        <span class="tag">Curiosity meets rigor.</span>
+        <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

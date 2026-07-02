@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Writing — Angelo Boutalikakis</title>
+  <meta name="description" content="Notes and writing by Angelo Boutalikakis.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Writing — Angelo Boutalikakis">
+  <meta property="og:description" content="Notes and writing. Curiosity meets rigor.">
+  <meta property="og:image" content="https://aboutali.github.io/brand/assets/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    /* post index — numbered editorial list */
+    .posts{list-style:none;margin:0;padding:0;max-width:820px}
+    .posts > li{position:relative;padding:22px 14px;margin:0 -14px;border-bottom:1px solid var(--hair);
+      display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:baseline;
+      border-radius:8px;transition:background .18s ease}
+    .posts > li:hover{background:#fff}
+    .posts .t{font-size:clamp(19px,2.4vw,26px);font-weight:700;letter-spacing:-.02em;
+      color:var(--ink);text-decoration:none}
+    .posts .t::after{content:"";position:absolute;inset:0;border-radius:8px}
+    .posts > li:hover .t{color:var(--blue)}
+    .posts .d{font-family:var(--mono);font-size:12px;color:var(--stone-soft);white-space:nowrap}
+    .posts p{grid-column:1 / -1;margin:6px 0 0;color:#34322c;font-size:15px;max-width:62ch}
+  </style>
+</head>
+<body>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="wrap row">
+      <a class="wm" href="../" aria-label="Angelo Boutalikakis — home">
+        <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
+        <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
+      </a>
+      <nav class="topnav" aria-label="Site">
+        <a href="../#work">Work</a>
+        <a href="../about/">About</a>
+        <a href="./" aria-current="page">Writing</a>
+        <a href="../cv/">CV</a>
+        <a href="https://github.com/aboutali">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+
+    <div class="page-head">
+      <div class="kicker">Writing</div>
+      <h1>Notes.</h1>
+      <p class="lede">Occasional writing on building small things, policy, culture, and
+        paying attention.</p>
+    </div>
+
+    <!-- To add a post: copy writing/hello-world/ to writing/your-slug/, edit it,
+         then add a <li> here (newest first). -->
+    <ul class="posts block" style="padding-top:0">
+      <li>
+        <a class="t" href="hello-world/">Hello, world — what this site is</a>
+        <span class="d">2026-07-02</span>
+        <p>Why this site exists, how it's built (no frameworks, no build step), and what
+          "curiosity meets rigor" means in practice.</p>
+      </li>
+    </ul>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <!-- TODO: add email when ready -->
+      <div class="f-contact">
+        <span class="f-k">Contact</span>
+        <a href="https://www.linkedin.com/in/angelo-boutalikakis/">LinkedIn</a><span class="sep">·</span>
+        <a href="https://github.com/aboutali">GitHub</a>
+      </div>
+      <div class="row">
+        <span><a href="../">← Home</a></span>
+        <span class="tag">Curiosity meets rigor.</span>
+        <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
