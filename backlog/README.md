@@ -42,8 +42,8 @@ deploy self-verification, no email address published.
 
 | # | Item | Plan | Status |
 |---|------|------|--------|
-| 09 | Fill CV Experience/Education + personalize About bio | [plans/09-cv-and-about-completion.md](plans/09-cv-and-about-completion.md) | ⏸ blocked on owner input |
-| — | Publish an email address (footer TODOs mark the spots) | (part of 09) | ⏸ blocked on owner |
+| 09 | Fill CV Experience/Education + personalize About bio | [plans/09-cv-and-about-completion.md](plans/09-cv-and-about-completion.md) | ✅ 2026-09-16 · PR #7 |
+| — | Publish an email address (footer TODOs mark the spots) | (part of 09) | ✅ 2026-09-16 (part of 09) |
 
 **P1 — technical foundation (fully executable now)**
 
