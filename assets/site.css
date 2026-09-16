@@ -107,6 +107,10 @@ section.block{padding-block:clamp(44px,6vw,80px)}
   border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
 .btn:hover{background:var(--blue-deep)}
 
+/* guestbook avatar (10e) */
+.gb-avatar{width:32px;height:32px;border-radius:50%;border:1px solid var(--hair);
+  vertical-align:middle;margin-right:8px;object-fit:cover}
+
 /* footer (with contact row) */
 footer{border-top:1px solid var(--hair);padding:32px 0 64px;margin-top:20px}
 .f-contact{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;padding-bottom:22px;
