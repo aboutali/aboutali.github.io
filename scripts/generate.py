@@ -147,9 +147,12 @@ def set_guestbook(text):
         if not body:
             body = "<i>(no message)</i>"
         rows.append(
-            '<p class="gb-entry"><b>%s</b> '
+            '<p class="gb-entry">'
+            '<img class="gb-avatar" src="https://github.com/%s.png?size=64" '
+            'width="32" height="32" loading="lazy" alt="">'
+            '<b>%s</b> '
             '<span class="gb-date">%s</span><br>%s</p>'
-            % (user, date, body)
+            % (user, user, date, body)
         )
     block = "\n".join(rows) if rows else '<p class="gb-empty">Be the first to sign the guestbook.</p>'
     return re.sub(

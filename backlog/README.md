@@ -42,8 +42,8 @@ deploy self-verification, no email address published.
 
 | # | Item | Plan | Status |
 |---|------|------|--------|
-| 09 | Fill CV Experience/Education + personalize About bio | [plans/09-cv-and-about-completion.md](plans/09-cv-and-about-completion.md) | ⏸ blocked on owner input |
-| — | Publish an email address (footer TODOs mark the spots) | (part of 09) | ⏸ blocked on owner |
+| 09 | Fill CV Experience/Education + personalize About bio | [plans/09-cv-and-about-completion.md](plans/09-cv-and-about-completion.md) | ✅ 2026-09-16 · PR #7 |
+| — | Publish an email address (footer TODOs mark the spots) | (part of 09) | ✅ 2026-09-16 (part of 09) |
 
 **P1 — technical foundation (fully executable now)**
 
@@ -62,9 +62,11 @@ deploy self-verification, no email address published.
 | 03 | RSS feed for Writing | [plans/03-rss-feed.md](plans/03-rss-feed.md) | ✅ 2026-09-11 · PR #6 |
 | 07 | CI quality gates on PRs (links, markers, HTML sanity) | [plans/07-ci-quality-gates.md](plans/07-ci-quality-gates.md) | ✅ 2026-09-11 · PR #6 |
 | 08 | Per-page OG images | [plans/08-og-images-per-page.md](plans/08-og-images-per-page.md) | ✅ 2026-09-11 · PR #6 |
+| 10e | Guestbook avatars | [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md) | ✅ 2026-09-16 · PR #7 |
+| 10a | Dark mode (prefers-color-scheme) | [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md) | ✅ 2026-09-16 · PR #7 |
 
 **P3 — deferred / owner decisions** — see [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md)
-(dark mode, Now page, custom domain, privacy-first analytics, guestbook avatars,
+(Now page, custom domain, privacy-first analytics,
 uses/colophon page, i18n). Each was either explicitly deferred by Angelo or needs
 a decision only he can make. Do not start these unprompted.
 
