@@ -19,6 +19,10 @@ on GitHub Pages. No build step, no frameworks, no package manager. Read
    and in a git-ignored `.guard-terms` file for local runs. Never copy it
    into the repo, a commit message, or a CI log.
 4. **Anonymity.** Name employers only. Describe clients by their descriptor.
+5. **Level of detail (Angelo, 2026-09-24).** Describe consulting work by sector
+   and theme only. The context file lists individual engagements, client
+   descriptors, figures and dates; keep all of those OFF the site, even when
+   regenerating pages from that file.
 
 `python3 scripts/check.py` enforces rules 2 and 3 plus markers, links and
 HTML sanity. Run it before every commit.
