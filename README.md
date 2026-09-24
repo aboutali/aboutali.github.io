@@ -1,8 +1,9 @@
 # aboutali/aboutali.github.io
 
-Source for [aboutali.github.io](https://aboutali.github.io/) — Angelo
-Boutalikakis's personal site ("Curiosity meets rigor"): a portfolio of
-projects plus About, Writing, and CV pages.
+Source for [aboutali.github.io](https://aboutali.github.io/), the personal
+site of Dr. Angelo Boutalikakis. It holds a portfolio of projects plus About,
+Writing (research, publications, talks), and CV pages. All career facts come
+from Angelo's career context file; see `CLAUDE.md` for the content rules.
 
 Plain hand-written HTML and CSS served straight by GitHub Pages. No build
 step, no frameworks, no package manager, no client-side JavaScript. Shared
@@ -119,15 +120,16 @@ Two edits, then commit to `main`:
 
 Note: `aboutali.github.io/<repo>/` only resolves if that repo has GitHub
 Pages enabled (Settings → Pages); until then the dot will show "down".
-Off-GitHub-Pages projects work too (e.g. iKoyomi on Netlify) — the dot
-pings whatever URL is in `PROJECTS`.
+Projects hosted elsewhere work too. The dot pings whatever URL is in
+`PROJECTS` (gesundheit-mcp points at its Cloud Run endpoint, which counts as
+up on any status below 500).
 
 ## Brand
 
-`brand/foundation.md` is the written brand foundation (strategy, tagline,
-personality, voice, design principles); `brand/index.html` is the visual
-guide. The locked anchors: cobalt `#2C46C8` accent, Archivo type, tagline
-*"Curiosity meets rigor."*
+The v3 visual identity (cobalt `#2C46C8` accent, Archivo type) is still live
+but is being redesigned in Claude Design. `brand/foundation.md` keeps the v3
+notes for reference; its old tagline is retired and must not appear on the
+site.
 
 `brand/assets/` holds the generated PNGs (favicons, touch icon, avatar,
 wordmarks, OG image — see `brand/assets/README.md` for the full table).

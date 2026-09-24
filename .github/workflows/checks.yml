@@ -13,3 +13,5 @@ jobs:
       - uses: actions/setup-python@v6
         with: {python-version: '3.x'}
       - run: python3 scripts/check.py
+        env:
+          GUARD_TERMS: ${{ secrets.GUARD_TERMS }}
