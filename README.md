@@ -25,7 +25,7 @@ Fonts are Archivo / Newsreader / JetBrains Mono from Google Fonts.
 - `cv/index.html` — CV with a print stylesheet (prints to a clean A4 resume).
 - `404.html` — custom not-found page (uses absolute asset paths since Pages
   serves it from arbitrary URLs).
-- `brand/index.html` + `brand/foundation.md` — the brand guide (see below).
+- `brand/foundation.md`: the v3 brand notes, kept for reference until the Claude Design redesign replaces them.
 - `.nojekyll` — makes Pages serve files literally, without Jekyll processing.
 
 ## Daily refresh automation
