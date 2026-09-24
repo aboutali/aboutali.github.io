@@ -1,6 +1,6 @@
-# Executor context — read this FIRST before any backlog plan
+# Executor context: read this FIRST before any backlog plan
 
-You are working on **aboutali.github.io** — Angelo Boutalikakis's personal site.
+You are working on **aboutali.github.io**, Angelo Boutalikakis's personal site.
 Every plan in this directory assumes you have read this file. It encodes the
 repo's invariants, brand system, and verification recipes. Do not skip it.
 
@@ -17,12 +17,19 @@ repo's invariants, brand system, and verification recipes. Do not skip it.
    `<!--GUESTBOOK:BEGIN-->…<!--GUESTBOOK:END-->`,
    `<!--UPDATED:BEGIN-->…<!--UPDATED:END-->`. Any `index.html` edit must keep all
    markers intact and must pass the marker simulation (recipe below).
-3. **Stay on brand.** Tokens live in `assets/site.css` `:root` and are canonical:
-   Ink `#17171A`, Paper `#FAF8F4`, Stone `#6E6A60` / `#9B9890`, Hairline `#E6E2DA`,
-   Cobalt `#2C46C8` (the ONE accent), Cobalt-deep `#1B2E8F`, status green `#1F9D57` /
-   red `#C0563D`. Type: Archivo (grotesque, does the work), Newsreader italic
-   (serif moments only), JetBrains Mono (data/labels). (The old tagline is retired; see CLAUDE.md content rules.) Full rationale: `brand/foundation.md`. One accent, used with intent —
-   never introduce new hues.
+3. **Stay on brand.** Tokens live in `assets/site.css` `:root` and are canonical
+   (v4 "Academic" identity): paper `#FFFFFF`, desk `#ECEAE4`, ink `#141414`,
+   ink-2 `#333333`, graphite `#555555`, muted `#888888`, rule `#BBBBBB`, row
+   rule `#E2E2E2`. Type: Newsreader for everything textual (title 500
+   clamp(38px,6.4vw,62px)/1.05, subtitle italic clamp(19px,2.4vw,23px), h2
+   700 24px, h3 700 19px, body 17.5/1.6, small 15.5/1.45, caption italic 14,
+   label all-small-caps 17px +0.06em), JetBrains Mono 500 13.5 (names) and
+   400 12 (links, dates). Spacing: 4, 8, 14, 18, 28, 40, 56, 72, 96, sections
+   56px apart. Rules: 1.5px table top and bottom, 0.75px table head, 0.5px
+   hairlines. Radius 0. Shadow on the sheet only:
+   `0 1px 2px rgba(0,0,0,.06), 0 12px 40px rgba(0,0,0,.06)`. Monochrome, no
+   accent colour. Full spec: `brand/DESIGN_SYSTEM.md`; short summary:
+   `brand/foundation.md`.
 4. **Branch discipline.** Develop on the designated `claude/...` branch for your
    session. If the branch's previous PR was merged, restart it from `origin/main`
    (`git fetch origin main && git checkout -B <branch> origin/main`), then push
@@ -36,19 +43,19 @@ repo's invariants, brand system, and verification recipes. Do not skip it.
 ## Repo map
 
 ```
-index.html            homepage (hero, ticker, Work list w/ status dots, guestbook)
+index.html            homepage (titleblock, remark ticker, Work list w/ status dots, guestbook)
 about/ writing/ cv/   subpages; writing posts are directories (writing/<slug>/)
-404.html              branded not-found (absolute asset paths — Pages serves it anywhere)
-assets/site.css       shared tokens + chrome (topbar, footer, sections, buttons)
-brand/                foundation.md (strategy) · index.html (visual guide) · assets/ (PNGs + generate.cjs)
+404.html              branded not-found page (absolute asset paths; Pages serves it anywhere)
+assets/site.css       shared tokens + chrome (running head, sections, footer, buttons)
+brand/                foundation.md (v4 summary) · DESIGN_SYSTEM.md (full spec) · assets/ (PNGs + generate.cjs)
 scripts/generate.py   daily-refresh script (stdlib only, best-effort, race-safe publish)
 .github/workflows/refresh.yml   daily 06:17 UTC + workflow_dispatch + issues events
 backlog/              this backlog + plans
 ```
 
-Shared page chrome (topbar with `wm-full`/`wm-mini` wordmark swap ≤640px, footer
-with `.f-contact` row) is **duplicated per page** — a deliberate no-build
-trade-off. When you change chrome, change it in every page: `index.html`,
+Shared page chrome (the running head with the nav, and the footer with its
+footnote) is **duplicated per page**, a deliberate no-build trade-off. When
+you change chrome, change it in every page: `index.html`,
 `about/index.html`, `writing/index.html`, `writing/hello-world/index.html`
 (and any newer post), `cv/index.html`. `404.html` has minimal chrome.
 
@@ -63,13 +70,14 @@ trade-off. When you change chrome, change it in every page: `index.html`,
   `http://127.0.0.1:8642/...` (absolute `/...` paths then resolve correctly).
 - Wait for fonts before screenshots:
   `await page.evaluate(()=>document.fonts.ready)` then poll
-  `document.fonts.check('700 40px Archivo')`. Race with a timeout — Google
-  Fonts over the proxy is slow; cap waits (~2.5s) or your run times out.
+  `document.fonts.check('500 40px Newsreader')`. Race with a timeout: fonts
+  are self-hosted from `assets/fonts/`, but still cap waits (~2.5s) so your
+  run does not time out.
 - No `gh` CLI. Use `mcp__github__*` tools for GitHub API work.
 
 ## Verification recipes (run the ones your plan names)
 
-**R1 — Marker integrity + rewrite simulation** (required for ANY index.html edit):
+**R1: Marker integrity + rewrite simulation** (required for ANY index.html edit):
 ```bash
 cd <repo> && python3 - <<'PY'
 import re, importlib.util
@@ -92,18 +100,18 @@ print("R1 PASS")
 PY
 ```
 
-**R2 — Render + overflow check** (required for any visual change): serve locally
+**R2: Render + overflow check** (required for any visual change): serve locally
 (see above), load each changed page at widths **390 and 1280** in Playwright,
 assert `document.documentElement.scrollWidth <= clientWidth+1` (no horizontal
 overflow), zero `pageerror` events, and take full-page screenshots. Actually
 LOOK at the screenshots (Read the PNGs) before declaring success.
 
-**R3 — Link check**: every internal `href`/`src` in changed pages resolves to a
+**R3: Link check**: every internal `href`/`src` in changed pages resolves to a
 file in the repo (respecting each page's directory depth; root-absolute `/...`
 paths resolve from repo root).
 
-**R4 — CV print**: `page.emulateMedia({media:'print'})` on `/cv/` — topbar and
-footer hidden, black text, no `[REPLACE]` regressions.
+**R4: CV print**: `page.emulateMedia({media:'print'})` on `/cv/`: running
+head and footer hidden, black text, no `[REPLACE]` regressions.
 
 ## Definition of done (every plan)
 
