@@ -17,18 +17,19 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://aboutali.github.io/writing/hello-world/">
-  <link rel="preload" href="/assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/newsreader-roman-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/site.css">
   <style>
-    /* post layout. This file doubles as the post template.
-       Copy this folder, then change the title, metas, date, h1, and prose. */
-    .post-head{padding:clamp(44px,7vw,88px) 0 clamp(16px,2.4vw,28px);max-width:68ch}
-    .post-head .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;
-      text-transform:uppercase;color:var(--blue-deep)}
-    .post-head h1{margin:12px 0 0;font-size:clamp(30px,5vw,52px);font-weight:700;
-      letter-spacing:-.03em;line-height:1}
-    .post-head .meta{margin:16px 0 0;font-family:var(--mono);font-size:12.5px;color:var(--stone)}
-    .back{font-family:var(--mono);font-size:13px;text-decoration:none}
+    /* Page-local: no shared component covers a justified 64ch article body
+       with numbered h2s, so this is scoped here on site.css tokens.
+       This file doubles as the post template: copy the folder, then change
+       the title, metas, date, h1, and article body. */
+    .article{max-width:64ch;margin:0 auto;font-size:18px;line-height:1.7;
+      text-align:justify;hyphens:auto}
+    .article p{margin:0}
+    .article p + p{margin-top:1.15em}
+    .article h2{margin:36px 0 10px;font-size:21px;font-weight:700;display:flex;
+      gap:16px;text-align:left}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BlogPosting","headline":"Hello, world, and what this site is","datePublished":"2026-07-02","author":{"@type":"Person","name":"Angelo Boutalikakis","honorificPrefix":"Dr.","url":"https://aboutali.github.io/","jobTitle":"Engagement Manager","worksFor":{"@type":"Organization","name":"McKinsey & Company"},"address":{"@type":"PostalAddress","addressLocality":"Zurich","addressCountry":"CH"},"sameAs":["https://www.linkedin.com/in/angeloboutalikakis","https://scholar.google.com/citations?user=4E9KeKYAAAAJ","https://github.com/aboutali"]},"mainEntityOfPage":"https://aboutali.github.io/writing/hello-world/"}
@@ -38,71 +39,65 @@
 
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <div class="wrap row">
-      <a class="wm" href="../../" aria-label="Angelo Boutalikakis, home">
-        <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
-        <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
-      </a>
-      <nav class="topnav" aria-label="Site">
-        <a href="../../#work">Work</a>
-        <a href="../../about/">About</a>
-        <a href="../" aria-current="page">Writing</a>
-        <a href="../../cv/">CV</a>
-        <a href="https://github.com/aboutali">GitHub</a>
+  <div class="desk"><div class="sheet">
+
+    <header class="runhead">
+      <a href="/">A. Boutalikakis</a>
+      <nav aria-label="Site">
+        <a href="/#work">work</a>
+        <a href="/about/">about</a>
+        <a href="/writing/" aria-current="page">writing</a>
+        <a href="/cv/">cv</a>
+        <a href="https://github.com/aboutali">github</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main id="main" class="wrap" tabindex="-1">
+    <main id="main" tabindex="-1">
 
-    <div class="post-head">
-      <div class="kicker">Note · 01</div>
-      <h1>Hello, world, and what this site is</h1>
-      <p class="meta">2026-07-02 · 2 min read</p>
-    </div>
+      <header class="titleblock" style="padding:clamp(48px,8vw,80px) 0 40px">
+        <p class="kicker">Note 01</p>
+        <h1 style="font-size:clamp(32px,5.4vw,50px);text-wrap:balance">Hello, world, and what this site is</h1>
+        <p class="mono" style="margin:16px 0 0;color:var(--graphite)">2026-07-02 · 2 min read</p>
+      </header>
 
-    <!-- Edit freely. This is starter copy that also serves as the post template. -->
-    <article class="prose block" style="padding-top:0">
-      <p>This site is an index of things I've built and, from now on, an occasional place
-        to write about building them. The projects cover a wide range, from policy digests
-        to health-data tools to life-design frameworks. That range is deliberate. I follow
-        what's interesting, then finish it properly.</p>
+      <!-- Edit freely. This is starter copy that also serves as the post template. -->
+      <article class="article">
+        <p>This site is an index of things I've built and, from now on, an occasional place
+          to write about building them. The projects cover a wide range, from policy digests
+          to health-data tools to life-design frameworks. That range is deliberate. I follow
+          what's interesting, then finish it properly.</p>
 
-      <h2>How it's built</h2>
-      <p>Deliberately boring, in the best way. Plain HTML and hand-written stylesheets, no
-        frameworks, no build step. A single GitHub Action runs daily. It pings each project to light a status
-        dot, pulls the latest commits into the ticker on the homepage, and renders the
-        guestbook straight from GitHub issues. The identity uses Archivo, cobalt, and warm
-        paper. It was designed first as a small brand system, then the site was built to
-        follow it.</p>
+        <h2><span>1</span><span>How it's built</span></h2>
+        <p>Deliberately boring, in the best way. Plain HTML and hand-written stylesheets, no
+          frameworks, no build step. A single GitHub Action runs daily. It pings each project to light a status
+          dot, pulls the latest commits into the ticker on the homepage, and renders the
+          guestbook straight from GitHub issues. The identity is set like an academic paper, in
+          Newsreader and JetBrains Mono, black on white. It was designed first as a small
+          design system, then the site was built to follow it.</p>
 
-      <h2>What to expect here</h2>
-      <p>Short notes, mostly. Decisions and trade-offs from the projects, occasional
-        thoughts on policy and technology, and things worth paying attention to. There is
-        no schedule and no newsletter. A new post shows up here when there's something
-        worth writing.</p>
-    </article>
+        <h2><span>2</span><span>What to expect here</span></h2>
+        <p>Short notes, mostly. Decisions and trade-offs from the projects, occasional
+          thoughts on policy and technology, and things worth paying attention to. There is
+          no schedule and no newsletter. A new post shows up here when there's something
+          worth writing.</p>
+      </article>
 
-    <p class="block" style="padding-top:0"><a class="back" href="../">← All writing</a></p>
-
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div class="f-contact">
-        <span class="f-k">Contact</span>
-        <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a><span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a><span class="sep">·</span>
-        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a><span class="sep">·</span>
-        <a href="https://github.com/aboutali">GitHub</a>
+      <div style="max-width:64ch;margin:40px auto 0">
+        <a class="mono" href="../">← All writing</a>
       </div>
-      <div class="row">
-        <span><a href="../../">← Home</a></span>
-        <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
+
+    </main>
+
+    <footer style="margin-top:72px">
+      <div class="mono" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+        font-size:12.5px;border-top:var(--rule-hair) solid var(--ink);padding-top:12px">
+        <a href="/">← Home</a>
+        <span style="color:var(--graphite)"><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
       </div>
-    </div>
-  </footer>
+      <p class="folio">5</p>
+    </footer>
+
+  </div></div>
 
 </body>
 </html>

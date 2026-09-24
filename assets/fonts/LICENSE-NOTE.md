@@ -6,21 +6,18 @@ downloaded from Google Fonts and redistributed under the
 
 | Family | Style | Source |
 |---|---|---|
-| Archivo | normal, variable weight 100–900 | https://fonts.google.com/specimen/Archivo |
-| Newsreader | normal, weight 400, variable optical size 6–72 | https://fonts.google.com/specimen/Newsreader |
+| Newsreader | normal (roman), variable weight 200–800 | https://fonts.google.com/specimen/Newsreader |
 | Newsreader | italic, variable weight 200–800, variable optical size 6–72 | https://fonts.google.com/specimen/Newsreader |
 | JetBrains Mono | normal, variable weight 400–800 | https://fonts.google.com/specimen/JetBrains+Mono |
 
 Files were fetched via Google's `css2` endpoint
 (`https://fonts.googleapis.com/css2?family=...`) with a WOFF2-capable
-User-Agent on 2026-09-11, keeping only the `/* latin */` `unicode-range`
+User-Agent (2026-09-11; Newsreader roman added with the v4 identity, 2026-09-24), keeping only the `/* latin */` `unicode-range`
 blocks. No modification was made to the font binaries themselves.
 
-- Archivo — Copyright 2024 The Archivo Project Authors
-  (https://github.com/Omnibus-Type/Archivo)
-- Newsreader — Copyright 2024 The Newsreader Project Authors
+- Newsreader: Copyright 2024 The Newsreader Project Authors
   (https://github.com/NewsreaderProject/newsreader)
-- JetBrains Mono — Copyright 2020 The JetBrains Mono Project Authors
+- JetBrains Mono: Copyright 2020 The JetBrains Mono Project Authors
   (https://github.com/JetBrains/JetBrainsMono)
 
 Licensed under the SIL Open Font License, Version 1.1. Full license text:

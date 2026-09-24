@@ -1,89 +1,46 @@
-# Angelo Boutalikakis — Brand Foundation (v1)
+# Angelo Boutalikakis, brand foundation (v4)
 
-Strategy first, then the anchor items (logo, type, colour). This is the
-reference we iterate from; nothing here touches the live site.
+The v4 "Academic" identity. Full spec: `brand/DESIGN_SYSTEM.md`.
 
----
+## Metaphor
 
-## The through-line
+A well-set academic paper. Every page is a white sheet on a stone desk,
+with a soft sheet shadow. LaTeX conventions are applied lightly: numbered
+sections, booktabs tables, citations, footnotes, and a centred page
+number.
 
-Angelo builds across improbably different fields — EU foreign-policy news, a Zen
-seasonal calendar, a life-design framework, a city's fitness schedule, an
-art-editions tracker — and turns that curiosity into small, **finished**
-software.
+## Colour
 
-> **Curiosity meets rigor.**
+Monochrome. Ink `#141414` on paper `#FFFFFF`, with greys for hierarchy:
+ink-2 `#333333`, graphite `#555555`, muted `#888888`. The desk behind the
+sheet is `#ECEAE4`. There is no accent colour. Status uses shape, not
+hue.
 
-The brand's one job: make that *range read as depth*, not scatter. The breadth
-(policy, culture, wellbeing) is the **curiosity**; the finished, exacting, shipped
-products are the **rigor**.
+## Type
 
----
+Newsreader for everything textual: 500 weight for titles, 700 for
+headings, 400 for body, italic for subtitles and captions. All-small-caps
+for labels. JetBrains Mono for project names, file-like links and data.
+Both are self-hosted from `assets/fonts/`.
 
-## Tagline — locked
+## Rules
 
-> **Curiosity meets rigor.**
+Radius 0 everywhere. The only shadow is on the sheet; nothing inside the
+page has one. Table rules are 1.5px top and bottom, 0.75px under the
+header, 0.5px for hairlines. No vertical rules, no zebra rows, no
+gradients or textures.
 
-The short form is the line. Two longer phrasings if a full sentence is ever needed:
+## Iconography
 
-- *Where curiosity meets rigor — and ships.*
-- *Wide-ranging curiosity, exacting craft.*
-
-(Descriptor, if a job-title is ever needed: "builder / maker" — but it is **not**
-the tagline.)
-
----
-
-## Personality
-
-Four traits, in priority order:
-
-1. **Precise** — considered, exact, finished. Nothing sloppy ships.
-2. **Literate** — culturally fluent; reads widely, references easily.
-3. **Quietly playful** — a dry wit, used sparingly (the retro site, the Konami code).
-4. **Human** — a real person, not a corporation. Warm in the details.
-
-Credible without being corporate. Characterful without being a gimmick.
+None. There is no icon set and no logo mark. The name set in Newsreader
+is the identity.
 
 ## Voice
 
-Plain and exact. Short sentences. Explains, never sells. Wit used like seasoning,
-not the meal.
+Plain and exact. Short declarative sentences. Explains, never sells. No
+em dashes anywhere.
 
 ---
 
-## Design principles
-
-1. **Type does the work.** Restraint over decoration; hierarchy over ornament.
-2. **One accent, used with intent.** Colour means something or it's absent.
-3. **Range is the structure.** Present breadth clearly — a legible index of a wide mind.
-4. **Warmth in the details, rigour in the frame.** Warm paper + a human note inside a strict grid.
-
----
-
-## Anchor items (see `brand/index.html`)
-
-| Anchor | v2 decision |
-|--------|-------------|
-| **Logo** | **Locked — Direction B, brightened.** Stacked `Angelo / Boutalikakis` wordmark, surname in bright forest, **no kicker/tagline** in the lockup. `AB` monogram (forest / ink / lowercase ring) for avatars; favicon = `A` in forest. The name is the logo. |
-| **Type** | **Locked — Akzidenz-style grotesque.** Primary face **Archivo** (free, OFL; a grotesque drawn after late-19th-c. models — the Akzidenz-Grotesk lineage). Close free alternatives: **Hanken Grotesk**, **Geist**. Paired with **Newsreader** (serif moments) + **JetBrains Mono** (data/labels). |
-| **Colour** | **Locked — Cobalt.** Warm **Ink** on warm **Paper**, muted **Stone** grey, and one **cobalt** accent, with a **deep-cobalt** companion for accent text on light + dark panels. |
-
-### Palette (v3)
-
-| Token | Hex | Role |
-|-------|-----|------|
-| **Cobalt** (accent) | `#2C46C8` | Links, surname, the one highlight |
-| Cobalt deep | `#1B2E8F` | Accent text on light; dark panels |
-| Ink | `#17171A` | Text, wordmark |
-| Paper | `#FAF8F4` | Background (warm off-white) |
-| Stone | `#9B9890` | Secondary text, captions |
-| Hairline | `#E6E2DA` | Rules, borders |
-
----
-
-## What's next
-
-1. **Pick a tagline phrasing** (default / alt 1 / alt 2 / your own).
-2. I export real assets from the locked anchors — favicon/avatar (SVG + PNG), an OG/social image, a wordmark SVG.
-3. *Then* we design the actual site around the locked identity.
+Component classes, full token list, spacing scale and content rules live
+in `brand/DESIGN_SYSTEM.md`.

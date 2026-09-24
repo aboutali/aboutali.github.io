@@ -45,7 +45,7 @@ deploy self-verification, no email address published.
 | 09 | Fill CV Experience/Education + personalize About bio | [plans/09-cv-and-about-completion.md](plans/09-cv-and-about-completion.md) | ✅ 2026-09-16 · PR #7 |
 | — | Publish an email address (footer TODOs mark the spots) | (part of 09) | ✅ 2026-09-16 (part of 09) |
 | — | Rebuild all content from career context file 32.02; em dash ban and guard terms in CI | (owner brief, 2026-09-24) | ✅ 2026-09-24 · PR #8 |
-| — | Visual redesign in Claude Design | (owner) | ☐ next |
+| — | v4 "Academic" redesign from Angelo's Claude Design handoff | [brand/DESIGN_SYSTEM.md](../brand/DESIGN_SYSTEM.md) | ✅ 2026-09-24 · PR #9 |
 
 **P1 — technical foundation (fully executable now)**
 

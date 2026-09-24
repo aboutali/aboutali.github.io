@@ -29,8 +29,9 @@ HTML sanity. Run it before every commit.
   `ACTIVITY`, `GUESTBOOK`, `UPDATED`) rewritten daily by
   `.github/workflows/refresh.yml` via `scripts/generate.py`. Keep them intact.
   The project list lives in `PROJECTS` in `generate.py`; `check.py` reads it.
-- **Design is being redone in Claude Design.** Until that lands, keep the
-  current tokens in `assets/site.css` and do not restyle.
+- **The v4 "Academic" identity is locked.** Monochrome, no accent colour.
+  Newsreader and JetBrains Mono only. Components and tokens live in
+  `assets/site.css`; the full spec is `brand/DESIGN_SYSTEM.md`.
 
 ## Planned work
 

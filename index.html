@@ -21,76 +21,10 @@
   <link rel="canonical" href="https://aboutali.github.io/">
   <link rel="alternate" type="application/atom+xml" title="Writing &middot; Angelo Boutalikakis" href="/writing/feed.xml">
 
-  <!-- type: Archivo (Akzidenz-style grotesque) + Newsreader + JetBrains Mono, self-hosted, assets/fonts/ -->
-  <link rel="preload" href="/assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- type: Newsreader + JetBrains Mono, self-hosted, assets/fonts/ -->
+  <link rel="preload" href="/assets/fonts/newsreader-roman-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="stylesheet" href="assets/site.css">
-  <style>
-    /* ---- homepage-specific ---- */
-
-    /* hero */
-    .hero{padding:clamp(48px,9vw,120px) 0 clamp(36px,5vw,64px)}
-    .hero .lockup{margin:0;font-weight:700;letter-spacing:-.04em;line-height:.9;
-      font-size:clamp(46px,11vw,140px)}
-    .hero .lockup .sur{color:var(--blue)} .hero .lockup .dot{color:var(--blue)}
-    .hero .tagline{margin:22px 0 0;font-family:var(--serif);font-style:italic;
-      font-size:clamp(22px,3.4vw,38px);color:var(--blue-deep);line-height:1.1}
-    .hero .intro{margin:22px 0 0;max-width:48ch;font-size:clamp(17px,2vw,21px);color:#34322c}
-    .hero .meta{margin:24px 0 0;font-family:var(--mono);font-size:13px;letter-spacing:.06em;
-      text-transform:uppercase;color:var(--stone)}
-    .hero-tags{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:7px}
-    .hero-tags span{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;
-      color:var(--stone);border:1px solid var(--hair);border-radius:3px;padding:4px 9px}
-    .hero-links{margin:26px 0 0;display:flex;flex-wrap:wrap;gap:12px}
-
-    /* shared lead paragraph (work intro, research, guestbook) */
-    .lead{margin:0 0 8px;max-width:64ch;color:#34322c;font-size:16px;line-height:1.6}
-
-    /* activity ticker (scrolls horizontally; fade edges signal overflow) */
-    .activity{border-block:1px solid var(--hair);padding:14px 0}
-    .activity .inner{display:flex;align-items:baseline;gap:16px;max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-    .activity .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-      color:var(--blue-deep);flex:none}
-    .ticker-wrap{position:relative;flex:1;min-width:0}
-    .ticker-wrap::before,.ticker-wrap::after{content:"";position:absolute;top:0;bottom:0;width:34px;
-      pointer-events:none;z-index:1}
-    .ticker-wrap::before{left:0;background:linear-gradient(90deg,var(--paper),transparent)}
-    .ticker-wrap::after{right:0;background:linear-gradient(270deg,var(--paper),transparent)}
-    .activity .ticker{display:block;font-family:var(--mono);font-size:13px;color:var(--stone);
-      white-space:nowrap;overflow-x:auto;scrollbar-width:none;padding:0 24px}
-    .activity .ticker::-webkit-scrollbar{display:none}
-
-    /* projects, whole row clickable (stretched link), hover feedback */
-    .projects{list-style:none;margin:0;padding:0}
-    .projects > li{position:relative;padding:24px 14px;margin:0 -14px;border-bottom:1px solid var(--hair);
-      display:grid;grid-template-columns:22px 1fr;gap:4px 14px;align-items:start;
-      border-radius:8px;transition:background .18s ease}
-    .projects > li:hover{background:#fff}
-    .projects .led{grid-row:1;font-size:12px;line-height:1.7}
-    .led-up{color:var(--up)} .led-down{color:var(--down)} .led-unknown{color:var(--unknown)}
-    .p-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-    .p-head .name{font-size:clamp(20px,2.6vw,28px);font-weight:700;letter-spacing:-.02em;
-      color:var(--ink);text-decoration:none}
-    .p-head .name::after{content:"";position:absolute;inset:0;border-radius:8px}
-    .projects > li:hover .name{color:var(--blue)}
-    .p-head .src{position:relative;z-index:1;font-family:var(--mono);font-size:12px;
-      color:var(--stone);text-decoration:none;padding:4px 2px}
-    .p-head .src:hover{color:var(--ink)}
-    .projects p{grid-column:2;margin:8px 0 0;color:#34322c;max-width:64ch;font-size:15.5px;line-height:1.6}
-    .tags{grid-column:2;margin-top:12px;display:flex;flex-wrap:wrap;gap:7px}
-    .tags span{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;
-      color:var(--stone);border:1px solid var(--hair);border-radius:3px;padding:4px 9px}
-    .legend{margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--stone)}
-    .legend .led-up,.legend .led-down{font-size:11px}
-
-    /* guestbook */
-    .gb{margin-top:18px}
-    .gb-entry{margin:0 0 16px;padding:14px 16px;border:1px solid var(--hair);border-radius:8px;
-      background:#fff;font-size:15.5px;line-height:1.55}
-    .gb-entry b{color:var(--ink)}
-    .gb-date{font-family:var(--mono);font-size:12px;color:var(--stone)}
-    .gb-empty{margin:0;color:var(--stone);font-style:italic}
-  </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Angelo Boutalikakis","honorificPrefix":"Dr.","url":"https://aboutali.github.io/","jobTitle":"Engagement Manager","worksFor":{"@type":"Organization","name":"McKinsey & Company"},"address":{"@type":"PostalAddress","addressLocality":"Zurich","addressCountry":"CH"},"sameAs":["https://www.linkedin.com/in/angeloboutalikakis","https://scholar.google.com/citations?user=4E9KeKYAAAAJ","https://github.com/aboutali"]}
   </script>
@@ -99,168 +33,168 @@
 
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <div class="wrap row">
-      <a class="wm" href="/" aria-label="Angelo Boutalikakis, home">
-        <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
-        <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
-      </a>
-      <nav class="topnav" aria-label="Site">
-        <a href="#work" aria-current="page">Work</a>
-        <a href="about/">About</a>
-        <a href="writing/">Writing</a>
-        <a href="cv/">CV</a>
-        <a href="https://github.com/aboutali">GitHub</a>
+  <div class="desk"><div class="sheet">
+
+    <header class="runhead">
+      <a href="/">A. Boutalikakis</a>
+      <nav aria-label="Site">
+        <a href="/#work" aria-current="page">work</a>
+        <a href="/about/">about</a>
+        <a href="/writing/">writing</a>
+        <a href="/cv/">cv</a>
+        <a href="https://github.com/aboutali">github</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main id="main" tabindex="-1">
+    <main id="main" tabindex="-1">
 
-    <section class="hero wrap">
-      <h1 class="lockup">Dr. Angelo<br><span class="sur">Boutalikakis</span><span class="dot">.</span></h1>
-      <p class="tagline">Operator, product builder, and transformation leader</p>
-      <p class="intro">Angelo Boutalikakis builds products and leads transformations. He spent
-        nine years at McKinsey &amp; Company and holds a PhD in strategic management.</p>
-      <div class="hero-tags">
-        <span>Product and business building</span>
-        <span>Applied AI</span>
-        <span>Strategy and transformation</span>
-        <span>Insurance and healthcare</span>
+      <div class="titleblock">
+        <h1>Dr. Angelo Boutalikakis</h1>
+        <p class="subtitle">Operator, product builder, and transformation leader</p>
+        <p class="kicker">Zurich, Switzerland</p>
       </div>
-      <div class="hero-links">
-        <a class="btn" href="cv/">CV</a>
-        <a class="btn" href="mailto:angelo@boutalikakis.com">Email</a>
-      </div>
-      <p class="meta">Zurich, Switzerland</p>
-    </section>
 
-    <!-- live activity: the Action rewrites between the markers -->
-    <div class="activity">
-      <div class="inner">
-        <span class="k" id="activity-label">Latest</span>
-        <div class="ticker-wrap">
-          <span class="ticker" role="region" aria-label="Latest commits" tabindex="0"><!--ACTIVITY:BEGIN-->Latest commits will appear here.<!--ACTIVITY:END--></span>
+      <div class="abstract">
+        <p>Angelo Boutalikakis builds products and leads transformations. He spent
+          nine years at McKinsey &amp; Company and holds a PhD in strategic management.</p>
+        <p class="keywords"><b>Keywords:</b> Product and business building &middot; Applied AI
+          &middot; Strategy and transformation &middot; Insurance and healthcare</p>
+        <div style="display:flex;justify-content:center;gap:14px;margin-top:26px">
+          <a class="btn" href="/cv/Angelo-Boutalikakis-CV.pdf">[ CV.pdf ]</a>
+          <a class="btn" href="mailto:angelo@boutalikakis.com">[ email ]</a>
         </div>
       </div>
-    </div>
 
-    <section id="work" class="block wrap">
-      <div class="sec-head"><h2>Work</h2><span class="count">06 projects</span></div>
+      <!-- live activity: the Action rewrites between the markers -->
+      <div class="remark" style="margin-top:48px">
+        <span class="k">Remark 0.1</span>
+        <span class="v" role="region" aria-label="Latest commits" tabindex="0"><!--ACTIVITY:BEGIN-->Latest commits will appear here.<!--ACTIVITY:END--></span>
+      </div>
 
-      <p class="lead">I build and ship tools with AI: scheduled workers, scrapers, static sites,
-        LLM content pipelines, and an MCP server on Swiss health data.</p>
+      <section id="work">
+        <h2 class="sec"><span>1</span><span>Work</span></h2>
+        <p>I build and ship tools with AI: scheduled workers, scrapers, static sites,
+          LLM content pipelines, and an MCP server on Swiss health data.</p>
 
-      <!-- PROJECTS:BEGIN -- one <li> per project. To add one, copy a block and swap the
-           repo slug (in BOTH the LED marker and the links) and the text. Keep the LED markers
-           so the daily Action can light the status dot. -->
-      <ul class="projects">
+        <p class="caption"><b>Table 1:</b> Projects, with daily status.</p>
+        <div class="table">
+          <div class="row head"><span></span><span>Project</span><span>Description</span><span>Links</span></div>
 
-        <li>
-          <!--LED:gesundheit-mcp--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
-          <div class="p-head">
-            <a class="name" href="work/gesundheit-mcp/">gesundheit-mcp</a>
-            <a class="src" href="https://gesundheit-mcp-17797849230.europe-west6.run.app/mcp">[ endpoint ]</a>
+          <!-- PROJECTS:BEGIN -- one .row per project. To add one, copy a block and swap the
+               repo slug (in BOTH the LED marker and the links) and the text. Keep the LED markers
+               so the daily Action can light the status dot. -->
+          <div class="row">
+            <!--LED:gesundheit-mcp--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
+            <a class="mono" href="work/gesundheit-mcp/">gesundheit-mcp</a>
+            <span>MCP server on Swiss health-insurance and healthcare data.</span>
+            <span class="links" style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="mono" href="https://gesundheit-mcp-17797849230.europe-west6.run.app/mcp">endpoint</a>
+            </span>
           </div>
-          <p>MCP server on Swiss health-insurance and healthcare data.</p>
-        </li>
 
-        <li>
-          <!--LED:life-improver--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
-          <div class="p-head">
-            <a class="name" href="work/life-improver/">life-improver</a>
-            <a class="src" href="https://aboutali.github.io/life-improver/">[ live ]</a>
-            <a class="src" href="https://github.com/aboutali/life-improver">[ source ]</a>
+          <div class="row">
+            <!--LED:life-improver--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
+            <a class="mono" href="work/life-improver/">life-improver</a>
+            <span>Interactive framework of meaningful life practices from psychology, philosophy, and
+              contemplative traditions.</span>
+            <span class="links" style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="mono" href="https://aboutali.github.io/life-improver/">live</a>
+              <a class="mono" href="https://github.com/aboutali/life-improver">src</a>
+            </span>
           </div>
-          <p>Interactive framework of meaningful life practices from psychology, philosophy, and
-            contemplative traditions.</p>
-        </li>
 
-        <li>
-          <!--LED:edition-guru--><span class="led led-down" title="offline" role="img" aria-label="offline">&#9679;</span><!--/LED-->
-          <div class="p-head">
-            <a class="name" href="work/edition-guru/">edition-guru</a>
-            <a class="src" href="https://aboutali.github.io/edition-guru/">[ live ]</a>
-            <a class="src" href="https://github.com/aboutali/edition-guru">[ source ]</a>
+          <div class="row">
+            <!--LED:edition-guru--><span class="led led-down" title="offline" role="img" aria-label="offline">&#9679;</span><!--/LED-->
+            <a class="mono" href="work/edition-guru/">edition-guru</a>
+            <span>Scrapes art print galleries, enriches new drops with market data and LLM
+              descriptions, and emails a newsletter.</span>
+            <span class="links" style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="mono" href="https://aboutali.github.io/edition-guru/">live</a>
+              <a class="mono" href="https://github.com/aboutali/edition-guru">src</a>
+            </span>
           </div>
-          <p>Scrapes art print galleries, enriches new drops with market data and LLM
-            descriptions, and emails a newsletter.</p>
-        </li>
 
-        <li>
-          <!--LED:bxl_eda_worker--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
-          <div class="p-head">
-            <a class="name" href="work/bxl_eda_worker/">bxl_eda_worker</a>
-            <a class="src" href="https://aboutali.github.io/bxl_eda_worker/">[ live ]</a>
-            <a class="src" href="https://github.com/aboutali/bxl_eda_worker">[ source ]</a>
+          <div class="row">
+            <!--LED:bxl_eda_worker--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
+            <a class="mono" href="work/bxl_eda_worker/">bxl_eda_worker</a>
+            <span>Daily digest of EU foreign-policy, Middle East, and sanctions news for a Swiss
+              reader.</span>
+            <span class="links" style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="mono" href="https://aboutali.github.io/bxl_eda_worker/">live</a>
+              <a class="mono" href="https://github.com/aboutali/bxl_eda_worker">src</a>
+            </span>
           </div>
-          <p>Daily digest of EU foreign-policy, Middle East, and sanctions news for a Swiss
-            reader.</p>
-        </li>
 
-        <li>
-          <!--LED:cloudy-plag--><span class="led led-down" title="offline" role="img" aria-label="offline">&#9679;</span><!--/LED-->
-          <div class="p-head">
-            <a class="name" href="work/cloudy-plag/">cloudy-plag</a>
-            <a class="src" href="https://aboutali.github.io/cloudy-plag/">[ live ]</a>
-            <a class="src" href="https://github.com/aboutali/cloudy-plag">[ source ]</a>
+          <div class="row">
+            <!--LED:cloudy-plag--><span class="led led-down" title="offline" role="img" aria-label="offline">&#9679;</span><!--/LED-->
+            <a class="mono" href="work/cloudy-plag/">cloudy-plag</a>
+            <span>Documents credibility issues in dissertations.</span>
+            <span class="links" style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="mono" href="https://aboutali.github.io/cloudy-plag/">live</a>
+              <a class="mono" href="https://github.com/aboutali/cloudy-plag">src</a>
+            </span>
           </div>
-          <p>Documents credibility issues in dissertations.</p>
-        </li>
 
-        <li>
-          <!--LED:cleardoc--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
-          <div class="p-head">
-            <a class="name" href="work/cleardoc/">cleardoc</a>
-            <a class="src" href="https://aboutali.github.io/cleardoc/">[ live ]</a>
-            <a class="src" href="https://github.com/aboutali/cleardoc">[ source ]</a>
+          <div class="row">
+            <!--LED:cleardoc--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
+            <a class="mono" href="work/cleardoc/">cleardoc</a>
+            <span>Optimizes invoices for Swiss healthcare practitioners.</span>
+            <span class="links" style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="mono" href="https://aboutali.github.io/cleardoc/">live</a>
+              <a class="mono" href="https://github.com/aboutali/cleardoc">src</a>
+            </span>
           </div>
-          <p>Optimizes invoices for Swiss healthcare practitioners.</p>
-        </li>
+          <!-- PROJECTS:END -->
+        </div>
+        <p style="margin:10px 0 0;font-size:14px;color:var(--graphite);font-style:italic">
+          <span class="led-up">&#9679;</span> live &nbsp;&middot;&nbsp;
+          <span class="led-down">&#9679;</span> offline, status refreshed daily.</p>
+      </section>
 
-      </ul>
-      <!-- PROJECTS:END -->
-      <p class="legend"><span class="led led-up" aria-hidden="true">&#9679;</span> live &nbsp;·&nbsp;
-        <span class="led led-down" aria-hidden="true">&#9679;</span> offline, status refreshed daily.</p>
-    </section>
+      <section>
+        <h2 class="sec"><span>2</span><span>Research and writing</span></h2>
+        <p>Selected work includes <a href="#ref1">[1]</a> and <a href="#ref2">[2]</a>. More on
+          <a href="/writing/">Writing</a> and
+          <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a>.</p>
 
-    <section class="block wrap research">
-      <div class="sec-head"><h2>Research and writing</h2></div>
-      <p class="lead">Selected work includes &#8220;What makes a company &lsquo;future
-        ready&rsquo;?&#8221; in Harvard Business Review and &#8220;The innovator's media
-        dilemma&#8221; in the Journal of Product Innovation Management. More on
-        <a href="writing/">Writing</a> and
-        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a>.</p>
-    </section>
+        <p style="margin:28px 0 10px;font-weight:700;font-size:17px">References</p>
+        <div class="refs">
+          <span id="ref1">[1]</span>
+          <span>&#8220;What makes a company &lsquo;future ready&rsquo;?&#8221;
+            <i>Harvard Business Review</i>, 2022.
+            <a class="doi" href="https://hbr.org/2022/03/what-makes-a-company-future-ready">hbr.org/2022/03/what-makes-a-company-future-ready</a></span>
+          <span id="ref2">[2]</span>
+          <span>&#8220;The innovator's media dilemma.&#8221;
+            <i>Journal of Product Innovation Management</i>, 2023.
+            <a class="doi" href="https://doi.org/10.1111/jpim.12651">doi.org/10.1111/jpim.12651</a></span>
+        </div>
+      </section>
 
-    <section id="guestbook" class="block wrap guestbook">
-      <div class="sec-head"><h2>Guestbook</h2></div>
-      <p class="lead">Drop a note, it's rendered straight from this site's GitHub issues.</p>
-      <a class="btn" href="https://github.com/aboutali/aboutali.github.io/issues/new?labels=guestbook&title=A+note+for+Angelo">Sign the guestbook</a>
-      <div class="gb">
+      <section id="guestbook">
+        <h2 class="sec"><span>3</span><span>Guestbook</span></h2>
+        <p>Drop a note, it's rendered straight from this site's GitHub issues.</p>
+        <div class="box" style="margin-top:18px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap">
 <!--GUESTBOOK:BEGIN-->
 <p class="gb-empty">Be the first to sign the guestbook.</p>
 <!--GUESTBOOK:END-->
-      </div>
-    </section>
+          <a class="mono" href="https://github.com/aboutali/aboutali.github.io/issues/new?labels=guestbook&amp;title=A+note+for+Angelo">Sign the guestbook &rarr;</a>
+        </div>
+      </section>
 
-  </main>
+    </main>
 
-  <footer>
-    <div class="wrap">
-      <div class="f-contact">
-        <span class="f-k">Contact</span>
-        <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a><span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a><span class="sep">·</span>
-        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a><span class="sep">·</span>
-        <a href="https://github.com/aboutali">GitHub</a>
-      </div>
-      <div class="row">
-        <span>Last updated <!--UPDATED:BEGIN-->September 24, 2026<!--UPDATED:END--></span>
-        <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
-      </div>
-    </div>
-  </footer>
+    <footer>
+      <div class="fn-rule"></div>
+      <p class="fn">Contact: <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a>
+        &middot; <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a>
+        &middot; <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a>
+        &middot; <a href="https://github.com/aboutali">GitHub</a>.
+        Last updated <!--UPDATED:BEGIN-->September 24, 2026<!--UPDATED:END-->.
+        <a href="https://github.com/aboutali/aboutali.github.io">Source</a>, no frameworks, no build.</p>
+      <p class="folio">1</p>
+    </footer>
+
+  </div></div>
 
 </body>
 </html>

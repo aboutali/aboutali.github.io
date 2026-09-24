@@ -7,27 +7,28 @@ from Angelo's career context file; see `CLAUDE.md` for the content rules.
 
 Plain hand-written HTML and CSS served straight by GitHub Pages. No build
 step, no frameworks, no package manager, no client-side JavaScript. Shared
-design tokens and chrome (topbar, footer, sections) live in
+design tokens and chrome (running head, sections, footer) live in
 `assets/site.css`; page-specific rules are inlined in each page's `<head>`.
-Fonts are Archivo / Newsreader / JetBrains Mono from Google Fonts.
+Fonts are Newsreader and JetBrains Mono, self-hosted from `assets/fonts/`.
 
 ## Pages
 
-- `index.html` — homepage: hero, live activity ticker, the project list
+- `index.html`: homepage, with hero, live activity ticker, the project list
   ("Work") with status dots, and a guestbook rendered from GitHub issues.
-- `about/index.html` — bio, ways of working, quick facts.
-- `work/<slug>/index.html` — a case-study page per project (real screenshot or
+- `about/index.html`: bio, ways of working, quick facts.
+- `work/<slug>/index.html`: a case-study page per project (real screenshot or
   a typographic fallback cover, facts row, short prose). Linked from each
   project's `.name` on the homepage; cycle through them with "Next project →".
-- `writing/index.html` — post index; each post is a directory
+- `writing/index.html`: post index. Each post is a directory
   (e.g. `writing/hello-world/`). To add a post, copy an existing one, edit
   it, add a `<li>` to the index (newest first), add an `<entry>` to
   `writing/feed.xml`, and add the post URL to `sitemap.xml`.
-- `cv/index.html` — CV with a print stylesheet (prints to a clean A4 resume).
-- `404.html` — custom not-found page (uses absolute asset paths since Pages
+- `cv/index.html`: CV with a print stylesheet (prints to a clean A4 resume).
+- `404.html`: custom not-found page (uses absolute asset paths since Pages
   serves it from arbitrary URLs).
-- `brand/foundation.md`: the v3 brand notes, kept for reference until the Claude Design redesign replaces them.
-- `.nojekyll` — makes Pages serve files literally, without Jekyll processing.
+- `brand/foundation.md` and `brand/DESIGN_SYSTEM.md`: the v4 brand and
+  design system notes.
+- `.nojekyll`: makes Pages serve files literally, without Jekyll processing.
 
 ## Daily refresh automation
 
@@ -36,16 +37,16 @@ only, no pip installs) on a daily schedule (06:17 UTC), on
 `workflow_dispatch`, and on `issues` events. The script rewrites four
 marked regions of `index.html` in place:
 
-- `<!--LED:REPO-->…<!--/LED-->` — per-project status dot; each project's
+- `<!--LED:REPO-->…<!--/LED-->`: per-project status dot. Each project's
   live URL is pinged and the dot set to `led-up` / `led-down`.
-- `<!--ACTIVITY:BEGIN-->…<!--ACTIVITY:END-->` — ticker of each repo's
+- `<!--ACTIVITY:BEGIN-->…<!--ACTIVITY:END-->`: ticker of each repo's
   latest commit message + date, from the GitHub API.
-- `<!--GUESTBOOK:BEGIN-->…<!--GUESTBOOK:END-->` — entries from this repo's
+- `<!--GUESTBOOK:BEGIN-->…<!--GUESTBOOK:END-->`: entries from this repo's
   open issues labelled `guestbook` (anyone can "Sign the guestbook", which
   opens such an issue). Bodies are truncated, HTML-escaped, and reduced to
   pure ASCII before injection. Close the issue or remove the label to drop
   an entry on the next refresh.
-- `<!--UPDATED:BEGIN-->…<!--UPDATED:END-->` — today's date in the footer.
+- `<!--UPDATED:BEGIN-->…<!--UPDATED:END-->`: today's date in the footer.
 
 Everything is best-effort: network/API failures degrade gracefully (a
 project shows "down", the ticker falls back, the guestbook shows its empty
@@ -55,7 +56,7 @@ The workflow's publish step is race-safe: in a loop (up to 5 attempts) it
 resets to the freshest `origin/main`, regenerates, commits, and pushes;
 if the push is rejected because another run (e.g. an issue event) landed
 first, it re-syncs and retries with backoff. Commits are authored by
-`github-actions[bot]` — don't amend or rewrite them locally.
+`github-actions[bot]`. Don't amend or rewrite them locally.
 
 > Activity/status for **public** repos works with the default
 > `GITHUB_TOKEN`. Private repos return 404 cross-repo and are simply
@@ -71,7 +72,7 @@ to `main`, daily, and on demand: it polls the Pages Builds API until the
 latest build matches the pushed commit and is `built`, then checks that
 `/`, `/about/`, `/writing/`, and `/cv/` all return 200. If that doesn't
 happen in time, it requests a fresh Pages build and re-polls once before
-failing. **A red run means the live site may be stale or broken** — check
+failing. **A red run means the live site may be stale or broken.** Check
 the Actions log; if it couldn't self-heal (403/404 on the rebuild request),
 re-run the deploy manually from the Actions tab.
 
@@ -87,11 +88,11 @@ pushing with `python3 scripts/check.py`.
 
 Two edits, then commit to `main`:
 
-1. **`scripts/generate.py`** — add the repo to the `PROJECTS` dict
+1. **`scripts/generate.py`**: add the repo to the `PROJECTS` dict
    (~line 30): `"repo-slug": "https://live-url/"`. The URL is what the
    status dot pings; the slug is the GitHub repo the ticker reads commits
    from.
-2. **`index.html`** — inside the `<!-- PROJECTS:BEGIN -->` /
+2. **`index.html`**: inside the `<!-- PROJECTS:BEGIN -->` /
    `<!-- PROJECTS:END -->` block (~line 132), copy an existing `<li>` and
    swap the repo slug (in **both** the LED marker and the links) and the
    text:
@@ -113,7 +114,7 @@ Two edits, then commit to `main`:
    link should point at the project's case-study page (`work/REPO/`, see next
    step); add a `.src`-styled `[ live ]` link next to `[ source ]` for the
    actual live URL.
-3. **`work/REPO/`** — create the case-study page: copy an existing one (e.g.
+3. **`work/REPO/`**: create the case-study page. Copy an existing one (e.g.
    `work/life-improver/`), swap the slug, facts, prose, and `cover.png`, and
    fix the "Next project →" links on this page and its neighbors so the cycle
    stays intact. Add the page to `sitemap.xml`.
@@ -126,18 +127,18 @@ up on any status below 500).
 
 ## Brand
 
-The v3 visual identity (cobalt `#2C46C8` accent, Archivo type) is still live
-but is being redesigned in Claude Design. `brand/foundation.md` keeps the v3
-notes for reference; its old tagline is retired and must not appear on the
-site.
+The site uses the v4 "Academic" identity: monochrome (ink `#141414` on
+white), Newsreader for text, JetBrains Mono for project names and data,
+no accent colour, no icons or logo mark. Full spec in
+`brand/DESIGN_SYSTEM.md`; short summary in `brand/foundation.md`.
 
 `brand/assets/` holds the generated PNGs (favicons, touch icon, avatar,
-wordmarks, OG image — see `brand/assets/README.md` for the full table).
+wordmarks, OG image, see `brand/assets/README.md` for the full table).
 They are baked, font-independent rasters; regenerate with:
 
 ```bash
 NODE_PATH=$(npm root -g) node brand/assets/generate.cjs
 ```
 
-Requires Node with Playwright (Chromium) available — the script renders
+Requires Node with Playwright (Chromium) available. The script renders
 each asset in headless Chromium and screenshots it.
