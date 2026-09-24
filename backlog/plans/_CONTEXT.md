@@ -21,8 +21,7 @@ repo's invariants, brand system, and verification recipes. Do not skip it.
    Ink `#17171A`, Paper `#FAF8F4`, Stone `#6E6A60` / `#9B9890`, Hairline `#E6E2DA`,
    Cobalt `#2C46C8` (the ONE accent), Cobalt-deep `#1B2E8F`, status green `#1F9D57` /
    red `#C0563D`. Type: Archivo (grotesque, does the work), Newsreader italic
-   (serif moments only), JetBrains Mono (data/labels). Tagline: *"Curiosity meets
-   rigor."* Full rationale: `brand/foundation.md`. One accent, used with intent —
+   (serif moments only), JetBrains Mono (data/labels). (The old tagline is retired; see CLAUDE.md content rules.) Full rationale: `brand/foundation.md`. One accent, used with intent —
    never introduce new hues.
 4. **Branch discipline.** Develop on the designated `claude/...` branch for your
    session. If the branch's previous PR was merged, restart it from `origin/main`
@@ -75,7 +74,8 @@ trade-off. When you change chrome, change it in every page: `index.html`,
 cd <repo> && python3 - <<'PY'
 import re, importlib.util
 t=open("index.html").read()
-repos=["life-improver","bxl_eda_worker","fit-schedule","cloudy-plag","edition-guru","iKoyomi"]
+import sys; sys.path.insert(0,"scripts"); import generate
+repos=list(generate.PROJECTS)
 ok=all(re.search(r"<!--LED:%s-->.*?<!--/LED-->"%re.escape(r),t,re.S) for r in repos)
 ok&=all(re.search(p,t,re.S) for p in [r"<!--ACTIVITY:BEGIN-->.*?<!--ACTIVITY:END-->",
   r"<!--GUESTBOOK:BEGIN-->.*?<!--GUESTBOOK:END-->",r"<!--UPDATED:BEGIN-->.*?<!--UPDATED:END-->"])

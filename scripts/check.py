@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """CI quality gates for aboutali.github.io.
 
-Stdlib only (no pip installs) — matches the repo's no-build-step posture.
+Stdlib only (no pip installs), matching the repo's no-build-step posture.
 Run locally before pushing:
 
     python3 scripts/check.py
@@ -14,6 +14,9 @@ Exits non-zero if any check fails, with a readable per-check report. Checks:
      no duplicate ids, per tracked *.html.
   4. XML validity — sitemap.xml / writing/feed.xml, when present.
   5. scripts/generate.py compiles.
+  6. No em dashes in visible text (text, titles, meta/og, alt, JSON-LD, feed).
+  7. Guard terms: no client names or internal jargon in visible text. The
+     list lives in the GUARD_TERMS secret or a git-ignored .guard-terms file.
 """
 
 import importlib.util
@@ -113,14 +116,17 @@ def check_markers():
     failures = []
     index_path = os.path.join(ROOT, "index.html")
     text = open(index_path, encoding="utf-8").read()
-    repos = [
-        "life-improver",
-        "bxl_eda_worker",
-        "fit-schedule",
-        "cloudy-plag",
-        "edition-guru",
-        "iKoyomi",
-    ]
+
+    # Derived from generate.py's PROJECTS map (not hardcoded here) so the two
+    # stay in sync: whatever repo generate.py knows how to light an LED for
+    # is exactly what index.html must carry a marker for.
+    spec = importlib.util.spec_from_file_location(
+        "gen", os.path.join(ROOT, "scripts", "generate.py")
+    )
+    gen = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gen)
+    repos = list(gen.PROJECTS)
+
     for r in repos:
         if not re.search(r"<!--LED:%s-->.*?<!--/LED-->" % re.escape(r), text, re.S):
             failures.append("index.html: missing LED marker for %r" % r)
@@ -135,11 +141,6 @@ def check_markers():
     if failures:
         return failures  # no point simulating a rewrite on a broken page
 
-    spec = importlib.util.spec_from_file_location(
-        "gen", os.path.join(ROOT, "scripts", "generate.py")
-    )
-    gen = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(gen)
     gen.is_up = lambda u: True
     gen.latest_commit = lambda r: ("2026-01-01", "Test message")
     gen.gh_api = lambda p: [
@@ -262,6 +263,120 @@ def check_generate_compiles():
     return failures
 
 
+# --- 6 + 7. Visible-text checks ------------------------------------------------
+
+EM_DASH = "—"
+
+# Attributes whose values readers see (tooltips, alt text, link previews).
+VISIBLE_ATTRS = ("alt", "title", "aria-label")
+VISIBLE_META = ("description", "og:title", "og:description", "og:site_name",
+                "twitter:title", "twitter:description")
+
+
+class VisibleTextParser(HTMLParser):
+    """Collects (line, text) pairs a visitor or a link preview can see.
+
+    Skips <style> and non-JSON-LD <script>. Skips the ACTIVITY marker region:
+    it holds commit messages the daily Action injects, which generate.py
+    sanitizes on its own.
+    """
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.chunks = []
+        self._skip = 0
+        self._in_activity = False
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "style" or (tag == "script" and a.get("type") != "application/ld+json"):
+            self._skip += 1
+        for name in VISIBLE_ATTRS:
+            if a.get(name):
+                self.chunks.append((self.getpos()[0], a[name]))
+        if tag == "meta":
+            key = a.get("name") or a.get("property") or ""
+            if key in VISIBLE_META and a.get("content"):
+                self.chunks.append((self.getpos()[0], a["content"]))
+
+    def handle_endtag(self, tag):
+        if tag in ("style", "script") and self._skip:
+            self._skip -= 1
+
+    def handle_comment(self, data):
+        if data.strip() == "ACTIVITY:BEGIN":
+            self._in_activity = True
+        elif data.strip() == "ACTIVITY:END":
+            self._in_activity = False
+
+    def handle_data(self, data):
+        if not self._skip and not self._in_activity and data.strip():
+            self.chunks.append((self.getpos()[0], data))
+
+
+def visible_text(relpath):
+    path = os.path.join(ROOT, relpath)
+    with open(path, encoding="utf-8") as fh:
+        raw = fh.read()
+    if relpath.endswith(".xml"):
+        return [(i + 1, line) for i, line in enumerate(raw.splitlines())]
+    p = VisibleTextParser()
+    p.feed(raw)
+    return p.chunks
+
+
+def text_sources(files):
+    extra = [f for f in ("writing/feed.xml",) if os.path.exists(os.path.join(ROOT, f))]
+    return list(files) + extra
+
+
+def check_em_dashes(files):
+    failures = []
+    for rel in text_sources(files):
+        for line, text in visible_text(rel):
+            if EM_DASH in text:
+                snippet = text.strip().replace("\n", " ")[:70]
+                failures.append("%s:%d: em dash in %r" % (rel, line, snippet))
+    return failures
+
+
+def load_guard_terms():
+    """Guard terms name real clients, so they never live in this public repo.
+
+    Sources, first match wins: the GUARD_TERMS env var (a GitHub Actions
+    secret, one term per line), or a git-ignored .guard-terms file at the
+    repo root for local runs.
+    """
+    raw = os.environ.get("GUARD_TERMS", "")
+    if not raw.strip():
+        local = os.path.join(ROOT, ".guard-terms")
+        if os.path.exists(local):
+            with open(local, encoding="utf-8") as fh:
+                raw = fh.read()
+    return [t.strip() for t in raw.splitlines() if t.strip()]
+
+
+def check_guard_terms(files):
+    terms = load_guard_terms()
+    if not terms:
+        print("  SKIP: no guard-term list (set the GUARD_TERMS secret or add .guard-terms)")
+        if os.environ.get("GITHUB_ACTIONS"):
+            print("::warning::Guard-term check skipped: GUARD_TERMS secret is not set.")
+        return []
+    patterns = [
+        (i + 1, re.compile(r"(?<![A-Za-z0-9_])%s(?![A-Za-z0-9_])" % re.escape(t)))
+        for i, t in enumerate(terms)
+    ]
+    failures = []
+    for rel in text_sources(files):
+        for line, text in visible_text(rel):
+            for idx, pat in patterns:
+                if pat.search(text):
+                    # Report the term's list position only: CI logs are public.
+                    failures.append("%s:%d: matches guard term #%d" % (rel, line, idx))
+    return failures
+
+
 # --- Runner ------------------------------------------------------------------
 
 
@@ -287,6 +402,8 @@ def main():
     results.append(run_check("3. HTML sanity", lambda: check_html_sanity(files)))
     results.append(run_check("4. XML validity", check_xml))
     results.append(run_check("5. generate.py compiles", check_generate_compiles))
+    results.append(run_check("6. No em dashes in visible text", lambda: check_em_dashes(files)))
+    results.append(run_check("7. Guard terms", lambda: check_guard_terms(files)))
 
     passed = sum(1 for r in results if r)
     total = len(results)

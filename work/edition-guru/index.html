@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>edition-guru — Angelo Boutalikakis</title>
-  <meta name="description" content="A newsletter bot that scrapes art-edition galleries for new drops, enriches them with LiveArt market data and Claude-written notes, and emails subscribers.">
+  <title>edition-guru · Angelo Boutalikakis</title>
+  <meta name="description" content="Scrapes art print galleries, enriches new drops with market data and LLM descriptions, emails a newsletter.">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aboutali.github.io/work/edition-guru/">
-  <meta property="og:title" content="edition-guru — Angelo Boutalikakis">
-  <meta property="og:description" content="A newsletter bot that scrapes art-edition galleries for new drops, enriches them with LiveArt market data and Claude-written notes, and emails subscribers.">
+  <meta property="og:title" content="edition-guru · Angelo Boutalikakis">
+  <meta property="og:description" content="Scrapes art print galleries, enriches new drops with market data and LLM descriptions, emails a newsletter.">
   <meta property="og:image" content="https://aboutali.github.io/brand/assets/og-work-edition-guru.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -38,7 +38,7 @@
 
   <header class="topbar">
     <div class="wrap row">
-      <a class="wm" href="../../" aria-label="Angelo Boutalikakis — home">
+      <a class="wm" href="../../" aria-label="Angelo Boutalikakis · home">
         <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
         <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
       </a>
@@ -55,48 +55,23 @@
   <main id="main" class="wrap" tabindex="-1">
 
     <div class="page-head">
-      <div class="kicker">Work · 05</div>
+      <div class="kicker">Work · 03</div>
       <h1>edition-guru</h1>
-      <p class="lede">A newsletter bot that scrapes art-edition galleries for new drops, enriches
-        them with LiveArt market data and Claude-written notes, and emails subscribers.</p>
+      <p class="lede">Scrapes art print galleries, enriches new drops with market data and LLM
+        descriptions, emails a newsletter.</p>
     </div>
 
     <img class="cover" src="cover.png" width="1200" height="750" loading="lazy"
       alt="Typographic cover card for edition-guru: project name, offline status, and its Culture / Bot / Newsletter tags on a paper background with a cobalt rule.">
 
     <dl class="facts">
-      <div><dt>Role</dt><dd>Concept, design &amp; build</dd></div>
-      <div><dt>Stack</dt><dd>Python · FastAPI · SQLAlchemy + Alembic · BeautifulSoup/httpx scrapers · APScheduler · Claude enrichment</dd></div>
-      <div><dt>Status</dt><dd><span class="status-down">●</span> Offline</dd></div>
+      <div><dt>Stack</dt><dd>scrapers, third-party data API, LLM content, email</dd></div>
       <div><dt>Links</dt><dd><a href="https://aboutali.github.io/edition-guru/">Live site</a><span class="sep">·</span><a href="https://github.com/aboutali/edition-guru">Source</a></dd></div>
     </dl>
 
-    <div class="prose block" style="padding-top:0">
-      <h2>What it is</h2>
-      <p>A watcher for limited-edition art-print releases, scattered as they are across dozens of
-        gallery and publisher sites with no shared feed. It scrapes for new drops, looks each
-        artist up against LiveArt market data, adds a short AI-written take, and emails the result
-        to subscribers before an edition sells out — speed plus curation, per the project's own
-        design notes.</p>
-
-      <h2>How it works</h2>
-      <p>A FastAPI service backed by SQLAlchemy (Alembic-migrated) runs BeautifulSoup/httpx
-        scrapers against each source on an APScheduler timer, dedupes new listings, and hands
-        matches to Claude for a short enrichment note before an aiosmtplib job sends the digest.
-        The scraper layer is pluggable by design — a generic CSS scraper today, with a
-        zero-HTML-parsing Shopify JSON scraper and an RSS/Atom scraper as the next additions.</p>
-
-      <h2>Decisions &amp; trade-offs</h2>
-      <p>Deliberately built as a personal tool first — no billing, minimal auth — but without
-        corners cut that would block opening it up later: signed unsubscribe tokens and a real
-        email provider stay on the backlog rather than the icebox. It also respects robots.txt and
-        per-domain rate limits, and skips JS-rendered sources entirely rather than reach for
-        Playwright until one is worth the cost.</p>
-    </div>
-
     <p class="block" style="padding-top:0">
       <a class="back" href="../../#work">← All projects</a>
-      <a class="back" href="../iKoyomi/">Next project →</a>
+      <a class="back" href="../bxl_eda_worker/">Next project →</a>
     </p>
 
   </main>
@@ -106,12 +81,12 @@
       <div class="f-contact">
         <span class="f-k">Contact</span>
         <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a><span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/angelo-boutalikakis/">LinkedIn</a><span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a><span class="sep">·</span>
+        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a><span class="sep">·</span>
         <a href="https://github.com/aboutali">GitHub</a>
       </div>
       <div class="row">
         <span><a href="../../">← Home</a></span>
-        <span class="tag">Curiosity meets rigor.</span>
         <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
       </div>
     </div>

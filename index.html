@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Angelo Boutalikakis — Curiosity meets rigor</title>
-  <meta name="description" content="Angelo Boutalikakis — independent builder. Curiosity meets rigor: small, sharp web products across policy, culture, and wellbeing.">
+  <title>Angelo Boutalikakis</title>
+  <meta name="description" content="Dr. Angelo Boutalikakis builds products and leads transformations. He spent nine years at McKinsey &amp; Company and holds a PhD in strategic management.">
 
   <!-- favicons / icons -->
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
@@ -14,14 +14,14 @@
   <!-- social card -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aboutali.github.io/">
-  <meta property="og:title" content="Angelo Boutalikakis — Curiosity meets rigor">
-  <meta property="og:description" content="Independent builder. Small, sharp web products across policy, culture, and wellbeing.">
+  <meta property="og:title" content="Angelo Boutalikakis">
+  <meta property="og:description" content="Dr. Angelo Boutalikakis builds products and leads transformations. He spent nine years at McKinsey &amp; Company and holds a PhD in strategic management.">
   <meta property="og:image" content="https://aboutali.github.io/brand/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://aboutali.github.io/">
-  <link rel="alternate" type="application/atom+xml" title="Writing — Angelo Boutalikakis" href="/writing/feed.xml">
+  <link rel="alternate" type="application/atom+xml" title="Writing &middot; Angelo Boutalikakis" href="/writing/feed.xml">
 
-  <!-- type: Archivo (Akzidenz-style grotesque) + Newsreader + JetBrains Mono — self-hosted, assets/fonts/ -->
+  <!-- type: Archivo (Akzidenz-style grotesque) + Newsreader + JetBrains Mono, self-hosted, assets/fonts/ -->
   <link rel="preload" href="/assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="stylesheet" href="assets/site.css">
@@ -38,6 +38,13 @@
     .hero .intro{margin:22px 0 0;max-width:48ch;font-size:clamp(17px,2vw,21px);color:#34322c}
     .hero .meta{margin:24px 0 0;font-family:var(--mono);font-size:13px;letter-spacing:.06em;
       text-transform:uppercase;color:var(--stone)}
+    .hero-tags{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:7px}
+    .hero-tags span{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+      color:var(--stone);border:1px solid var(--hair);border-radius:3px;padding:4px 9px}
+    .hero-links{margin:26px 0 0;display:flex;flex-wrap:wrap;gap:12px}
+
+    /* shared lead paragraph (work intro, research, guestbook) */
+    .lead{margin:0 0 8px;max-width:64ch;color:#34322c;font-size:16px;line-height:1.6}
 
     /* activity ticker (scrolls horizontally; fade edges signal overflow) */
     .activity{border-block:1px solid var(--hair);padding:14px 0}
@@ -53,7 +60,7 @@
       white-space:nowrap;overflow-x:auto;scrollbar-width:none;padding:0 24px}
     .activity .ticker::-webkit-scrollbar{display:none}
 
-    /* projects — whole row clickable (stretched link), hover feedback */
+    /* projects, whole row clickable (stretched link), hover feedback */
     .projects{list-style:none;margin:0;padding:0}
     .projects > li{position:relative;padding:24px 14px;margin:0 -14px;border-bottom:1px solid var(--hair);
       display:grid;grid-template-columns:22px 1fr;gap:4px 14px;align-items:start;
@@ -77,7 +84,6 @@
     .legend .led-up,.legend .led-down{font-size:11px}
 
     /* guestbook */
-    .guestbook .lead{margin:0 0 8px;color:#34322c;font-size:16px}
     .gb{margin-top:18px}
     .gb-entry{margin:0 0 16px;padding:14px 16px;border:1px solid var(--hair);border-radius:8px;
       background:#fff;font-size:15.5px;line-height:1.55}
@@ -86,7 +92,7 @@
     .gb-empty{margin:0;color:var(--stone);font-style:italic}
   </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"Angelo Boutalikakis","url":"https://aboutali.github.io/","jobTitle":"Strategy, Transformation & Digital Leader","sameAs":["https://github.com/aboutali","https://www.linkedin.com/in/angelo-boutalikakis/"]}
+  {"@context":"https://schema.org","@type":"Person","name":"Angelo Boutalikakis","honorificPrefix":"Dr.","url":"https://aboutali.github.io/","jobTitle":"Engagement Manager","worksFor":{"@type":"Organization","name":"McKinsey & Company"},"address":{"@type":"PostalAddress","addressLocality":"Zurich","addressCountry":"CH"},"sameAs":["https://www.linkedin.com/in/angeloboutalikakis","https://scholar.google.com/citations?user=4E9KeKYAAAAJ","https://github.com/aboutali"]}
   </script>
 </head>
 <body>
@@ -95,7 +101,7 @@
 
   <header class="topbar">
     <div class="wrap row">
-      <a class="wm" href="/" aria-label="Angelo Boutalikakis — home">
+      <a class="wm" href="/" aria-label="Angelo Boutalikakis, home">
         <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
         <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
       </a>
@@ -112,11 +118,21 @@
   <main id="main" tabindex="-1">
 
     <section class="hero wrap">
-      <h1 class="lockup">Angelo<br><span class="sur">Boutalikakis</span><span class="dot">.</span></h1>
-      <p class="tagline">Curiosity meets rigor.</p>
-      <p class="intro">Independent builder. I design and ship small, sharp web products across
-        policy, culture, and wellbeing — concept to finished product.</p>
-      <p class="meta">Zurich / Brussels · Selected work 2024—2026</p>
+      <h1 class="lockup">Dr. Angelo<br><span class="sur">Boutalikakis</span><span class="dot">.</span></h1>
+      <p class="tagline">Operator, product builder, and transformation leader</p>
+      <p class="intro">Angelo Boutalikakis builds products and leads transformations. He spent
+        nine years at McKinsey &amp; Company and holds a PhD in strategic management.</p>
+      <div class="hero-tags">
+        <span>Product and business building</span>
+        <span>Applied AI</span>
+        <span>Strategy and transformation</span>
+        <span>Insurance and healthcare</span>
+      </div>
+      <div class="hero-links">
+        <a class="btn" href="cv/">CV</a>
+        <a class="btn" href="mailto:angelo@boutalikakis.com">Email</a>
+      </div>
+      <p class="meta">Zurich, Switzerland</p>
     </section>
 
     <!-- live activity: the Action rewrites between the markers -->
@@ -124,7 +140,7 @@
       <div class="inner">
         <span class="k" id="activity-label">Latest</span>
         <div class="ticker-wrap">
-          <span class="ticker" role="region" aria-label="Latest commits" tabindex="0"><!--ACTIVITY:BEGIN-->life-improver &middot; Merge pull request #1 from aboutali/claude/repo-analysis-... (2026-07-07) &nbsp;&nbsp;&#10022;&nbsp;&nbsp; bxl_eda_worker &middot; Daily digest: 2026-09-24 (2026-09-24) &nbsp;&nbsp;&#10022;&nbsp;&nbsp; fit-schedule &middot; Merge pull request #1 from aboutali/claude/repo-analysis-... (2026-07-07)<!--ACTIVITY:END--></span>
+          <span class="ticker" role="region" aria-label="Latest commits" tabindex="0"><!--ACTIVITY:BEGIN-->Latest commits will appear here.<!--ACTIVITY:END--></span>
         </div>
       </div>
     </div>
@@ -132,10 +148,22 @@
     <section id="work" class="block wrap">
       <div class="sec-head"><h2>Work</h2><span class="count">06 projects</span></div>
 
+      <p class="lead">I build and ship tools with AI: scheduled workers, scrapers, static sites,
+        LLM content pipelines, and an MCP server on Swiss health data.</p>
+
       <!-- PROJECTS:BEGIN -- one <li> per project. To add one, copy a block and swap the
            repo slug (in BOTH the LED marker and the links) and the text. Keep the LED markers
            so the daily Action can light the status dot. -->
       <ul class="projects">
+
+        <li>
+          <!--LED:gesundheit-mcp--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
+          <div class="p-head">
+            <a class="name" href="work/gesundheit-mcp/">gesundheit-mcp</a>
+            <a class="src" href="https://gesundheit-mcp-17797849230.europe-west6.run.app/mcp">[ endpoint ]</a>
+          </div>
+          <p>MCP server on Swiss health-insurance and healthcare data.</p>
+        </li>
 
         <li>
           <!--LED:life-improver--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
@@ -144,46 +172,8 @@
             <a class="src" href="https://aboutali.github.io/life-improver/">[ live ]</a>
             <a class="src" href="https://github.com/aboutali/life-improver">[ source ]</a>
           </div>
-          <p>An interactive framework that maps a full life into seven domains and 300+ practices
-            drawn from psychology, philosophy, and contemplative traditions.</p>
-          <div class="tags"><span>Framework</span><span>Wellbeing</span><span>Web</span></div>
-        </li>
-
-        <li>
-          <!--LED:bxl_eda_worker--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
-          <div class="p-head">
-            <a class="name" href="work/bxl_eda_worker/">bxl_eda_worker</a>
-            <a class="src" href="https://aboutali.github.io/bxl_eda_worker/">[ live ]</a>
-            <a class="src" href="https://github.com/aboutali/bxl_eda_worker">[ source ]</a>
-          </div>
-          <p>A scheduled worker that compiles a daily digest of EU foreign-policy, Middle East,
-            and sanctions news from Brussels.</p>
-          <div class="tags"><span>Automation</span><span>Policy</span><span>News</span></div>
-        </li>
-
-        <li>
-          <!--LED:fit-schedule--><span class="led led-down" title="offline" role="img" aria-label="offline">&#9679;</span><!--/LED-->
-          <div class="p-head">
-            <a class="name" href="work/fit-schedule/">fit-schedule</a>
-            <a class="src" href="https://aboutali.github.io/fit-schedule/">[ live ]</a>
-            <a class="src" href="https://github.com/aboutali/fit-schedule">[ source ]</a>
-          </div>
-          <p>A web app that aggregates bookable fitness classes from three Zurich studios into one
-            live schedule.</p>
-          <div class="tags"><span>Product</span><span>Web App</span><span>Cities</span></div>
-        </li>
-
-        <li>
-          <!--LED:cloudy-plag--><span class="led led-down" title="offline" role="img" aria-label="offline">&#9679;</span><!--/LED-->
-          <div class="p-head">
-            <a class="name" href="work/cloudy-plag/">cloudy-plag</a>
-            <a class="src" href="https://aboutali.github.io/cloudy-plag/">[ live ]</a>
-            <a class="src" href="https://github.com/aboutali/cloudy-plag">[ source ]</a>
-          </div>
-          <p>A VroniPlag-style wiki that documents &mdash; without accusing &mdash; credibility
-            issues in public figures' dissertations across plagiarism, originality, and
-            methodological rigor.</p>
-          <div class="tags"><span>Research</span><span>Wiki</span><span>Integrity</span></div>
+          <p>Interactive framework of meaningful life practices from psychology, philosophy, and
+            contemplative traditions.</p>
         </li>
 
         <li>
@@ -193,31 +183,59 @@
             <a class="src" href="https://aboutali.github.io/edition-guru/">[ live ]</a>
             <a class="src" href="https://github.com/aboutali/edition-guru">[ source ]</a>
           </div>
-          <p>A newsletter bot that scrapes art-edition galleries for new drops, enriches them with
-            LiveArt market data and Claude-written notes, and emails subscribers.</p>
-          <div class="tags"><span>Culture</span><span>Bot</span><span>Newsletter</span></div>
+          <p>Scrapes art print galleries, enriches new drops with market data and LLM
+            descriptions, and emails a newsletter.</p>
         </li>
 
         <li>
-          <!--LED:iKoyomi--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
+          <!--LED:bxl_eda_worker--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
           <div class="p-head">
-            <a class="name" href="work/iKoyomi/">iKoyomi</a>
-            <a class="src" href="https://ikoyomi.netlify.app/">[ live ]</a>
+            <a class="name" href="work/bxl_eda_worker/">bxl_eda_worker</a>
+            <a class="src" href="https://aboutali.github.io/bxl_eda_worker/">[ live ]</a>
+            <a class="src" href="https://github.com/aboutali/bxl_eda_worker">[ source ]</a>
           </div>
-          <p>A minimalist Zen PWA that presents Japan's 72 microseasons as full-screen scenes,
-            each with kanji, a poetic line, and a daily contemplation.</p>
-          <div class="tags"><span>PWA</span><span>Design</span><span>Calendar</span></div>
+          <p>Daily digest of EU foreign-policy, Middle East, and sanctions news for a Swiss
+            reader.</p>
+        </li>
+
+        <li>
+          <!--LED:cloudy-plag--><span class="led led-down" title="offline" role="img" aria-label="offline">&#9679;</span><!--/LED-->
+          <div class="p-head">
+            <a class="name" href="work/cloudy-plag/">cloudy-plag</a>
+            <a class="src" href="https://aboutali.github.io/cloudy-plag/">[ live ]</a>
+            <a class="src" href="https://github.com/aboutali/cloudy-plag">[ source ]</a>
+          </div>
+          <p>Documents credibility issues in dissertations.</p>
+        </li>
+
+        <li>
+          <!--LED:cleardoc--><span class="led led-up" title="online" role="img" aria-label="online">&#9679;</span><!--/LED-->
+          <div class="p-head">
+            <a class="name" href="work/cleardoc/">cleardoc</a>
+            <a class="src" href="https://aboutali.github.io/cleardoc/">[ live ]</a>
+            <a class="src" href="https://github.com/aboutali/cleardoc">[ source ]</a>
+          </div>
+          <p>Optimizes invoices for Swiss healthcare practitioners.</p>
         </li>
 
       </ul>
       <!-- PROJECTS:END -->
       <p class="legend"><span class="led led-up" aria-hidden="true">&#9679;</span> live &nbsp;·&nbsp;
-        <span class="led led-down" aria-hidden="true">&#9679;</span> offline — status refreshed daily.</p>
+        <span class="led led-down" aria-hidden="true">&#9679;</span> offline, status refreshed daily.</p>
+    </section>
+
+    <section class="block wrap research">
+      <div class="sec-head"><h2>Research and writing</h2></div>
+      <p class="lead">Selected work includes &#8220;What makes a company &lsquo;future
+        ready&rsquo;?&#8221; in Harvard Business Review and &#8220;The innovator's media
+        dilemma&#8221; in the Journal of Product Innovation Management. More on
+        <a href="writing/">Writing</a> and
+        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a>.</p>
     </section>
 
     <section id="guestbook" class="block wrap guestbook">
       <div class="sec-head"><h2>Guestbook</h2></div>
-      <p class="lead">Drop a note — it's rendered straight from this site's GitHub issues.</p>
+      <p class="lead">Drop a note, it's rendered straight from this site's GitHub issues.</p>
       <a class="btn" href="https://github.com/aboutali/aboutali.github.io/issues/new?labels=guestbook&title=A+note+for+Angelo">Sign the guestbook</a>
       <div class="gb">
 <!--GUESTBOOK:BEGIN-->
@@ -233,12 +251,12 @@
       <div class="f-contact">
         <span class="f-k">Contact</span>
         <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a><span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/angelo-boutalikakis/">LinkedIn</a><span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a><span class="sep">·</span>
+        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a><span class="sep">·</span>
         <a href="https://github.com/aboutali">GitHub</a>
       </div>
       <div class="row">
         <span>Last updated <!--UPDATED:BEGIN-->September 24, 2026<!--UPDATED:END--></span>
-        <span class="tag">Curiosity meets rigor.</span>
         <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
       </div>
     </div>
