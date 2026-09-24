@@ -32,6 +32,9 @@ HTML sanity. Run it before every commit.
 - **The v4 "Academic" identity is locked.** Monochrome, no accent colour.
   Newsreader and JetBrains Mono only. Components and tokens live in
   `assets/site.css`; the full spec is `brand/DESIGN_SYSTEM.md`.
+- **Bump the stylesheet version on every CSS change.** Pages link
+  `assets/site.css?v=N`; raise N on all pages together, or visitors with a
+  cached old stylesheet see new markup rendered in the old style.
 
 ## Planned work
 
