@@ -8,3 +8,6 @@ mockups/*.png
 __pycache__/
 *.pyc
 brand/*.png
+
+# Guard-term list for scripts/check.py (names real clients; never commit)
+.guard-terms
