@@ -148,3 +148,9 @@ sup{font-size:11px}
 
 /* Guestbook avatars (generate.py): square, greyscale, hairline border. */
 .gb-avatar{width:24px;height:24px;border:.5px solid var(--ink);filter:grayscale(1);vertical-align:middle;margin-right:8px;object-fit:cover}
+
+/* Guestbook entries as generate.py emits them. */
+.gb-entry{margin:0 0 12px;font-size:15.5px;line-height:1.45}
+.gb-entry:last-child{margin-bottom:0}
+.gb-date{font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-left:6px}
+.gb-empty{margin:0;font-style:italic;color:var(--graphite)}
