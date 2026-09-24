@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello, world — what this site is · Angelo Boutalikakis</title>
-  <meta name="description" content="Why this site exists, how it's built, and what 'curiosity meets rigor' means in practice.">
+  <title>Hello, world, and what this site is · Angelo Boutalikakis</title>
+  <meta name="description" content="Why this site exists and how it's built, with no frameworks and no build step.">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/assets/apple-touch-icon.png">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://aboutali.github.io/writing/hello-world/">
-  <meta property="og:title" content="Hello, world — what this site is">
+  <meta property="og:title" content="Hello, world, and what this site is">
   <meta property="og:description" content="Why this site exists and how it's built.">
   <meta property="og:image" content="https://aboutali.github.io/brand/assets/og-post-hello-world.png">
   <meta property="og:image:width" content="1200">
@@ -20,8 +20,8 @@
   <link rel="preload" href="/assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/site.css">
   <style>
-    /* post layout — this file doubles as the post template:
-       copy this folder, change the <title>, metas, date, h1, and the prose. */
+    /* post layout. This file doubles as the post template.
+       Copy this folder, then change the title, metas, date, h1, and prose. */
     .post-head{padding:clamp(44px,7vw,88px) 0 clamp(16px,2.4vw,28px);max-width:68ch}
     .post-head .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;
       text-transform:uppercase;color:var(--blue-deep)}
@@ -31,7 +31,7 @@
     .back{font-family:var(--mono);font-size:13px;text-decoration:none}
   </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BlogPosting","headline":"Hello, world — what this site is","datePublished":"2026-07-02","author":{"@type":"Person","name":"Angelo Boutalikakis","url":"https://aboutali.github.io/"},"mainEntityOfPage":"https://aboutali.github.io/writing/hello-world/"}
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"Hello, world, and what this site is","datePublished":"2026-07-02","author":{"@type":"Person","name":"Angelo Boutalikakis","honorificPrefix":"Dr.","url":"https://aboutali.github.io/","jobTitle":"Engagement Manager","worksFor":{"@type":"Organization","name":"McKinsey & Company"},"address":{"@type":"PostalAddress","addressLocality":"Zurich","addressCountry":"CH"},"sameAs":["https://www.linkedin.com/in/angeloboutalikakis","https://scholar.google.com/citations?user=4E9KeKYAAAAJ","https://github.com/aboutali"]},"mainEntityOfPage":"https://aboutali.github.io/writing/hello-world/"}
   </script>
 </head>
 <body>
@@ -40,7 +40,7 @@
 
   <header class="topbar">
     <div class="wrap row">
-      <a class="wm" href="../../" aria-label="Angelo Boutalikakis — home">
+      <a class="wm" href="../../" aria-label="Angelo Boutalikakis, home">
         <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
         <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
       </a>
@@ -58,29 +58,30 @@
 
     <div class="post-head">
       <div class="kicker">Note · 01</div>
-      <h1>Hello, world — what this site is</h1>
+      <h1>Hello, world, and what this site is</h1>
       <p class="meta">2026-07-02 · 2 min read</p>
     </div>
 
-    <!-- TODO: edit freely — this is starter copy that also serves as the post template. -->
+    <!-- Edit freely. This is starter copy that also serves as the post template. -->
     <article class="prose block" style="padding-top:0">
       <p>This site is an index of things I've built and, from now on, an occasional place
-        to write about building them. The projects range wider than a portfolio probably
-        should — EU foreign-policy digests, a Zen calendar, a life-design framework — and
-        that's the point. <span class="aside">Curiosity meets rigor</span>: follow the
-        interesting thing, then finish it properly.</p>
+        to write about building them. The projects cover a wide range, from policy digests
+        to health-data tools to life-design frameworks. That range is deliberate. I follow
+        what's interesting, then finish it properly.</p>
 
       <h2>How it's built</h2>
-      <p>Deliberately boring, in the best way. Plain HTML and CSS, no frameworks, no build
-        step. A single GitHub Action runs daily: it pings each project to light a status
+      <p>Deliberately boring, in the best way. Plain HTML and hand-written stylesheets, no
+        frameworks, no build step. A single GitHub Action runs daily. It pings each project to light a status
         dot, pulls the latest commits into the ticker on the homepage, and renders the
-        guestbook straight from GitHub issues. The identity — Archivo, cobalt, warm paper —
-        was designed first as a small brand system, then the site was built to follow it.</p>
+        guestbook straight from GitHub issues. The identity uses Archivo, cobalt, and warm
+        paper. It was designed first as a small brand system, then the site was built to
+        follow it.</p>
 
       <h2>What to expect here</h2>
-      <p>Short notes, mostly: decisions and trade-offs from the projects, occasional
-        thoughts on policy and technology, things worth paying attention to. No schedule,
-        no newsletter — when there's something worth writing, it shows up here.</p>
+      <p>Short notes, mostly. Decisions and trade-offs from the projects, occasional
+        thoughts on policy and technology, and things worth paying attention to. There is
+        no schedule and no newsletter. A new post shows up here when there's something
+        worth writing.</p>
     </article>
 
     <p class="block" style="padding-top:0"><a class="back" href="../">← All writing</a></p>
@@ -92,12 +93,12 @@
       <div class="f-contact">
         <span class="f-k">Contact</span>
         <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a><span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/angelo-boutalikakis/">LinkedIn</a><span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a><span class="sep">·</span>
+        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a><span class="sep">·</span>
         <a href="https://github.com/aboutali">GitHub</a>
       </div>
       <div class="row">
         <span><a href="../../">← Home</a></span>
-        <span class="tag">Curiosity meets rigor.</span>
         <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
       </div>
     </div>

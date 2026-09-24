@@ -2,19 +2,18 @@
 <!-- When adding a post: copy an <entry>, update id/title/updated/link/summary,
      and bump the feed-level <updated>. Keep entries newest-first. -->
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Writing — Angelo Boutalikakis</title>
-  <subtitle>Curiosity meets rigor.</subtitle>
+  <title>Writing · Angelo Boutalikakis</title>
+  <subtitle>Research, publications, and notes by Angelo Boutalikakis.</subtitle>
   <link href="https://aboutali.github.io/writing/feed.xml" rel="self"/>
   <link href="https://aboutali.github.io/writing/"/>
   <id>https://aboutali.github.io/writing/</id>
   <updated>2026-07-02T00:00:00Z</updated>
   <author><name>Angelo Boutalikakis</name><uri>https://aboutali.github.io/</uri></author>
   <entry>
-    <title>Hello, world — what this site is</title>
+    <title>Hello, world, and what this site is</title>
     <link href="https://aboutali.github.io/writing/hello-world/"/>
     <id>https://aboutali.github.io/writing/hello-world/</id>
     <updated>2026-07-02T00:00:00Z</updated>
-    <summary>Why this site exists, how it's built (no frameworks, no build step),
-    and what "curiosity meets rigor" means in practice.</summary>
+    <summary>Why this site exists and how it's built, with no frameworks and no build step.</summary>
   </entry>
 </feed>
