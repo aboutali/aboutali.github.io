@@ -163,3 +163,8 @@ sup{font-size:11px}
 /* Below 560px rows collapse to two columns; the header row would stack its
    labels as orphan lines, so hide it there. */
 @media (max-width:560px){.table .row.head{display:none}}
+
+/* Portrait on the homepage title block. Greyscale with a hairline border,
+   like every image in the system. */
+.portrait{display:block;width:120px;height:150px;margin:0 auto 26px;object-fit:cover;
+  filter:grayscale(1);border:.5px solid var(--ink)}
