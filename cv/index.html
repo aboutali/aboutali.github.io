@@ -1,3 +1,7 @@
+<!-- The PDF at /cv/Angelo-Boutalikakis-CV.pdf is a static export of this page.
+     Regenerate it whenever this page's content changes: serve the repo root
+     (python3 -m http.server 8642), then run:
+     NODE_PATH=$(npm root -g) node -e "const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();await p.goto('http://localhost:8642/cv/');await p.emulateMedia({media:'print'});await p.evaluate(()=>document.fonts.ready);await p.pdf({path:'cv/Angelo-Boutalikakis-CV.pdf',format:'A4',printBackground:false,margin:{top:'15mm',right:'15mm',bottom:'15mm',left:'15mm'}});await b.close();})();" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,56 +21,51 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://aboutali.github.io/cv/">
-  <link rel="preload" href="/assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/newsreader-roman-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/site.css">
   <style>
-    .cv{max-width:820px}
-    .cv-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
-    .cv-contact{font-family:var(--mono);font-size:12.5px;color:var(--stone);line-height:2;text-align:right}
-    .cv-contact a{color:var(--stone);text-decoration:none}
-    .cv-contact a:hover{color:var(--ink)}
-    .cv h2{margin:2.2em 0 .2em;font-family:var(--mono);font-size:12px;font-weight:500;
-      letter-spacing:.16em;text-transform:uppercase;color:var(--blue-deep);
-      border-bottom:1px solid var(--ink);padding-bottom:10px}
-    .cv-item{padding:16px 0;border-bottom:1px solid var(--hair);
-      display:grid;grid-template-columns:1fr auto;gap:2px 18px;align-items:baseline}
-    .cv-item .role{font-weight:700;font-size:17px;letter-spacing:-.01em}
-    .cv-item .role a{color:var(--ink);text-decoration:none}
-    .cv-item .role a:hover{color:var(--blue)}
-    .cv-item .org{color:var(--stone);font-size:14.5px}
-    .cv-item .when{font-family:var(--mono);font-size:12px;color:var(--stone);white-space:nowrap}
-    .cv-item p{grid-column:1 / -1;margin:6px 0 0;font-size:14.5px;color:#34322c;max-width:64ch;line-height:1.55}
-    .cv-item ul{grid-column:1 / -1;margin:8px 0 0;padding-left:18px}
-    .cv-item ul li{font-size:14.5px;color:#34322c;max-width:64ch;line-height:1.55;margin-bottom:5px}
-    .cv-list{margin:10px 0 0;padding-left:18px}
-    .cv-list li{font-size:14.5px;color:#34322c;line-height:1.6;margin-bottom:6px;max-width:64ch}
-    .cv-pub{margin:10px 0 0;padding-left:18px}
-    .cv-pub li{font-size:14.5px;color:#34322c;line-height:1.6;margin-bottom:10px;max-width:66ch}
-    .cv-pub a{color:var(--blue-deep)}
-    .cv-caps{margin:12px 0 0}
-    .cv-caps dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-      color:var(--blue-deep);margin-top:16px}
-    .cv-caps dt:first-child{margin-top:0}
-    .cv-caps dd{margin:4px 0 0;font-size:14.5px;color:#34322c;max-width:64ch;line-height:1.55}
-    .cv-skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
-    .cv-skills span{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;
-      color:var(--stone);border:1px solid var(--hair);border-radius:3px;padding:5px 10px}
-    .print-hint{margin-top:26px}
+    /* CV-page-local additions: numbered section heads with a bottom rule,
+       key/value rows for Capabilities and Languages, and the profile
+       paragraphs, none of which are shared components in site.css. */
+    .cv-header{padding:clamp(44px,7vw,72px) 0 28px}
+    .cv-header h1{font-size:clamp(34px,5.6vw,52px)}
+    .cv-header .subtitle{margin-top:12px;font-size:20px}
+    .cv-contact{margin:18px 0 0;display:flex;justify-content:center;flex-wrap:wrap;
+      gap:4px 14px;font-family:var(--font-mono);font-size:12.5px;color:var(--graphite)}
+    .cv-contact a{color:var(--graphite)}
 
-    /* print → clean A4 resume */
+    .cv-h{margin:40px 0 12px;font-size:21px;font-weight:700;display:flex;gap:16px;
+      border-bottom:var(--rule-hair) solid var(--ink);padding-bottom:6px}
+    .cv-h.first{margin-top:28px}
+    .cv-h.tight{margin-bottom:4px}
+
+    .cv-profile{font-size:16.5px;line-height:1.6;text-align:justify;hyphens:auto}
+    .cv-profile p{margin:0}
+    .cv-profile p + p{text-indent:1.5em}
+
+    .cv-item > div{display:flex;flex-direction:column;gap:3px}
+    .cv-item p{margin:6px 0 0;font-size:15.5px;line-height:1.55;color:#222}
+    .cv-item ul{margin:8px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+    .cv-item ul li{font-size:15.5px;line-height:1.55;color:#222}
+
+    .cv-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;
+      font-size:15.5px;line-height:1.55}
+
+    .kv{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr);gap:4px 20px;
+      padding:12px 0;border-bottom:var(--rule-hair) solid var(--rule-row);align-items:baseline}
+    .kv:last-child{border-bottom:0}
+    .kv .k{font-variant-caps:all-small-caps;font-size:16px;letter-spacing:.04em;
+      font-weight:700;line-height:1.3}
+    .kv .v{font-size:15.5px;line-height:1.55;color:#222}
+
+    .cv-print{margin-top:36px;display:flex;justify-content:center}
+
+    @media (max-width:560px){
+      .kv{grid-template-columns:1fr}
+    }
+
     @media print{
-      .topbar,footer,.skip,.print-hint{display:none !important}
-      body{background:#fff;color:#000;font-size:11pt}
-      .wrap{max-width:100%;padding:0}
-      .page-head{padding:0 0 8pt}
-      .page-head h1{font-size:22pt}
-      .page-head .kicker{color:#000}
-      .cv h2{color:#000;border-color:#000}
-      .cv-item{break-inside:avoid;border-color:#ddd}
-      .cv-item p,.cv-item li,.cv-list li,.cv-pub li,.cv-caps dd{color:#000}
-      .cv-caps dt{color:#000}
-      a{color:#000 !important;text-decoration:none !important}
-      @page{margin:18mm}
+      .runhead,footer,.cv-print{display:none !important}
     }
   </style>
   <script type="application/ld+json">
@@ -77,318 +76,353 @@
 
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <div class="wrap row">
-      <a class="wm" href="../" aria-label="Angelo Boutalikakis, home">
-        <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
-        <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
-      </a>
-      <nav class="topnav" aria-label="Site">
-        <a href="../#work">Work</a>
-        <a href="../about/">About</a>
-        <a href="../writing/">Writing</a>
-        <a href="./" aria-current="page">CV</a>
-        <a href="https://github.com/aboutali">GitHub</a>
+  <div class="desk"><div class="sheet">
+
+    <header class="runhead">
+      <a href="/">A. Boutalikakis</a>
+      <nav aria-label="Site">
+        <a href="/#work">work</a>
+        <a href="/about/">about</a>
+        <a href="/writing/">writing</a>
+        <a href="/cv/" aria-current="page">cv</a>
+        <a href="https://github.com/aboutali">github</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main id="main" class="wrap cv" tabindex="-1">
+    <main id="main" tabindex="-1">
 
-    <div class="page-head cv-top">
-      <div>
-        <div class="kicker">Curriculum vitae</div>
-        <h1>Dr. Angelo<br>Boutalikakis<span style="color:var(--blue)">.</span></h1>
-        <p class="lede" style="margin-top:6px;max-width:52ch">Operator, product builder, and transformation leader.</p>
+      <header class="titleblock cv-header">
+        <p class="kicker">Curriculum vitae</p>
+        <h1>Dr. Angelo Boutalikakis</h1>
+        <p class="subtitle">Operator, product builder, and transformation leader.</p>
+        <p class="cv-contact">
+          <span>Zurich, Switzerland</span>
+          <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a>
+          <a href="https://www.linkedin.com/in/angeloboutalikakis">linkedin.com/in/angeloboutalikakis</a>
+          <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a>
+          <a href="https://github.com/aboutali">github.com/aboutali</a>
+        </p>
+      </header>
+
+      <h2 class="cv-h first"><span>1</span><span>Profile</span></h2>
+      <div class="cv-profile">
+        <p>Angelo Boutalikakis is a strategy, transformation, and product leader based in Zurich.
+          He joined McKinsey &amp; Company in 2017 and works as an Engagement Manager. His work
+          spans insurance, health insurance, healthcare, consumer goods, telecommunications,
+          media, and energy.</p>
+        <p>Angelo builds software with AI. His current project is an MCP server on Swiss
+          health-insurance and healthcare data. He holds a PhD in strategic management, magna
+          cum laude, from Universität Passau. He published in the Journal of Product Innovation
+          Management and Harvard Business Review.</p>
       </div>
-      <div class="cv-contact">
-        Zurich, Switzerland<br>
-        <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a><br>
-        <a href="https://www.linkedin.com/in/angeloboutalikakis">linkedin.com/in/angeloboutalikakis</a><br>
-        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a><br>
-        <a href="https://github.com/aboutali">github.com/aboutali</a>
+
+      <h2 class="cv-h tight"><span>2</span><span>Experience</span></h2>
+
+      <div class="cv-item">
+        <span class="when">June 2017 – present</span>
+        <div>
+          <span class="role">McKinsey &amp; Company</span>
+          <span class="org">Zurich</span>
+          <p>Leads strategy, transformation, and digital engagements. Belongs to the firm's
+            digital business-building practice. Sectors: insurance, health insurance,
+            healthcare, and consumer. Works across Switzerland, Germany, Italy, the UK, the
+            US, India, and Nigeria.</p>
+        </div>
       </div>
-    </div>
 
-    <h2>Profile</h2>
-    <p style="font-size:14.5px;color:#34322c;max-width:66ch;line-height:1.6;margin:10px 0 0">
-      Angelo Boutalikakis is a strategy, transformation, and product leader based in Zurich.
-      He joined McKinsey &amp; Company in 2017 and works as an Engagement Manager. His work
-      spans insurance, health insurance, healthcare, consumer goods, telecommunications,
-      media, and energy.</p>
-    <p style="font-size:14.5px;color:#34322c;max-width:66ch;line-height:1.6;margin:10px 0 0">
-      Angelo builds software with AI. His current project is an MCP server on Swiss
-      health-insurance and healthcare data. He holds a PhD in strategic management, magna
-      cum laude, from Universität Passau. He published in the Journal of Product Innovation
-      Management and Harvard Business Review.</p>
-
-    <h2>Experience</h2>
-
-    <div class="cv-item">
-      <span class="role">McKinsey &amp; Company</span>
-      <span class="when">June 2017 – present</span>
-      <span class="org">Zurich</span>
-      <p>Leads strategy, transformation, and digital engagements. Belongs to the firm's
-        digital business-building practice. Sectors: insurance, health insurance,
-        healthcare, and consumer. Works across Switzerland, Germany, Italy, the UK, the
-        US, India, and Nigeria.</p>
-    </div>
-
-    <div class="cv-item">
-      <span class="role">Engagement Manager</span>
-      <span class="when">January 2024 – present</span>
-      <span class="org">McKinsey &amp; Company, Zurich</span>
-      <ul>
-        <li><strong>Swiss multi-line insurer, post-merger IT integration</strong> (September 2025 – April 2026).
-          Led the Group IT workstream, unified the operating model and processes of two
-          carriers, and designed the future Group IT function. Advised the Group CTO and
-          six of his executive-committee direct reports. Wrote the proposal that won the
-          work. Result: ~30–40% IT cost synergies identified.</li>
-        <li><strong>Global insurer's technology and cybersecurity function</strong> (November 2024 – 2025).
-          Led the engagement and its follow-on phases. Designed an Asset Risk Assurance
-          process and its governance from scratch, and built a new catalogue of
-          cybersecurity tests and controls, under regulatory scrutiny with COO-level
-          interaction.</li>
-        <li><strong>European multi-line insurer, transformation</strong> (2023 – 2024). Workstreams across
-          IT cost, claims management, data and analytics, and agile IT transformation.
-          Result: 30%+ IT cost reduction identified and a plan to cut claims costs by
-          €50m.</li>
-        <li><strong>Swiss health-insurance practice</strong> (2023 – 2026). Built a CHF ~90bn Swiss
-          healthcare-spend database, split by payor, reimbursement type, and service type,
-          with a Python pipeline and Tableau front end, reused by business-development
-          teams across several Swiss health insurers.</li>
-        <li><strong>Swiss health insurer, board level</strong> (2025 – 2026). Presented research on the
-          future of Swiss supplementary health insurance to the Board Chairman.</li>
-      </ul>
-    </div>
-
-    <div class="cv-item">
-      <span class="role">Senior Associate</span>
-      <span class="when">April 2022 – January 2024</span>
-      <span class="org">McKinsey &amp; Company, Zurich</span>
-      <ul>
-        <li><strong>Multinational medtech, consumer-health product build</strong> (2022 – 2023). Led the
-          product workstream end-to-end for a biosensor with an AI-coaching app, from
-          consumer-needs analysis through go-to-market. Analyzed 40,000 consumer data
-          points and led three teams in parallel plus 6+ client team members across the
-          US, Europe, and India. Presented the product vision to the Chairman and CEO of a
-          ~$200bn medical-device company. The product launched in the UK in early 2024 and
-          in the US in September 2024.</li>
-        <li><strong>West African beverage bottler, cost and operational resilience</strong> (2023 – 2024).
-          Co-led a programme of ~7 parallel workstreams in Lagos, Nigeria, across
-          manufacturing operations, route-to-market, organization, and cost, amid high
-          inflation and currency depreciation.</li>
-        <li><strong>Independent ultra-luxury watchmaker, growth strategy</strong> (2023). Ran a 4-week
-          growth strategy with 4–5 workstreams, target ~40% growth over five years, working
-          with the CEO and the full leadership team.</li>
-        <li><strong>Global insurer, incoming Head of Health onboarding</strong> (2023). Designed and
-          delivered an onboarding programme with deep dives on managed care,
-          payor-provider integration, and digital health.</li>
-      </ul>
-    </div>
-
-    <div class="cv-item">
-      <span class="role">Educational leave</span>
-      <span class="when">September 2019 – April 2022</span>
-      <span class="org">McKinsey &amp; Company, Zurich</span>
-      <p>Leave for the PhD, with selected engagements.</p>
-      <ul>
-        <li><strong>IMD, Center for Future Readiness</strong> (2019 – 2022). Built a text-analysis tool
-          that identifies cognitive constructs in companies and executives, and helped
-          promote and scale the newly founded center.</li>
-        <li><strong>Premium chocolate manufacturer.</strong> Supported an indirect-spend reduction
-          programme.</li>
-      </ul>
-    </div>
-
-    <div class="cv-item">
-      <span class="role">Fellow and Associate</span>
-      <span class="when">June 2017 – September 2019</span>
-      <span class="org">McKinsey &amp; Company, Zurich</span>
-      <ul>
-        <li><strong>Swiss digital attacker telco.</strong> Product Owner for the invoicing and self-help
-          journeys. Result: higher NPS, shorter resolution times, fewer complaints, fewer
-          cancellations.</li>
-        <li><strong>Swiss retail cooperative, cost</strong> (2018). Designed a full cost programme across
-          direct and indirect spend, with scenarios of up to ~40% lower indirect spend and
-          ~10% lower direct spend.</li>
-        <li><strong>German media and broadcasting company</strong> (2017 – 2018). Ran an end-to-end
-          IT-process diagnostic. Result: ~20% cost reduction for the same output.</li>
-        <li><strong>Consumer goods, growth method</strong> (2017 – 2019). Co-developed a method to find
-          granular growth pockets by product and geography. Several consumer-goods clients
-          applied it, and senior partners presented it at C-level events in London.</li>
-      </ul>
-    </div>
-
-    <h2>Other experience</h2>
-    <div class="cv-item">
-      <span class="role">Fellow and Senior Advisor</span>
-      <span class="when">2019 – 2022</span>
-      <span class="org">IMD, Center for Future Readiness, Lausanne</span>
-      <p>Past affiliation, alongside the McKinsey educational leave.</p>
-    </div>
-    <div class="cv-item">
-      <span class="role">Internships</span>
-      <span class="when">2013 – 2015</span>
-      <span class="org">UBS · Volkswagen Group · Deloitte</span>
-      <p>Investment Banking, Equity Capital Markets, UBS, Zurich (2015). Electric Vehicle
-        Strategy, Volkswagen Group, Beijing (2014). Technology Consulting, Deloitte,
-        London (2013 – 2014).</p>
-    </div>
-    <div class="cv-item">
-      <span class="role">Informal advisor</span>
-      <span class="when">ongoing</span>
-      <span class="org">Several early-stage startups, Zurich</span>
-      <p>Advises several early-stage startups in AI and digital health.</p>
-    </div>
-
-    <h2>Education</h2>
-    <div class="cv-item">
-      <span class="role">Dr. rer. pol., Strategic Management / Behavioral Strategy, magna cum laude</span>
-      <span class="when">2019 – 2022</span>
-      <span class="org">Universität Passau</span>
-      <p>Dissertation: "The Social-Psychological Interface Between Firms and Infomediaries:
-        Essays on the Roles of Framing, Flattery, and Technological Discontinuities."</p>
-    </div>
-    <div class="cv-item">
-      <span class="role">Master of Arts, Quantitative Economics and Finance</span>
-      <span class="when">2015 – 2017</span>
-      <span class="org">Universität St.Gallen (HSG)</span>
-      <p>Grade 5.6 of 6.0, top of class. Thesis: "Explaining the Performance of Index
-        Option Put-Write Strategies."</p>
-    </div>
-    <div class="cv-item">
-      <span class="role">Visiting student, full-time MBA programme</span>
-      <span class="when">2016</span>
-      <span class="org">University of Toronto, Rotman School of Management</span>
-      <p>GPA 4.3, top of class.</p>
-    </div>
-    <div class="cv-item">
-      <span class="role">Visiting undergraduate student, Economics</span>
-      <span class="when">2011</span>
-      <span class="org">Columbia University in the City of New York</span>
-    </div>
-    <div class="cv-item">
-      <span class="role">Bachelor of Arts, Business Administration and Economics</span>
-      <span class="when">2009 – 2014</span>
-      <span class="org">Universität St.Gallen (HSG)</span>
-    </div>
-
-    <h2>Awards</h2>
-    <ul class="cv-list">
-      <li>Most Inspirational Paper, Behavioral Strategy track, EURAM 2022</li>
-      <li>PhD magna cum laude, Universität Passau, 2022</li>
-      <li>Top of class, HSG Master in Quantitative Economics and Finance, 2017</li>
-      <li>Top of class, Rotman visiting MBA programme, 2016</li>
-    </ul>
-
-    <h2>Certifications</h2>
-    <ul class="cv-list">
-      <li>Certified Scrum Master (CSM)</li>
-      <li>Certified Scrum Product Owner (CSPO)</li>
-    </ul>
-
-    <h2>Selected publications</h2>
-    <ol class="cv-pub">
-      <li>Graf-Vlachy, L., König, A., Banfield, R., Rauch, M., &amp; Boutalikakis, A. (2023).
-        The innovator's media dilemma: How journalists cover incumbents' adoption of
-        discontinuous technologies. <em>Journal of Product Innovation Management</em>.
-        <a href="https://doi.org/10.1111/jpim.12651">doi.org/10.1111/jpim.12651</a></li>
-      <li>Schill, A.-K., Boutalikakis, A., Hawighorst, F., Graf-Vlachy, L., &amp; König,
-        A. S. (2022). Analyst flattery, CEO narcissism, and CEO communication
-        specificity. <em>Academy of Management Proceedings</em>, 2022(1).
-        <a href="https://doi.org/10.5465/AMBPP.2022.289">doi.org/10.5465/AMBPP.2022.289</a></li>
-      <li>Christ, L., Amiriparian, S., Hawighorst, F., Schill, A.-K., Boutalikakis, A.,
-        Graf-Vlachy, L., König, A., &amp; Schuller, B. W. (2024). This paper had the
-        smartest reviewers: Flattery detection utilising an audio-textual
-        transformer-based approach. <em>INTERSPEECH 2024</em>.
-        <a href="https://arxiv.org/abs/2406.17667">arxiv.org/abs/2406.17667</a></li>
-      <li>Yu, H., Shan, J., Boutalikakis, A., Tempel, L., &amp; Balian, Z. (March 2022).
-        What makes a company "future ready"? <em>Harvard Business Review</em>.
-        <a href="https://hbr.org/2022/03/what-makes-a-company-future-ready">hbr.org</a></li>
-      <li>Yu, H., &amp; Boutalikakis, A. (January 2021). Changing the rules to control
-        monopolies could see the end of Facebook domination. <em>The Conversation</em>.
-        <a href="https://theconversation.com/changing-the-rules-to-control-monopolies-could-see-the-end-of-facebook-domination-149940">theconversation.com</a></li>
-      <li>Espel, P., Rupprecht, F., Herbener, M., Schröpfer, C., Venus, A.,
-        Boutalikakis, A., et al. (April 2020). How industrial companies can cut their
-        indirect costs fast. <em>McKinsey &amp; Company</em>.
-        <a href="https://www.mckinsey.com/industries/automotive-and-assembly/our-insights/how-industrial-companies-can-cut-their-indirect-costs-fast">mckinsey.com</a></li>
-    </ol>
-    <p style="font-size:14.5px;color:#34322c;margin:10px 0 0">See the full list on the
-      <a href="/writing/" style="color:var(--blue-deep)">Writing page</a>.</p>
-
-    <h2>Teaching and speaking</h2>
-    <div class="cv-item">
-      <span class="role">Cost Management in Practice: Real-life evidence from the M&amp;A context</span>
-      <span class="when">Winter term 26/27</span>
-      <span class="org">Guest lecture, Managerial Finance</span>
-      <p>Prof. Dr. Lorenz Graf-Vlachy</p>
-    </div>
-    <ul class="cv-list">
-      <li>Co-organized a pan-European payor-provider-integration seminar for C-suite
-        attendees (November 2025)</li>
-      <li>Moderated a Swiss InsurTech panel, co-hosted by McKinsey and the Swiss InsurTech
-        Hub</li>
-      <li>Research presentations at the Academy of Management, EURAM, and INTERSPEECH</li>
-    </ul>
-
-    <h2>Capabilities</h2>
-    <dl class="cv-caps">
-      <dt>Product and business building</dt>
-      <dd>Digital product ownership, MVP definition and prototyping, user research and
-        customer-journey mapping, cross-functional team leadership.</dd>
-      <dt>Applied AI and technology</dt>
-      <dd>Agentic tooling, MCP servers, data pipelines and evals, AI strategy, transformer-based
-        text and audio analytics, Python, R, MATLAB, Tableau, econometrics.</dd>
-      <dt>Strategy and transformation</dt>
-      <dd>Post-merger IT integration, cost and operating-model programmes, agile
-        transformation at scale, cybersecurity governance, growth and pricing strategy.</dd>
-      <dt>Corporate finance and transactions</dt>
-      <dd>M&amp;A evaluation on the buy side and sell side, carve-outs and divestitures,
-        equity stories, market and target screening.</dd>
-      <dt>Domains</dt>
-      <dd>Insurance (multi-line, life, P&amp;C, health), healthcare (payor-provider
-        integration, managed care, supplementary insurance), consumer (health, luxury,
-        retail, beverages), telecommunications, media, energy.</dd>
-      <dt>Leadership</dt>
-      <dd>C-suite and board-level advisory, workshops with 10+ senior stakeholders,
-        multicultural teams across Europe, the US, India, and Africa, coaching and
-        apprenticeship.</dd>
-    </dl>
-
-    <h2>Languages</h2>
-    <div class="cv-skills">
-      <span>German (native)</span><span>Swiss German (fluent)</span><span>English (fluent)</span>
-      <span>French (conversational)</span><span>Greek (conversational)</span>
-    </div>
-
-    <h2>Interests</h2>
-    <div class="cv-skills">
-      <span>Contemporary art and collecting</span><span>Classical music and piano</span>
-      <span>CrossFit, skiing, running, yoga, Pilates</span><span>Travel and food</span>
-    </div>
-
-    <p class="print-hint">
-      <button class="btn" onclick="window.print()">Print / save as PDF</button>
-    </p>
-
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div class="f-contact">
-        <span class="f-k">Contact</span>
-        <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a><span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a><span class="sep">·</span>
-        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a><span class="sep">·</span>
-        <a href="https://github.com/aboutali">GitHub</a>
+      <div class="cv-item">
+        <span class="when">January 2024 – present</span>
+        <div>
+          <span class="role">Engagement Manager</span>
+          <span class="org">McKinsey &amp; Company, Zurich</span>
+          <ul>
+            <li><strong>Swiss multi-line insurer, post-merger IT integration</strong> (September 2025 – April 2026).
+              Led the Group IT workstream, unified the operating model and processes of two
+              carriers, and designed the future Group IT function. Advised the Group CTO and
+              six of his executive-committee direct reports. Wrote the proposal that won the
+              work. Result: ~30–40% IT cost synergies identified.</li>
+            <li><strong>Global insurer's technology and cybersecurity function</strong> (November 2024 – 2025).
+              Led the engagement and its follow-on phases. Designed an Asset Risk Assurance
+              process and its governance from scratch, and built a new catalogue of
+              cybersecurity tests and controls, under regulatory scrutiny with COO-level
+              interaction.</li>
+            <li><strong>European multi-line insurer, transformation</strong> (2023 – 2024). Workstreams across
+              IT cost, claims management, data and analytics, and agile IT transformation.
+              Result: 30%+ IT cost reduction identified and a plan to cut claims costs by
+              €50m.</li>
+            <li><strong>Swiss health-insurance practice</strong> (2023 – 2026). Built a CHF ~90bn Swiss
+              healthcare-spend database, split by payor, reimbursement type, and service type,
+              with a Python pipeline and Tableau front end, reused by business-development
+              teams across several Swiss health insurers.</li>
+            <li><strong>Swiss health insurer, board level</strong> (2025 – 2026). Presented research on the
+              future of Swiss supplementary health insurance to the Board Chairman.</li>
+          </ul>
+        </div>
       </div>
-      <div class="row">
-        <span><a href="../">← Home</a></span>
-        <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
+
+      <div class="cv-item">
+        <span class="when">April 2022 – January 2024</span>
+        <div>
+          <span class="role">Senior Associate</span>
+          <span class="org">McKinsey &amp; Company, Zurich</span>
+          <ul>
+            <li><strong>Multinational medtech, consumer-health product build</strong> (2022 – 2023). Led the
+              product workstream end-to-end for a biosensor with an AI-coaching app, from
+              consumer-needs analysis through go-to-market. Analyzed 40,000 consumer data
+              points and led three teams in parallel plus 6+ client team members across the
+              US, Europe, and India. Presented the product vision to the Chairman and CEO of a
+              ~$200bn medical-device company. The product launched in the UK in early 2024 and
+              in the US in September 2024.</li>
+            <li><strong>West African beverage bottler, cost and operational resilience</strong> (2023 – 2024).
+              Co-led a programme of ~7 parallel workstreams in Lagos, Nigeria, across
+              manufacturing operations, route-to-market, organization, and cost, amid high
+              inflation and currency depreciation.</li>
+            <li><strong>Independent ultra-luxury watchmaker, growth strategy</strong> (2023). Ran a 4-week
+              growth strategy with 4–5 workstreams, target ~40% growth over five years, working
+              with the CEO and the full leadership team.</li>
+            <li><strong>Global insurer, incoming Head of Health onboarding</strong> (2023). Designed and
+              delivered an onboarding programme with deep dives on managed care,
+              payor-provider integration, and digital health.</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </footer>
+
+      <div class="cv-item">
+        <span class="when">September 2019 – April 2022</span>
+        <div>
+          <span class="role">Educational leave</span>
+          <span class="org">McKinsey &amp; Company, Zurich</span>
+          <p>Leave for the PhD, with selected engagements.</p>
+          <ul>
+            <li><strong>IMD, Center for Future Readiness</strong> (2019 – 2022). Built a text-analysis tool
+              that identifies cognitive constructs in companies and executives, and helped
+              promote and scale the newly founded center.</li>
+            <li><strong>Premium chocolate manufacturer.</strong> Supported an indirect-spend reduction
+              programme.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <span class="when">June 2017 – September 2019</span>
+        <div>
+          <span class="role">Fellow and Associate</span>
+          <span class="org">McKinsey &amp; Company, Zurich</span>
+          <ul>
+            <li><strong>Swiss digital attacker telco.</strong> Product Owner for the invoicing and self-help
+              journeys. Result: higher NPS, shorter resolution times, fewer complaints, fewer
+              cancellations.</li>
+            <li><strong>Swiss retail cooperative, cost</strong> (2018). Designed a full cost programme across
+              direct and indirect spend, with scenarios of up to ~40% lower indirect spend and
+              ~10% lower direct spend.</li>
+            <li><strong>German media and broadcasting company</strong> (2017 – 2018). Ran an end-to-end
+              IT-process diagnostic. Result: ~20% cost reduction for the same output.</li>
+            <li><strong>Consumer goods, growth method</strong> (2017 – 2019). Co-developed a method to find
+              granular growth pockets by product and geography. Several consumer-goods clients
+              applied it, and senior partners presented it at C-level events in London.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="cv-h tight"><span>3</span><span>Other experience</span></h2>
+
+      <div class="cv-item">
+        <span class="when">2019 – 2022</span>
+        <div>
+          <span class="role">Fellow and Senior Advisor</span>
+          <span class="org">IMD, Center for Future Readiness, Lausanne</span>
+          <p>Past affiliation, alongside the McKinsey educational leave.</p>
+        </div>
+      </div>
+      <div class="cv-item">
+        <span class="when">2013 – 2015</span>
+        <div>
+          <span class="role">Internships</span>
+          <span class="org">UBS · Volkswagen Group · Deloitte</span>
+          <p>Investment Banking, Equity Capital Markets, UBS, Zurich (2015). Electric Vehicle
+            Strategy, Volkswagen Group, Beijing (2014). Technology Consulting, Deloitte,
+            London (2013 – 2014).</p>
+        </div>
+      </div>
+      <div class="cv-item">
+        <span class="when">ongoing</span>
+        <div>
+          <span class="role">Informal advisor</span>
+          <span class="org">Several early-stage startups, Zurich</span>
+          <p>Advises several early-stage startups in AI and digital health.</p>
+        </div>
+      </div>
+
+      <h2 class="cv-h tight"><span>4</span><span>Education</span></h2>
+
+      <div class="cv-item">
+        <span class="when">2019 – 2022</span>
+        <div>
+          <span class="role">Dr. rer. pol., Strategic Management / Behavioral Strategy, magna cum laude</span>
+          <span class="org">Universität Passau</span>
+          <p>Dissertation: "The Social-Psychological Interface Between Firms and Infomediaries:
+            Essays on the Roles of Framing, Flattery, and Technological Discontinuities."</p>
+        </div>
+      </div>
+      <div class="cv-item">
+        <span class="when">2015 – 2017</span>
+        <div>
+          <span class="role">Master of Arts, Quantitative Economics and Finance</span>
+          <span class="org">Universität St.Gallen (HSG)</span>
+          <p>Grade 5.6 of 6.0, top of class. Thesis: "Explaining the Performance of Index
+            Option Put-Write Strategies."</p>
+        </div>
+      </div>
+      <div class="cv-item">
+        <span class="when">2016</span>
+        <div>
+          <span class="role">Visiting student, full-time MBA programme</span>
+          <span class="org">University of Toronto, Rotman School of Management</span>
+          <p>GPA 4.3, top of class.</p>
+        </div>
+      </div>
+      <div class="cv-item">
+        <span class="when">2011</span>
+        <div>
+          <span class="role">Visiting undergraduate student, Economics</span>
+          <span class="org">Columbia University in the City of New York</span>
+        </div>
+      </div>
+      <div class="cv-item">
+        <span class="when">2009 – 2014</span>
+        <div>
+          <span class="role">Bachelor of Arts, Business Administration and Economics</span>
+          <span class="org">Universität St.Gallen (HSG)</span>
+        </div>
+      </div>
+
+      <h2 class="cv-h"><span>5</span><span>Awards</span></h2>
+      <ul class="cv-list">
+        <li>Most Inspirational Paper, Behavioral Strategy track, EURAM 2022</li>
+        <li>PhD magna cum laude, Universität Passau, 2022</li>
+        <li>Top of class, HSG Master in Quantitative Economics and Finance, 2017</li>
+        <li>Top of class, Rotman visiting MBA programme, 2016</li>
+      </ul>
+
+      <h2 class="cv-h"><span>6</span><span>Certifications</span></h2>
+      <ul class="cv-list">
+        <li>Certified Scrum Master (CSM)</li>
+        <li>Certified Scrum Product Owner (CSPO)</li>
+      </ul>
+
+      <h2 class="cv-h"><span>7</span><span>Selected publications</span></h2>
+      <div class="refs">
+        <span>[1]</span>
+        <span>Graf-Vlachy, L., König, A., Banfield, R., Rauch, M., &amp; Boutalikakis, A. (2023).
+          The innovator's media dilemma: How journalists cover incumbents' adoption of
+          discontinuous technologies. <i>Journal of Product Innovation Management.</i>
+          <a class="doi" href="https://doi.org/10.1111/jpim.12651">doi.org/10.1111/jpim.12651</a></span>
+        <span>[2]</span>
+        <span>Schill, A.-K., Boutalikakis, A., Hawighorst, F., Graf-Vlachy, L., &amp; König,
+          A. S. (2022). Analyst flattery, CEO narcissism, and CEO communication
+          specificity. <i>Academy of Management Proceedings, 2022(1).</i>
+          <a class="doi" href="https://doi.org/10.5465/AMBPP.2022.289">doi.org/10.5465/AMBPP.2022.289</a></span>
+        <span>[3]</span>
+        <span>Christ, L., Amiriparian, S., Hawighorst, F., Schill, A.-K., Boutalikakis, A.,
+          Graf-Vlachy, L., König, A., &amp; Schuller, B. W. (2024). This paper had the
+          smartest reviewers: Flattery detection utilising an audio-textual
+          transformer-based approach. <i>INTERSPEECH 2024.</i>
+          <a class="doi" href="https://arxiv.org/abs/2406.17667">arxiv.org/abs/2406.17667</a></span>
+        <span>[4]</span>
+        <span>Yu, H., Shan, J., Boutalikakis, A., Tempel, L., &amp; Balian, Z. (March 2022).
+          What makes a company "future ready"? <i>Harvard Business Review.</i>
+          <a class="doi" href="https://hbr.org/2022/03/what-makes-a-company-future-ready">hbr.org</a></span>
+        <span>[5]</span>
+        <span>Yu, H., &amp; Boutalikakis, A. (January 2021). Changing the rules to control
+          monopolies could see the end of Facebook domination. <i>The Conversation.</i>
+          <a class="doi" href="https://theconversation.com/changing-the-rules-to-control-monopolies-could-see-the-end-of-facebook-domination-149940">theconversation.com</a></span>
+        <span>[6]</span>
+        <span>Espel, P., Rupprecht, F., Herbener, M., Schröpfer, C., Venus, A.,
+          Boutalikakis, A., et al. (April 2020). How industrial companies can cut their
+          indirect costs fast. <i>McKinsey &amp; Company.</i>
+          <a class="doi" href="https://www.mckinsey.com/industries/automotive-and-assembly/our-insights/how-industrial-companies-can-cut-their-indirect-costs-fast">mckinsey.com</a></span>
+      </div>
+      <p style="margin:12px 0 0;font-size:15.5px">See the full list on the
+        <a class="link" href="/writing/">Writing page</a>.</p>
+
+      <h2 class="cv-h tight"><span>8</span><span>Teaching and speaking</span></h2>
+      <div class="cv-item">
+        <span class="when">Winter term 26/27</span>
+        <div>
+          <span class="role">Cost Management in Practice: Real-life evidence from the M&amp;A context</span>
+          <span class="org">Guest lecture, Managerial Finance</span>
+          <p>Prof. Dr. Lorenz Graf-Vlachy</p>
+        </div>
+      </div>
+      <ul class="cv-list" style="margin-top:12px">
+        <li>Co-organized a pan-European payor-provider-integration seminar for C-suite
+          attendees (November 2025)</li>
+        <li>Moderated a Swiss InsurTech panel, co-hosted by McKinsey and the Swiss InsurTech
+          Hub</li>
+        <li>Research presentations at the Academy of Management, EURAM, and INTERSPEECH</li>
+      </ul>
+
+      <h2 class="cv-h tight"><span>9</span><span>Capabilities</span></h2>
+      <div class="kv">
+        <span class="k">Product and business building</span>
+        <span class="v">Digital product ownership, MVP definition and prototyping, user research and
+          customer-journey mapping, cross-functional team leadership.</span>
+      </div>
+      <div class="kv">
+        <span class="k">Applied AI and technology</span>
+        <span class="v">Agentic tooling, MCP servers, data pipelines and evals, AI strategy, transformer-based
+          text and audio analytics, Python, R, MATLAB, Tableau, econometrics.</span>
+      </div>
+      <div class="kv">
+        <span class="k">Strategy and transformation</span>
+        <span class="v">Post-merger IT integration, cost and operating-model programmes, agile
+          transformation at scale, cybersecurity governance, growth and pricing strategy.</span>
+      </div>
+      <div class="kv">
+        <span class="k">Corporate finance and transactions</span>
+        <span class="v">M&amp;A evaluation on the buy side and sell side, carve-outs and divestitures,
+          equity stories, market and target screening.</span>
+      </div>
+      <div class="kv">
+        <span class="k">Domains</span>
+        <span class="v">Insurance (multi-line, life, P&amp;C, health), healthcare (payor-provider
+          integration, managed care, supplementary insurance), consumer (health, luxury,
+          retail, beverages), telecommunications, media, energy.</span>
+      </div>
+      <div class="kv">
+        <span class="k">Leadership</span>
+        <span class="v">C-suite and board-level advisory, workshops with 10+ senior stakeholders,
+          multicultural teams across Europe, the US, India, and Africa, coaching and
+          apprenticeship.</span>
+      </div>
+
+      <h2 class="cv-h tight"><span>10</span><span>Languages and interests</span></h2>
+      <div class="kv">
+        <span class="k">Languages</span>
+        <span class="v">German (native) · Swiss German (fluent) · English (fluent) · French (conversational) · Greek (conversational)</span>
+      </div>
+      <div class="kv">
+        <span class="k">Interests</span>
+        <span class="v">Contemporary art and collecting · Classical music and piano ·
+          CrossFit, skiing, running, yoga, Pilates · Travel and food</span>
+      </div>
+
+      <p class="cv-print">
+        <button class="btn" onclick="window.print()">[ Print / save as PDF ]</button>
+      </p>
+
+    </main>
+
+    <footer>
+      <div class="fn-rule"></div>
+      <p class="fn">Contact: <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a> ·
+        <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a> ·
+        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a> ·
+        <a href="https://github.com/aboutali">GitHub</a>. <a href="https://github.com/aboutali/aboutali.github.io">Source</a>, no frameworks, no build.</p>
+      <p class="folio">6</p>
+    </footer>
+
+  </div></div>
 
 </body>
 </html>
