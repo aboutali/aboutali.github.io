@@ -154,3 +154,12 @@ sup{font-size:11px}
 .gb-entry:last-child{margin-bottom:0}
 .gb-date{font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-left:6px}
 .gb-empty{margin:0;font-style:italic;color:var(--graphite)}
+
+/* Match the approved mockups: their 880px max-width bounds the sheet's
+   content box, with padding outside it. */
+.sheet{box-sizing:content-box}
+/* The keywords line is set ragged-right in the mockups, not justified. */
+.keywords{text-align:left;hyphens:manual}
+/* Below 560px rows collapse to two columns; the header row would stack its
+   labels as orphan lines, so hide it there. */
+@media (max-width:560px){.table .row.head{display:none}}
