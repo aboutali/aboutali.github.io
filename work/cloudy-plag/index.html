@@ -17,79 +17,62 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://aboutali.github.io/work/cloudy-plag/">
-  <link rel="preload" href="/assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/newsreader-roman-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/site.css">
-  <style>
-    .facts{display:grid;gap:14px 40px;grid-template-columns:repeat(2,1fr);margin:26px 0 0;
-      padding:22px 0;border-block:1px solid var(--hair);max-width:760px}
-    @media(max-width:640px){.facts{grid-template-columns:1fr}}
-    .facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-deep)}
-    .facts dd{margin:6px 0 0;font-size:15.5px;color:#2c2a24}
-    .facts .sep{color:var(--hair);margin:0 6px}
-    .status-up{color:var(--up)} .status-down{color:var(--down)}
-    .cover{display:block;width:100%;height:auto;margin:8px 0 0;border:1px solid var(--hair);border-radius:10px}
-    .back{font-family:var(--mono);font-size:13px;text-decoration:none}
-    .back + .back{margin-left:18px}
-  </style>
 </head>
 <body>
 
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <div class="wrap row">
-      <a class="wm" href="../../" aria-label="Angelo Boutalikakis · home">
-        <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
-        <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
-      </a>
-      <nav class="topnav" aria-label="Site">
-        <a href="../../#work" aria-current="page">Work</a>
-        <a href="../../about/">About</a>
-        <a href="../../writing/">Writing</a>
-        <a href="../../cv/">CV</a>
-        <a href="https://github.com/aboutali">GitHub</a>
+  <div class="desk"><div class="sheet">
+    <header class="runhead">
+      <a href="/">A. Boutalikakis</a>
+      <nav aria-label="Site">
+        <a href="/#work" aria-current="page">work</a>
+        <a href="/about/">about</a>
+        <a href="/writing/">writing</a>
+        <a href="/cv/">cv</a>
+        <a href="https://github.com/aboutali">github</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main id="main" class="wrap" tabindex="-1">
+    <main id="main" tabindex="-1">
 
-    <div class="page-head">
-      <div class="kicker">Work · 05</div>
-      <h1>cloudy-plag</h1>
-      <p class="lede">Documents credibility issues in dissertations.</p>
-    </div>
+      <header class="titleblock">
+        <p class="kicker">Project 5 of 6</p>
+        <h1 style="margin:12px 0 0;font-family:var(--font-mono);font-weight:500;font-size:clamp(28px,5vw,46px);line-height:1.1;letter-spacing:-.02em">cloudy-plag</h1>
+        <p class="subtitle">Documents credibility issues in dissertations.</p>
+      </header>
 
-    <img class="cover" src="cover.png" width="1200" height="750" loading="lazy"
-      alt="Typographic cover card for cloudy-plag: project name, offline status, and its Research / Wiki / Integrity tags on a paper background with a cobalt rule.">
+      <figure style="margin:16px 0 0">
+        <img src="cover.png" width="1200" height="750" loading="lazy"
+          style="display:block;width:100%;height:auto;border:.5px solid var(--ink);filter:grayscale(1)"
+          alt="Typographic cover card for cloudy-plag: project name, offline status, and its Research / Wiki / Integrity tags on a paper background with a cobalt rule.">
+        <figcaption class="caption" style="margin-top:10px;margin-bottom:0"><b>Figure 1:</b> Cover card for cloudy-plag.</figcaption>
+      </figure>
 
-    <dl class="facts">
-      <div><dt>Stack</dt><dd>static site, GitHub Issues as CMS</dd></div>
-      <div><dt>Links</dt><dd><a href="https://aboutali.github.io/cloudy-plag/">Live site</a><span class="sep">·</span><a href="https://github.com/aboutali/cloudy-plag">Source</a></dd></div>
-    </dl>
-
-    <p class="block" style="padding-top:0">
-      <a class="back" href="../../#work">← All projects</a>
-      <a class="back" href="../cleardoc/">Next project →</a>
-    </p>
-
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div class="f-contact">
-        <span class="f-k">Contact</span>
-        <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a><span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a><span class="sep">·</span>
-        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a><span class="sep">·</span>
-        <a href="https://github.com/aboutali">GitHub</a>
+      <p class="caption"><b>Table 1:</b> Facts.</p>
+      <div class="table facts">
+        <div class="row"><span>Stack</span><span>static site, GitHub Issues as CMS</span></div>
+        <div class="row"><span>Live</span><span><a class="link" href="https://aboutali.github.io/cloudy-plag/">Live site</a></span></div>
+        <div class="row"><span>Source</span><span><a class="link" href="https://github.com/aboutali/cloudy-plag">Source</a></span></div>
       </div>
-      <div class="row">
-        <span><a href="../../">← Home</a></span>
-        <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
+
+      <div class="mono" style="margin-top:40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <a href="/#work">&larr; All projects</a>
+        <a href="../cleardoc/">Next project: cleardoc &rarr;</a>
       </div>
-    </div>
-  </footer>
+
+    </main>
+
+    <footer>
+      <div class="mono" style="margin-top:var(--s-8);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:.5px solid var(--ink);padding-top:12px">
+        <a href="/">&larr; Home</a>
+        <span style="color:var(--graphite)"><a href="https://github.com/aboutali/aboutali.github.io" style="color:var(--graphite)">Source</a> &middot; no frameworks, no build</span>
+      </div>
+      <p class="folio">3</p>
+    </footer>
+  </div></div>
 
 </body>
 </html>
