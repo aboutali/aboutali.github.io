@@ -113,14 +113,17 @@ def check_markers():
     failures = []
     index_path = os.path.join(ROOT, "index.html")
     text = open(index_path, encoding="utf-8").read()
-    repos = [
-        "life-improver",
-        "bxl_eda_worker",
-        "fit-schedule",
-        "cloudy-plag",
-        "edition-guru",
-        "iKoyomi",
-    ]
+
+    # Derived from generate.py's PROJECTS map (not hardcoded here) so the two
+    # stay in sync: whatever repo generate.py knows how to light an LED for
+    # is exactly what index.html must carry a marker for.
+    spec = importlib.util.spec_from_file_location(
+        "gen", os.path.join(ROOT, "scripts", "generate.py")
+    )
+    gen = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gen)
+    repos = list(gen.PROJECTS)
+
     for r in repos:
         if not re.search(r"<!--LED:%s-->.*?<!--/LED-->" % re.escape(r), text, re.S):
             failures.append("index.html: missing LED marker for %r" % r)
@@ -135,11 +138,6 @@ def check_markers():
     if failures:
         return failures  # no point simulating a rewrite on a broken page
 
-    spec = importlib.util.spec_from_file_location(
-        "gen", os.path.join(ROOT, "scripts", "generate.py")
-    )
-    gen = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(gen)
     gen.is_up = lambda u: True
     gen.latest_commit = lambda r: ("2026-01-01", "Test message")
     gen.gh_api = lambda p: [

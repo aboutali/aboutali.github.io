@@ -28,13 +28,21 @@ INDEX_REPO = "aboutali.github.io"  # this repo, where guestbook issues live
 
 # repo slug -> live URL the status dot pings
 PROJECTS = {
+    "gesundheit-mcp": "https://gesundheit-mcp-17797849230.europe-west6.run.app/mcp",
     "life-improver": "https://aboutali.github.io/life-improver/",
-    "bxl_eda_worker": "https://aboutali.github.io/bxl_eda_worker/",
-    "fit-schedule": "https://aboutali.github.io/fit-schedule/",
-    "cloudy-plag": "https://aboutali.github.io/cloudy-plag/",
     "edition-guru": "https://aboutali.github.io/edition-guru/",
-    "iKoyomi": "https://ikoyomi.netlify.app/",
+    "bxl_eda_worker": "https://aboutali.github.io/bxl_eda_worker/",
+    "cloudy-plag": "https://aboutali.github.io/cloudy-plag/",
+    "cleardoc": "https://aboutali.github.io/cleardoc/",
 }
+
+# gesundheit-mcp's GitHub repo is private: the workflow's token cannot read
+# its commits, so latest_commit() is skipped for it entirely (see
+# set_activity). Its endpoint also answers a plain GET with a 4xx because it
+# expects an MCP session, not a browser GET, so is_up() below treats any
+# status under 500 as "up" for this one URL instead of requiring 2xx/3xx.
+PRIVATE_REPOS = {"gesundheit-mcp"}
+LENIENT_STATUS_URLS = {PROJECTS["gesundheit-mcp"]: 500}
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDEX = os.environ.get("INDEX_PATH", os.path.join(ROOT, "index.html"))
@@ -46,6 +54,13 @@ def ascii_safe(s):
     """Render any non-ASCII as numeric HTML entities so the output stays pure
     ASCII and matches the page's iso-8859-1 charset regardless of input."""
     return s.encode("ascii", "xmlcharrefreplace").decode("ascii")
+
+
+def dedash(s):
+    """Strip em dashes from any text this script injects into the page (commit
+    messages, guestbook text). " — " (spaced) becomes ", "; any remaining
+    "—" becomes "-"."""
+    return s.replace(" — ", ", ").replace("—", "-")
 
 
 def gh_api(path):
@@ -60,14 +75,21 @@ def gh_api(path):
 
 
 def is_up(url):
-    """True if the URL responds with a non-error status."""
+    """True if the URL responds with a non-error status.
+
+    Most project URLs must answer 2xx/3xx. A few (see LENIENT_STATUS_URLS,
+    e.g. an MCP endpoint that expects a session rather than a browser GET)
+    only need to answer below a higher status ceiling: any response short of
+    a hard server failure counts as up.
+    """
+    max_status = LENIENT_STATUS_URLS.get(url, 400)
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     try:
         with urllib.request.urlopen(req, timeout=25) as r:
             code = getattr(r, "status", None) or r.getcode()
-            return 200 <= code < 400
-    except urllib.error.HTTPError:
-        return False  # 4xx/5xx (e.g. a Pages 404) means the link is down
+            return code < max_status
+    except urllib.error.HTTPError as e:
+        return e.code < max_status  # 4xx/5xx (e.g. a Pages 404) means down
     except Exception:
         return False
 
@@ -98,7 +120,7 @@ def latest_commit(repo):
     # bot/imported commits — degrade rather than crash the whole build.
     c = commits[0].get("commit") or {}
     lines = (c.get("message") or "").splitlines()
-    msg = lines[0].strip() if lines else ""
+    msg = dedash(lines[0].strip()) if lines else ""
     committer = c.get("committer") or {}
     date = (committer.get("date") or "")[:10]
     return date, msg
@@ -107,6 +129,8 @@ def latest_commit(repo):
 def set_activity(text):
     parts = []
     for repo in PROJECTS:
+        if repo in PRIVATE_REPOS:
+            continue  # token can't read a private repo's commits; no ticker entry
         lc = latest_commit(repo)
         if not lc:
             continue
@@ -138,10 +162,11 @@ def set_guestbook(text):
     for it in issues:
         if "pull_request" in it:
             continue
-        user = ascii_safe(html.escape(it.get("user", {}).get("login", "someone")))
+        user = ascii_safe(html.escape(dedash(it.get("user", {}).get("login", "someone"))))
         date = (it.get("created_at") or "")[:10]
-        # Hard sanitize: truncate raw, escape everything, keep line breaks, force ASCII.
-        body = (it.get("body") or "").strip()[:280]
+        # Hard sanitize: truncate raw, strip em dashes, escape everything,
+        # keep line breaks, force ASCII.
+        body = dedash((it.get("body") or "").strip()[:280])
         body = html.escape(body).replace("\r\n", "\n").replace("\n", "<br>")
         body = ascii_safe(body)
         if not body:
