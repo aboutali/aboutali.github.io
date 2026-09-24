@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>life-improver — Angelo Boutalikakis</title>
-  <meta name="description" content="An interactive framework that maps a full life into seven domains and 300+ practices drawn from psychology, philosophy, and contemplative traditions.">
+  <title>life-improver · Angelo Boutalikakis</title>
+  <meta name="description" content="Interactive framework of meaningful life practices from psychology, philosophy, and contemplative traditions.">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aboutali.github.io/work/life-improver/">
-  <meta property="og:title" content="life-improver — Angelo Boutalikakis">
-  <meta property="og:description" content="An interactive framework that maps a full life into seven domains and 300+ practices drawn from psychology, philosophy, and contemplative traditions.">
+  <meta property="og:title" content="life-improver · Angelo Boutalikakis">
+  <meta property="og:description" content="Interactive framework of meaningful life practices from psychology, philosophy, and contemplative traditions.">
   <meta property="og:image" content="https://aboutali.github.io/brand/assets/og-work-life-improver.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -38,7 +38,7 @@
 
   <header class="topbar">
     <div class="wrap row">
-      <a class="wm" href="../../" aria-label="Angelo Boutalikakis — home">
+      <a class="wm" href="../../" aria-label="Angelo Boutalikakis · home">
         <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
         <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
       </a>
@@ -55,49 +55,23 @@
   <main id="main" class="wrap" tabindex="-1">
 
     <div class="page-head">
-      <div class="kicker">Work · 01</div>
+      <div class="kicker">Work · 02</div>
       <h1>life-improver</h1>
-      <p class="lede">An interactive framework that maps a full life into seven domains and 300+
-        practices drawn from psychology, philosophy, and contemplative traditions.</p>
+      <p class="lede">Interactive framework of meaningful life practices from psychology,
+        philosophy, and contemplative traditions.</p>
     </div>
 
     <img class="cover" src="cover.png" width="1440" height="900" loading="lazy"
       alt="life-improver's Overview tab, showing the seven life domains (Body &amp; Vitality, Mind &amp; Learning, Work &amp; Craft, Relationships &amp; Love, Community &amp; Belonging, Inner World &amp; Meaning) as an expandable list.">
 
     <dl class="facts">
-      <div><dt>Role</dt><dd>Concept, design &amp; build</dd></div>
-      <div><dt>Stack</dt><dd>React · Vite · client-side only (assessments saved to <code>localStorage</code>, no backend)</dd></div>
-      <div><dt>Status</dt><dd><span class="status-up">●</span> Live</dd></div>
+      <div><dt>Stack</dt><dd>v2 UX with domain pills and a slider-based self-assessment</dd></div>
       <div><dt>Links</dt><dd><a href="https://aboutali.github.io/life-improver/">Live site</a><span class="sep">·</span><a href="https://github.com/aboutali/life-improver">Source</a></dd></div>
     </dl>
 
-    <div class="prose block" style="padding-top:0">
-      <h2>What it is</h2>
-      <p>Four tabs over one framework. Overview lays out the seven domains — Body, Mind, Work,
-        Relationships, Community, Inner Life, Play — and their 30 subcategories. Self-Assessment
-        has you rate each subcategory 1–10 on a slider and returns a dashboard: overall score,
-        per-domain averages, a tier distribution, and your strongest and weakest areas. Ideas to
-        Improve lists ten curated practices per subcategory. Sources indexes every theory, study,
-        and tradition the practices draw on, organized by discipline — among them Aristotle, the
-        Buddhist canon, Maslow, Frankl, Csikszentmihalyi, and the Harvard Study of Adult
-        Development.</p>
-
-      <h2>How it works</h2>
-      <p>No backend: the whole app is a static React/Vite build, and a self-assessment persists
-        entirely to the browser's <code>localStorage</code>. The framework itself is data, not
-        code — a single <code>framework.js</code> file holds the domains, subcategories, and
-        practices, so extending it is a pull request against a schema rather than a code change.</p>
-
-      <h2>Decisions &amp; trade-offs</h2>
-      <p>Two conventions keep that data file safe to extend: each domain's <code>id</code> is
-        load-bearing, since score keys are derived from it, so ids are never reused or renumbered;
-        and subcategory order is append-only, for the same reason — reordering would silently
-        strand a returning visitor's saved scores.</p>
-    </div>
-
     <p class="block" style="padding-top:0">
       <a class="back" href="../../#work">← All projects</a>
-      <a class="back" href="../bxl_eda_worker/">Next project →</a>
+      <a class="back" href="../edition-guru/">Next project →</a>
     </p>
 
   </main>
@@ -107,12 +81,12 @@
       <div class="f-contact">
         <span class="f-k">Contact</span>
         <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a><span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/angelo-boutalikakis/">LinkedIn</a><span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a><span class="sep">·</span>
+        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a><span class="sep">·</span>
         <a href="https://github.com/aboutali">GitHub</a>
       </div>
       <div class="row">
         <span><a href="../../">← Home</a></span>
-        <span class="tag">Curiosity meets rigor.</span>
         <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
       </div>
     </div>

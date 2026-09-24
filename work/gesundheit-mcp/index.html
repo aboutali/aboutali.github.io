@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>cloudy-plag · Angelo Boutalikakis</title>
-  <meta name="description" content="Documents credibility issues in dissertations.">
+  <title>gesundheit-mcp · Angelo Boutalikakis</title>
+  <meta name="description" content="MCP server on Swiss health-insurance and healthcare data.">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://aboutali.github.io/work/cloudy-plag/">
-  <meta property="og:title" content="cloudy-plag · Angelo Boutalikakis">
-  <meta property="og:description" content="Documents credibility issues in dissertations.">
-  <meta property="og:image" content="https://aboutali.github.io/brand/assets/og-work-cloudy-plag.png">
+  <meta property="og:url" content="https://aboutali.github.io/work/gesundheit-mcp/">
+  <meta property="og:title" content="gesundheit-mcp · Angelo Boutalikakis">
+  <meta property="og:description" content="MCP server on Swiss health-insurance and healthcare data.">
+  <meta property="og:image" content="https://aboutali.github.io/brand/assets/og-work-gesundheit-mcp.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://aboutali.github.io/work/cloudy-plag/">
+  <link rel="canonical" href="https://aboutali.github.io/work/gesundheit-mcp/">
   <link rel="preload" href="/assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/site.css">
   <style>
@@ -25,6 +25,8 @@
     @media(max-width:640px){.facts{grid-template-columns:1fr}}
     .facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-deep)}
     .facts dd{margin:6px 0 0;font-size:15.5px;color:#2c2a24}
+    .facts dd code{font-family:var(--mono);font-size:13.5px;word-break:break-all}
+    .facts .note{display:block;margin-top:4px;font-size:13px;color:var(--stone)}
     .facts .sep{color:var(--hair);margin:0 6px}
     .status-up{color:var(--up)} .status-down{color:var(--down)}
     .cover{display:block;width:100%;height:auto;margin:8px 0 0;border:1px solid var(--hair);border-radius:10px}
@@ -55,22 +57,24 @@
   <main id="main" class="wrap" tabindex="-1">
 
     <div class="page-head">
-      <div class="kicker">Work · 05</div>
-      <h1>cloudy-plag</h1>
-      <p class="lede">Documents credibility issues in dissertations.</p>
+      <div class="kicker">Work · 01</div>
+      <h1>gesundheit-mcp</h1>
+      <p class="lede">MCP server on Swiss health-insurance and healthcare data.</p>
     </div>
 
     <img class="cover" src="cover.png" width="1200" height="750" loading="lazy"
-      alt="Typographic cover card for cloudy-plag: project name, offline status, and its Research / Wiki / Integrity tags on a paper background with a cobalt rule.">
+      alt="Typographic cover card for gesundheit-mcp: project name, its lede, and its FastMCP, DuckDB, Cloud Run, and MCP tags on a paper background with a cobalt rule.">
 
     <dl class="facts">
-      <div><dt>Stack</dt><dd>static site, GitHub Issues as CMS</dd></div>
-      <div><dt>Links</dt><dd><a href="https://aboutali.github.io/cloudy-plag/">Live site</a><span class="sep">·</span><a href="https://github.com/aboutali/cloudy-plag">Source</a></dd></div>
+      <div><dt>Stack</dt><dd>FastMCP, DuckDB ETL, Docker, Google Cloud Run; provenance per observation; guarded SQL escape hatch</dd></div>
+      <div><dt>Built</dt><dd>September 2026</dd></div>
+      <div><dt>Endpoint</dt><dd><code>https://gesundheit-mcp-17797849230.europe-west6.run.app/mcp</code>
+        <span class="note">This is an MCP endpoint for MCP clients, not a page to open in a browser.</span></dd></div>
     </dl>
 
     <p class="block" style="padding-top:0">
       <a class="back" href="../../#work">← All projects</a>
-      <a class="back" href="../cleardoc/">Next project →</a>
+      <a class="back" href="../life-improver/">Next project →</a>
     </p>
 
   </main>

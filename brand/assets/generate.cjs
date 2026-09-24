@@ -44,7 +44,7 @@ function wordmark(onBlue) {
     <div style="color:${first}">Angelo</div><div style="color:${sur}">Boutalikakis</div></div>`;
 }
 // Generic 1200x630 share card. `kicker` is the mono top-left label (rendered
-// uppercase via CSS, so pass normal casing). `serifLine` is the bottom-left
+// uppercase via text-transform, so pass normal casing). `serifLine` is the bottom-left
 // Newsreader-italic context line — long project one-liners auto-shrink and
 // wrap so they never overflow the fixed-height card.
 function ogCard(kicker, serifLine) {
@@ -65,18 +65,18 @@ function ogCard(kicker, serifLine) {
 }
 
 const WORK_CARDS = [
+  { slug: 'gesundheit-mcp',
+    line: 'MCP server on Swiss health-insurance and healthcare data.' },
   { slug: 'life-improver',
-    line: 'An interactive framework that maps a full life into seven domains and 300+ practices drawn from psychology, philosophy, and contemplative traditions.' },
-  { slug: 'bxl_eda_worker',
-    line: 'A scheduled worker that compiles a daily digest of EU foreign-policy, Middle East, and sanctions news from Brussels.' },
-  { slug: 'fit-schedule',
-    line: 'A web app that aggregates bookable fitness classes from three Zurich studios into one live schedule.' },
-  { slug: 'cloudy-plag',
-    line: 'A VroniPlag-style wiki that documents — without accusing — credibility issues in public figures’ dissertations across plagiarism, originality, and methodological rigor.' },
+    line: 'Interactive framework of meaningful life practices from psychology, philosophy, and contemplative traditions.' },
   { slug: 'edition-guru',
-    line: 'A newsletter bot that scrapes art-edition galleries for new drops, enriches them with LiveArt market data and Claude-written notes, and emails subscribers.' },
-  { slug: 'iKoyomi',
-    line: 'A minimalist Zen PWA that presents Japan’s 72 microseasons as full-screen scenes, each with kanji, a poetic line, and a daily contemplation.' },
+    line: 'Scrapes art print galleries, enriches new drops with market data and LLM descriptions, emails a newsletter.' },
+  { slug: 'bxl_eda_worker',
+    line: 'Daily digest of EU foreign-policy, Middle East, and sanctions news for a Swiss reader.' },
+  { slug: 'cloudy-plag',
+    line: 'Documents credibility issues in dissertations.' },
+  { slug: 'cleardoc',
+    line: 'Optimizes invoices for Swiss healthcare practitioners.' },
 ];
 
 const JOBS = [
@@ -88,14 +88,14 @@ const JOBS = [
   { f: 'avatar-512.png',        html: doc(icon(512, 114, 'AB', 210)) },
   { f: 'wordmark-light.png',    html: doc(wordmark(false)) },
   { f: 'wordmark-reversed.png', html: doc(wordmark(true)) },
-  { f: 'og-image.png',          html: doc(ogCard('Angelo Boutalikakis &mdash; Selected work', 'Curiosity meets rigor.')) },
-  { f: 'og-about.png',          html: doc(ogCard('Angelo Boutalikakis &mdash; About', 'A curious mind that ships.')) },
-  { f: 'og-writing.png',        html: doc(ogCard('Angelo Boutalikakis &mdash; Writing', 'Notes on building small things.')) },
-  { f: 'og-cv.png',             html: doc(ogCard('Angelo Boutalikakis &mdash; Curriculum Vitae', 'Curiosity meets rigor.')) },
-  { f: 'og-post-hello-world.png', html: doc(ogCard('Angelo Boutalikakis &mdash; Writing', 'Hello, world &mdash; what this site is')) },
+  { f: 'og-image.png',          html: doc(ogCard('Angelo Boutalikakis &middot; Selected work', 'I build and ship tools with AI, from scheduled workers to an MCP server on Swiss health data.')) },
+  { f: 'og-about.png',          html: doc(ogCard('Angelo Boutalikakis &middot; About', 'Operator, product builder, and transformation leader.')) },
+  { f: 'og-writing.png',        html: doc(ogCard('Angelo Boutalikakis &middot; Writing', 'Research, publications, and talks.')) },
+  { f: 'og-cv.png',             html: doc(ogCard('Angelo Boutalikakis &middot; Curriculum Vitae', 'Engagement Manager, McKinsey &amp; Company.')) },
+  { f: 'og-post-hello-world.png', html: doc(ogCard('Angelo Boutalikakis &middot; Writing', 'Hello, world &middot; what this site is')) },
   ...WORK_CARDS.map(w => ({
     f: `og-work-${w.slug}.png`,
-    html: doc(ogCard('Angelo Boutalikakis &mdash; Work', w.line)),
+    html: doc(ogCard('Angelo Boutalikakis &middot; Work', w.line)),
   })),
 ];
 

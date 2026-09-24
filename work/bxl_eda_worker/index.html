@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>bxl_eda_worker — Angelo Boutalikakis</title>
-  <meta name="description" content="A scheduled worker that compiles a daily digest of EU foreign-policy, Middle East, and sanctions news from Brussels.">
+  <title>bxl_eda_worker · Angelo Boutalikakis</title>
+  <meta name="description" content="Daily digest of EU foreign-policy, Middle East, and sanctions news for a Swiss reader.">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aboutali.github.io/work/bxl_eda_worker/">
-  <meta property="og:title" content="bxl_eda_worker — Angelo Boutalikakis">
-  <meta property="og:description" content="A scheduled worker that compiles a daily digest of EU foreign-policy, Middle East, and sanctions news from Brussels.">
+  <meta property="og:title" content="bxl_eda_worker · Angelo Boutalikakis">
+  <meta property="og:description" content="Daily digest of EU foreign-policy, Middle East, and sanctions news for a Swiss reader.">
   <meta property="og:image" content="https://aboutali.github.io/brand/assets/og-work-bxl_eda_worker.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -38,7 +38,7 @@
 
   <header class="topbar">
     <div class="wrap row">
-      <a class="wm" href="../../" aria-label="Angelo Boutalikakis — home">
+      <a class="wm" href="../../" aria-label="Angelo Boutalikakis · home">
         <span class="wm-full">Angelo<span class="sur"> Boutalikakis</span><span class="dot">.</span></span>
         <span class="wm-mini">A<span class="sur">B</span><span class="dot">.</span></span>
       </a>
@@ -55,49 +55,23 @@
   <main id="main" class="wrap" tabindex="-1">
 
     <div class="page-head">
-      <div class="kicker">Work · 02</div>
+      <div class="kicker">Work · 04</div>
       <h1>bxl_eda_worker</h1>
-      <p class="lede">A scheduled worker that compiles a daily digest of EU foreign-policy, Middle
-        East, and sanctions news from Brussels.</p>
+      <p class="lede">Daily digest of EU foreign-policy, Middle East, and sanctions news for a
+        Swiss reader.</p>
     </div>
 
     <img class="cover" src="cover.png" width="1440" height="900" loading="lazy"
       alt="The bxl_eda_worker digest homepage: EU Foreign Policy &amp; Sanctions Digest with a headline synthesis paragraph and item counts by category.">
 
     <dl class="facts">
-      <div><dt>Role</dt><dd>Concept, design &amp; build</dd></div>
-      <div><dt>Stack</dt><dd>Python · RSS + HTML scraping, optional headless Chromium (Playwright) · GitHub Actions cron · Claude (Opus) enrichment</dd></div>
-      <div><dt>Status</dt><dd><span class="status-up">●</span> Live</dd></div>
+      <div><dt>Stack</dt><dd>scheduled worker, static-site generation</dd></div>
       <div><dt>Links</dt><dd><a href="https://aboutali.github.io/bxl_eda_worker/">Live site</a><span class="sep">·</span><a href="https://github.com/aboutali/bxl_eda_worker">Source</a></dd></div>
     </dl>
 
-    <div class="prose block" style="padding-top:0">
-      <h2>What it is</h2>
-      <p>A daily digest of EU foreign-policy, Middle East, and sanctions developments, built for a
-        Swiss-confederation reader — a SECO/EDA lens on EU affairs. Each run polls EU institutions
-        (EEAS, the Council of the EU, the Commission, Parliament committees and delegations),
-        Brussels and Swiss press, international press, and think tanks, then writes a dated
-        markdown digest with a top-of-page synthesis headline.</p>
-
-      <h2>How it works</h2>
-      <p>Items are filtered by topic and flagged for Swiss relevance — mentions of Switzerland,
-        SECO, FDFA/EDA, neutrality, or any sanctions item, since SECO routinely rules on alignment
-        with new EU restrictive measures. A GitHub Actions workflow runs it daily at a
-        deliberately off-the-hour 04:37 UTC — scheduled runs queue on shared runners and the
-        <code>:00</code> slots were costing hours — and commits a static site to <code>docs/</code>,
-        deduplicating against a 90-day SQLite store.</p>
-
-      <h2>Decisions &amp; trade-offs</h2>
-      <p>The project's own notes are candid about what isn't wired up yet: Swiss federal sites
-        (admin.ch, SECO) hydrate their listings via JS the scraper can't yet reach, Euractiv sits
-        behind a bot-fight challenge and was disabled rather than fought, and the topic classifier
-        is keyword-based, not semantic — deliberate scope cuts, covered meanwhile by NZZ, Tagi,
-        SRF, and Le Temps carrying the same announcements.</p>
-    </div>
-
     <p class="block" style="padding-top:0">
       <a class="back" href="../../#work">← All projects</a>
-      <a class="back" href="../fit-schedule/">Next project →</a>
+      <a class="back" href="../cloudy-plag/">Next project →</a>
     </p>
 
   </main>
@@ -107,12 +81,12 @@
       <div class="f-contact">
         <span class="f-k">Contact</span>
         <a href="mailto:angelo@boutalikakis.com">angelo@boutalikakis.com</a><span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/angelo-boutalikakis/">LinkedIn</a><span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a><span class="sep">·</span>
+        <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a><span class="sep">·</span>
         <a href="https://github.com/aboutali">GitHub</a>
       </div>
       <div class="row">
         <span><a href="../../">← Home</a></span>
-        <span class="tag">Curiosity meets rigor.</span>
         <span><a href="https://github.com/aboutali/aboutali.github.io">Source</a> · no frameworks, no build</span>
       </div>
     </div>
