@@ -30,7 +30,22 @@
     .cv-header{padding:clamp(44px,7vw,72px) 0 28px}
     .cv-header h1{font-size:clamp(34px,5.6vw,52px)}
     .cv-header .subtitle{margin-top:12px;font-size:20px}
-    .cv-contact{margin:18px 0 0;display:flex;justify-content:center;flex-wrap:wrap;
+    /* Name block flush left, portrait on the right. */
+    .cv-header{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;text-align:left}
+    .cv-header .cv-id{min-width:0}
+    .cv-header .portrait{margin:0;flex:none}
+    /* Phones: portrait beside the name and title, contact lines full width below. */
+    @media (max-width:560px){
+      .cv-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 16px;align-items:start}
+      .cv-header .cv-id{display:contents}
+      .cv-header .cv-id > *{grid-column:1;margin-top:0;margin-bottom:0}
+      .cv-header .cv-id > h1{margin-top:8px}
+      .cv-header .cv-id > .subtitle{margin-top:10px}
+      .cv-header .cv-id > .cv-contact{margin-top:16px}
+      .cv-header .cv-id > .cv-contact{grid-column:1 / -1}
+      .cv-header .portrait{grid-column:2;grid-row:1 / span 3;width:84px;height:105px;margin-top:4px}
+    }
+    .cv-contact{margin:18px 0 0;display:flex;justify-content:flex-start;flex-wrap:wrap;
       gap:4px 14px;font-family:var(--font-mono);font-size:12.5px;color:var(--graphite)}
     .cv-contact a{color:var(--graphite)}
 
@@ -92,6 +107,7 @@
     <main id="main" tabindex="-1">
 
       <header class="titleblock cv-header">
+        <div class="cv-id">
         <p class="kicker">Curriculum vitae</p>
         <h1>Dr. Angelo Boutalikakis</h1>
         <p class="subtitle">Operator, product builder, and transformation leader.</p>
@@ -102,6 +118,8 @@
           <a href="https://scholar.google.com/citations?user=4E9KeKYAAAAJ">Google Scholar</a>
           <a href="https://github.com/aboutali">github.com/aboutali</a>
         </p>
+        </div>
+        <img class="portrait" src="../assets/headshot.jpg" width="120" height="150" alt="Portrait of Angelo Boutalikakis.">
       </header>
 
       <h2 class="cv-h first"><span>1</span><span>Profile</span></h2>
