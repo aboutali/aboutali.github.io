@@ -1,5 +1,5 @@
 name: "Sign the guestbook"
-description: "Leave a note that shows up on aboutali.github.io/aboutali/"
+description: "Leave a note that shows up on www.boutalikakis.com"
 title: "A note for Angelo"
 labels: ["guestbook"]
 body:

@@ -1,4 +1,4 @@
-# Academic, design system for aboutali.github.io
+# Academic, design system for www.boutalikakis.com
 
 The personal site of Dr. Angelo Boutalikakis (operator, product builder,
 transformation leader, Zurich). This is the v4 identity, chosen over the

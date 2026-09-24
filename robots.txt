@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aboutali.github.io/sitemap.xml
+Sitemap: https://www.boutalikakis.com/sitemap.xml
