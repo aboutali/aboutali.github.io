@@ -1,14 +1,14 @@
 <!-- When adding a page or post, add its <url> here (see backlog plan 01) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aboutali.github.io/</loc></url>
-  <url><loc>https://aboutali.github.io/about/</loc></url>
-  <url><loc>https://aboutali.github.io/writing/</loc></url>
-  <url><loc>https://aboutali.github.io/writing/hello-world/</loc></url>
-  <url><loc>https://aboutali.github.io/cv/</loc></url>
-  <url><loc>https://aboutali.github.io/work/gesundheit-mcp/</loc></url>
-  <url><loc>https://aboutali.github.io/work/life-improver/</loc></url>
-  <url><loc>https://aboutali.github.io/work/edition-guru/</loc></url>
-  <url><loc>https://aboutali.github.io/work/bxl_eda_worker/</loc></url>
-  <url><loc>https://aboutali.github.io/work/cloudy-plag/</loc></url>
-  <url><loc>https://aboutali.github.io/work/cleardoc/</loc></url>
+  <url><loc>https://www.boutalikakis.com/</loc></url>
+  <url><loc>https://www.boutalikakis.com/about/</loc></url>
+  <url><loc>https://www.boutalikakis.com/writing/</loc></url>
+  <url><loc>https://www.boutalikakis.com/writing/hello-world/</loc></url>
+  <url><loc>https://www.boutalikakis.com/cv/</loc></url>
+  <url><loc>https://www.boutalikakis.com/work/gesundheit-mcp/</loc></url>
+  <url><loc>https://www.boutalikakis.com/work/life-improver/</loc></url>
+  <url><loc>https://www.boutalikakis.com/work/edition-guru/</loc></url>
+  <url><loc>https://www.boutalikakis.com/work/bxl_eda_worker/</loc></url>
+  <url><loc>https://www.boutalikakis.com/work/cloudy-plag/</loc></url>
+  <url><loc>https://www.boutalikakis.com/work/cleardoc/</loc></url>
 </urlset>

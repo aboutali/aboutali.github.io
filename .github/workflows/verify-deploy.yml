@@ -80,7 +80,7 @@ jobs:
             # deploys where the build API looks fine but a page 404s).
             ok=0
             for path in "/" "/about/" "/writing/" "/cv/"; do
-              code="$(curl -s -o /dev/null -w '%{http_code}' "${SITE}${path}")"
+              code="$(curl -sL -o /dev/null -w '%{http_code}' "${SITE}${path}")"
               echo "GET ${SITE}${path} -> $code"
               if [ "$code" != "200" ]; then
                 echo "::warning::${SITE}${path} returned $code, expected 200"

@@ -1,6 +1,6 @@
 # aboutali/aboutali.github.io
 
-Source for [aboutali.github.io](https://aboutali.github.io/), the personal
+Source for [www.boutalikakis.com](https://www.boutalikakis.com/), the personal
 site of Dr. Angelo Boutalikakis. It holds a portfolio of projects plus About,
 Writing (research, publications, talks), and CV pages. All career facts come
 from Angelo's career context file; see `CLAUDE.md` for the content rules.
@@ -119,7 +119,8 @@ Two edits, then commit to `main`:
    fix the "Next project →" links on this page and its neighbors so the cycle
    stays intact. Add the page to `sitemap.xml`.
 
-Note: `aboutali.github.io/<repo>/` only resolves if that repo has GitHub
+Note: `aboutali.github.io/<repo>/` (which redirects to
+`www.boutalikakis.com/<repo>/`) only resolves if that repo has GitHub
 Pages enabled (Settings → Pages); until then the dot will show "down".
 Projects hosted elsewhere work too. The dot pings whatever URL is in
 `PROJECTS` (gesundheit-mcp points at its Cloud Run endpoint, which counts as
@@ -142,3 +143,12 @@ NODE_PATH=$(npm root -g) node brand/assets/generate.cjs
 
 Requires Node with Playwright (Chromium) available. The script renders
 each asset in headless Chromium and screenshots it.
+
+## Custom domain
+
+The site is served at `www.boutalikakis.com` (the `CNAME` file; apex
+`boutalikakis.com` and `aboutali.github.io` redirect there). DNS lives at
+Squarespace: four A records on `@` for GitHub Pages and a `www` CNAME to
+`aboutali.github.io`. The iCloud Mail records (MX, TXT, DKIM) must stay
+untouched. Absolute URLs in canonicals, og tags, JSON-LD, the sitemap and the
+feed use `https://www.boutalikakis.com/`.

@@ -46,6 +46,7 @@ deploy self-verification, no email address published.
 | — | Publish an email address (footer TODOs mark the spots) | (part of 09) | ✅ 2026-09-16 (part of 09) |
 | — | Rebuild all content from career context file 32.02; em dash ban and guard terms in CI | (owner brief, 2026-09-24) | ✅ 2026-09-24 · PR #8 |
 | — | v4 "Academic" redesign from Angelo's Claude Design handoff | [brand/DESIGN_SYSTEM.md](../brand/DESIGN_SYSTEM.md) | ✅ 2026-09-24 · PR #9 |
+| 10c | Custom domain www.boutalikakis.com (DNS at Squarespace, iCloud Mail kept) | [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md) | ✅ 2026-09-24 · PR #10 |
 
 **P1 — technical foundation (fully executable now)**
 
@@ -68,7 +69,7 @@ deploy self-verification, no email address published.
 | 10a | Dark mode (prefers-color-scheme) | [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md) | ✅ 2026-09-16 · PR #7 |
 
 **P3 — deferred / owner decisions** — see [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md)
-(Now page (include: false until 2027), custom domain, privacy-first analytics,
+(Now page (include: false until 2027), privacy-first analytics,
 uses/colophon page, i18n). Each was either explicitly deferred by Angelo or needs
 a decision only he can make. Do not start these unprompted.
 

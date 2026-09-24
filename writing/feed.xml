@@ -4,15 +4,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Writing · Angelo Boutalikakis</title>
   <subtitle>Research, publications, and notes by Angelo Boutalikakis.</subtitle>
-  <link href="https://aboutali.github.io/writing/feed.xml" rel="self"/>
-  <link href="https://aboutali.github.io/writing/"/>
-  <id>https://aboutali.github.io/writing/</id>
+  <link href="https://www.boutalikakis.com/writing/feed.xml" rel="self"/>
+  <link href="https://www.boutalikakis.com/writing/"/>
+  <id>https://www.boutalikakis.com/writing/</id>
   <updated>2026-07-02T00:00:00Z</updated>
-  <author><name>Angelo Boutalikakis</name><uri>https://aboutali.github.io/</uri></author>
+  <author><name>Angelo Boutalikakis</name><uri>https://www.boutalikakis.com/</uri></author>
   <entry>
     <title>Hello, world, and what this site is</title>
-    <link href="https://aboutali.github.io/writing/hello-world/"/>
-    <id>https://aboutali.github.io/writing/hello-world/</id>
+    <link href="https://www.boutalikakis.com/writing/hello-world/"/>
+    <id>https://www.boutalikakis.com/writing/hello-world/</id>
     <updated>2026-07-02T00:00:00Z</updated>
     <summary>Why this site exists and how it's built, with no frameworks and no build step.</summary>
   </entry>
