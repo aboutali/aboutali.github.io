@@ -21,6 +21,19 @@
   <link rel="stylesheet" href="../assets/site.css?v=5">
   <style>
     .about-lede{max-width:560px;margin:16px auto 0;font-size:18.5px;line-height:1.55}
+    /* Text on the left, quick facts as a margin column on the right. */
+    .about-body{display:grid;grid-template-columns:minmax(0,1fr) 13rem;gap:0 48px;
+      margin-top:48px;align-items:start}
+    .about-body .prose{max-width:none}
+    .about-aside .caption{text-align:left;margin:0 0 10px}
+    .about-aside .table.facts .row{grid-template-columns:1fr;gap:2px;padding:10px 0;font-size:15px;line-height:1.45}
+    .about-aside .table.facts .row > :first-child{font-variant-caps:all-small-caps;letter-spacing:.05em}
+    @media (max-width:760px){
+      .about-body{grid-template-columns:1fr}
+      .about-aside{margin-top:40px}
+    }
+    /* Justified text in a phone-width column leaves wide word gaps. */
+    @media (max-width:560px){.about-body .prose{text-align:left}}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Angelo Boutalikakis","honorificPrefix":"Dr.","url":"https://www.boutalikakis.com/","image":"https://www.boutalikakis.com/assets/headshot.jpg","jobTitle":"Engagement Manager","worksFor":{"@type":"Organization","name":"McKinsey & Company"},"address":{"@type":"PostalAddress","addressLocality":"Zurich","addressCountry":"CH"},"sameAs":["https://www.linkedin.com/in/angeloboutalikakis","https://scholar.google.com/citations?user=4E9KeKYAAAAJ","https://github.com/aboutali"]}
@@ -53,7 +66,8 @@
           management.</p>
       </div>
 
-      <div class="prose" style="margin-top:48px">
+      <div class="about-body">
+      <div class="prose">
         <p>Angelo Boutalikakis is a strategy, transformation, and product leader based in
           Zurich. He joined McKinsey &amp; Company in 2017. As Engagement Manager he leads
           engagements across Europe, the US, India, and Sub-Saharan Africa. His teams
@@ -81,6 +95,7 @@
           co-authored "What Makes a Company 'Future Ready'?" in Harvard Business Review.</p>
       </div>
 
+      <aside class="about-aside" aria-label="Quick facts">
       <p class="caption"><b>Table 1:</b> Quick facts.</p>
       <div class="table facts">
         <div class="row"><span>Based in</span><span>Zurich, Switzerland</span></div>
@@ -90,6 +105,8 @@
           <a class="link" href="/writing/">Writing</a></span></div>
         <div class="row"><span>Contact</span><span><a class="mono" href="mailto:hello@boutalikakis.com">hello@boutalikakis.com</a> ·
           <a class="link" href="https://www.linkedin.com/in/angeloboutalikakis">LinkedIn</a></span></div>
+      </div>
+      </aside>
       </div>
 
     </main>
