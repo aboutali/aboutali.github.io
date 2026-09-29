@@ -37,7 +37,8 @@ HTML sanity. Run it before every commit.
   Newsreader and JetBrains Mono only. Components and tokens live in
   `assets/site.css`; the full spec is `brand/DESIGN_SYSTEM.md`.
 - **Bump the stylesheet version on every CSS change.** Pages link
-  `assets/site.css?v=N`; raise N on all pages together, or visitors with a
+  `assets/site.css?v=N`; raise N on all pages together (and `STYLE_VERSION` in
+  `scripts/build_posts.py`), or visitors with a
   cached old stylesheet see new markup rendered in the old style.
 
 ## Planned work
@@ -52,5 +53,8 @@ The roadmap lives in `backlog/README.md` with execution plans in
   `work/<slug>/`, `404.html`.
 - Rendering: serve `python3 -m http.server 8642` from the repo root;
   Playwright is global (`NODE_PATH=$(npm root -g)`).
+- Posts are Markdown in `content/writing/`. Never hand-edit
+  `writing/<slug>/index.html`, the NOTES rows, the feed or post sitemap
+  lines; run `python3 scripts/build_posts.py` instead.
 - Share cards regenerate via
   `NODE_PATH=$(npm root -g) node brand/assets/generate.cjs`.

@@ -19,10 +19,17 @@ Fonts are Newsreader and JetBrains Mono, self-hosted from `assets/fonts/`.
 - `work/<slug>/index.html`: a case-study page per project (real screenshot or
   a typographic fallback cover, facts row, short prose). Linked from each
   project's `.name` on the homepage; cycle through them with "Next project →".
-- `writing/index.html`: post index. Each post is a directory
-  (e.g. `writing/hello-world/`). To add a post, copy an existing one, edit
-  it, add a `<li>` to the index (newest first), add an `<entry>` to
-  `writing/feed.xml`, and add the post URL to `sitemap.xml`.
+- `writing/index.html`: post index. Posts are written in Markdown in
+  `content/writing/<slug>.md` (front matter and syntax are documented at the
+  top of `scripts/build_posts.py`). To add a post:
+  1. Write `content/writing/<slug>.md`.
+  2. Run `python3 scripts/build_posts.py`. It renders `writing/<slug>/`,
+     the index rows, `writing/feed.xml` and the sitemap entries, then runs
+     `scripts/check.py`.
+  3. Run the share-card generator (see below) for `og-post-<slug>.png`.
+  4. Commit sources and generated files together. CI fails when they drift.
+  5. Run `python3 scripts/build_posts.py --linkedin <slug>` and paste the
+     printed teaser into LinkedIn as a native post.
 - `cv/index.html`: CV with a print stylesheet (prints to a clean A4 resume).
 - `404.html`: custom not-found page (uses absolute asset paths since Pages
   serves it from arbitrary URLs).

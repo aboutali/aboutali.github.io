@@ -41,7 +41,9 @@ def tracked_html_files():
             capture_output=True,
             text=True,
         ).stdout
-        files = [line.strip() for line in out.splitlines() if line.strip()]
+        # Skip tracked files deleted in the working tree (e.g. a removed post).
+        files = [line.strip() for line in out.splitlines()
+                 if line.strip() and os.path.exists(os.path.join(ROOT, line.strip()))]
         if files:
             return sorted(files)
     except Exception:
