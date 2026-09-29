@@ -55,6 +55,8 @@
     .cv-h.tight{margin-bottom:4px}
 
     .cv-profile{font-size:16.5px;line-height:1.6;text-align:justify;hyphens:auto}
+    /* Justified text in a phone-width column leaves wide word gaps. */
+    @media (max-width:560px){.cv-profile{text-align:left}}
     .cv-profile p{margin:0}
     .cv-profile p + p{text-indent:1.5em}
 
