@@ -95,6 +95,19 @@ const WORK_CARDS = [
     line: 'Optimizes invoices for Swiss healthcare practitioners.' },
 ];
 
+/* One share card per post in content/writing/*.md (see scripts/build_posts.py).
+   The card line is the front-matter `card` value, else the title. */
+const escapeHtml = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/·/g, '&middot;');
+const POSTS_DIR = path.join(__dirname, '..', '..', 'content', 'writing');
+const POST_CARDS = fs.readdirSync(POSTS_DIR).filter((n) => n.endsWith('.md')).sort().flatMap((n) => {
+  const front = (fs.readFileSync(path.join(POSTS_DIR, n), 'utf8').match(/^---\n([\s\S]*?)\n---\n/) || [])[1] || '';
+  const meta = Object.fromEntries(front.split('\n').filter((l) => /^\w+:/.test(l))
+    .map((l) => [l.slice(0, l.indexOf(':')).trim(), l.slice(l.indexOf(':') + 1).trim()]));
+  if (meta.draft === 'true' || !meta.title) return [];
+  return [{ slug: n.replace(/\.md$/, ''), line: escapeHtml(meta.card || meta.title) }];
+});
+
 const JOBS = [
   { f: 'favicon-16.png',        html: doc(icon(16, 'A', 10)) },
   { f: 'favicon-32.png',        html: doc(icon(32, 'A', 20)) },
@@ -108,7 +121,10 @@ const JOBS = [
   { f: 'og-about.png',          html: doc(ogCard('Angelo Boutalikakis &middot; About', 'Angelo Boutalikakis', 'Operator, product builder, and transformation leader.<br>Trained in econometrics.'), DESK) },
   { f: 'og-writing.png',        html: doc(ogCard('Angelo Boutalikakis &middot; Writing', 'Angelo Boutalikakis', 'Research, publications, and talks.'), DESK) },
   { f: 'og-cv.png',             html: doc(ogCard('Angelo Boutalikakis &middot; Curriculum Vitae', 'Angelo Boutalikakis', 'Engagement Manager, McKinsey &amp; Company.'), DESK) },
-  { f: 'og-post-hello-world.png', html: doc(ogCard('Angelo Boutalikakis &middot; Writing', 'Angelo Boutalikakis', 'Hello, world &middot; what this site is'), DESK) },
+  ...POST_CARDS.map((p) => ({
+    f: `og-post-${p.slug}.png`,
+    html: doc(ogCard('Angelo Boutalikakis &middot; Writing', 'Angelo Boutalikakis', p.line), DESK),
+  })),
   ...WORK_CARDS.map((w) => ({
     f: `og-work-${w.slug}.png`,
     html: doc(ogCard('Angelo Boutalikakis &middot; Work', w.slug, w.line, { mono: true }), DESK),
