@@ -32,7 +32,7 @@ PROJECTS = {
     "life-improver": "https://aboutali.github.io/life-improver/",
     "edition-guru": "https://aboutali.github.io/edition-guru/",
     "bxl_eda_worker": "https://aboutali.github.io/bxl_eda_worker/",
-    "cloudy-plag": "https://aboutali.github.io/cloudy-plag/",
+    "wasserkarte": "https://aboutali.github.io/wasserkarte/",
     "cleardoc": "https://aboutali.github.io/cleardoc/",
 }
 

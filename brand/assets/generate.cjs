@@ -89,8 +89,8 @@ const WORK_CARDS = [
     line: 'Scrapes art print galleries, enriches new drops with market data and LLM descriptions, emails a newsletter.' },
   { slug: 'bxl_eda_worker',
     line: 'Daily digest of EU foreign-policy, Middle East, and sanctions news for a Swiss reader.' },
-  { slug: 'cloudy-plag',
-    line: 'Documents credibility issues in dissertations.' },
+  { slug: 'wasserkarte',
+    line: 'Family tree and map of 523 German rivers, lakes, and canals.' },
   { slug: 'cleardoc',
     line: 'Optimizes invoices for Swiss healthcare practitioners.' },
 ];
