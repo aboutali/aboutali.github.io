@@ -1,92 +1,92 @@
-# Site backlog — aboutali.github.io
+# Site backlog for www.boutalikakis.com
 
-What an ideal personal website looks like for Angelo, and the ordered work to
-get there. Each item links to an execution-ready plan in `plans/` written so
-that Claude (Opus or a smaller model) can pick it up cold — **every executor
-must read [`plans/_CONTEXT.md`](plans/_CONTEXT.md) first.**
+The ordered work for Angelo's personal site. Executable items link to a plan in
+`plans/` that a fresh Claude session can pick up cold. Every executor reads
+[`plans/_CONTEXT.md`](plans/_CONTEXT.md) and the repo's `CLAUDE.md` first.
 
-## The ideal (what we're building toward)
+## What the site is for
 
-A personal site that is:
+1. **Credible in ten seconds.** A recruiter, collaborator or peer sees who
+   Angelo is, what he has built, and how to reach him.
+2. **The canonical result for his name.** Ranks for "Angelo Boutalikakis",
+   previews well when shared, and is machine-readable.
+3. **Fast and self-reliant.** Hand-written HTML and CSS, self-hosted fonts, no
+   third-party scripts.
+4. **Usable by everyone.** WCAG 2.2 AA on every page.
+5. **Alive without labor.** The daily Action keeps status, activity and
+   guestbook fresh; CI guards regressions; deploys verify themselves.
 
-1. **Credible in 10 seconds** — a visitor (recruiter, collaborator, peer)
-   immediately understands who Angelo is, what he's built, and how to reach him.
-   Real CV, real bio, real screenshots — zero placeholders.
-2. **The canonical "Angelo Boutalikakis" result** — ranks for his name, previews
-   beautifully when shared, is machine-readable (structured data), and
-   subscribable (RSS).
-3. **Fast and self-reliant** — loads in one round trip, no third-party
-   render-blocking dependencies, Lighthouse ≳95 across the board.
-4. **Usable by everyone** — WCAG 2.2 AA; keyboard, screen-reader, and
-   reduced-motion friendly.
-5. **Alive without labor** — the daily automation keeps status/activity/guestbook
-   fresh; CI guards regressions; deploys verify themselves (a Pages queue-timeout
-   already bit us once — see plan 06).
-6. **Depth on demand** — each project has a case-study page with real imagery;
-   writing accumulates into a body of thought.
+Binding rules live in `CLAUDE.md`: one content source (the career context
+file), no em dashes, guard terms, sector-and-theme level of detail, and the
+locked v4 "Academic" identity (`brand/DESIGN_SYSTEM.md`).
 
-Principles it must never lose: no build step, one cobalt accent, the work is the
-hero, curiosity meets rigor.
+## Status snapshot (2026-10-02)
 
-## Status snapshot (2026-07-07)
+Live at www.boutalikakis.com (apex and aboutali.github.io redirect there):
+v4 Academic design on every page, homepage with project table and live status,
+About with a quick-facts margin column, Writing with publications and talks,
+CV with portrait and a PDF export, six project pages, Markdown post pipeline
+(`content/writing/`, `scripts/build_posts.py`), daily refresh Action, CI checks
+(markers, links, HTML sanity, XML, em dashes, guard terms), deploy
+verification.
 
-Live: brand system v3 · homepage (live ticker, status dots, guestbook) · About ·
-Writing (1 post) · CV (structure + print CSS) · 404 · daily refresh Action ·
-favicons/OG assets. Known gaps: CV/About placeholders, no per-project pages, no
-sitemap/RSS/structured data, Google-Fonts render dependency, no CI checks, no
-deploy self-verification, no email address published.
+## Round 2 (opened 2026-10-02)
 
-## Backlog
-
-**P0 — credibility (owner-gated content)**
+**Technical, executable now**
 
 | # | Item | Plan | Status |
 |---|------|------|--------|
-| 09 | Fill CV Experience/Education + personalize About bio | [plans/09-cv-and-about-completion.md](plans/09-cv-and-about-completion.md) | ✅ 2026-09-16 · PR #7 |
-| — | Publish an email address (footer TODOs mark the spots) | (part of 09) | ✅ 2026-09-16 (part of 09) |
-| — | Rebuild all content from career context file 32.02; em dash ban and guard terms in CI | (owner brief, 2026-09-24) | ✅ 2026-09-24 · PR #8 |
-| — | v4 "Academic" redesign from Angelo's Claude Design handoff | [brand/DESIGN_SYSTEM.md](../brand/DESIGN_SYSTEM.md) | ✅ 2026-09-24 · PR #9 |
-| 10c | Custom domain www.boutalikakis.com (DNS at Squarespace, iCloud Mail kept) | [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md) | ✅ 2026-09-24 · PR #10 |
+| 11 | Accessibility re-audit of the v4 design | [plans/11-v4-accessibility-audit.md](plans/11-v4-accessibility-audit.md) | ☐ in progress |
+| 12 | Rebuild the CV PDF automatically when the CV changes | [plans/12-cv-pdf-automation.md](plans/12-cv-pdf-automation.md) | ☐ in progress |
+| 13 | Offline projects: drop dead live and source links | [plans/13-offline-project-links.md](plans/13-offline-project-links.md) | ☐ in progress |
+| 14 | Publications as structured data on the Writing page | [plans/14-publication-structured-data.md](plans/14-publication-structured-data.md) | ☐ in progress |
+| 15 | Refresh this backlog (status, stale entries) | this file | ✅ 2026-10-02 |
 
-**P1 — technical foundation (fully executable now)**
+**Content, needs Angelo**
+
+| # | Item | Needs | Status |
+|---|------|-------|--------|
+| 16 | First real notes (theme: applied AI in regulated industries) | drafts; write them as Markdown in `content/writing/` | ⏸ owner |
+| 17 | gesundheit-mcp page: add tests, eval metric, README, walkthroughs as they ship; source link once public | each shipped item | ⏸ owner |
+| 18 | Guest lecture: slides or abstract after the winter term 2026/27 lecture | material | ⏸ owner |
+| 19 | Master's thesis book on the Writing page | publisher and year | ⏸ owner |
+| 20 | After 31 December 2026: McKinsey end date; decide on the "Now" and "What I am looking for" sections | decision | ⏸ owner, 2027 |
+| 21 | Restore hosting for edition-guru and cloudy-plag, then bring back their live and source links (see plan 13) | decision | ⏸ owner |
+
+**Settings only Angelo can change**
+
+- GitHub repo Settings, Pages: tick "Enforce HTTPS".
+- GitHub repo Settings, Secrets and variables, Actions: add `GUARD_TERMS` (one term per line).
+- Optional: point the DMARC `rua` address at hello@boutalikakis.com.
+
+**Parked**
+
+- Privacy-friendly visitor statistics (for example GoatCounter). Needs an owner decision and account.
+- Uses or colophon page; internationalization. Recommended against.
+
+## Round 1 (2026-07 to 2026-09, all done)
 
 | # | Item | Plan | Status |
 |---|------|------|--------|
-| 01 | SEO & sharing foundations: sitemap, robots, canonicals, JSON-LD | [plans/01-seo-foundations.md](plans/01-seo-foundations.md) | ✅ 2026-09-11 · PR #6 |
-| 02 | Self-host fonts (drop Google Fonts dependency) | [plans/02-self-hosted-fonts.md](plans/02-self-hosted-fonts.md) | ✅ 2026-09-11 · PR #6 |
-| 04 | Accessibility pass to WCAG 2.2 AA | [plans/04-accessibility-pass.md](plans/04-accessibility-pass.md) | ✅ 2026-09-11 · PR #6 |
-| 06 | Deploy self-verification workflow (Pages queue-timeout guard) | [plans/06-deploy-verification.md](plans/06-deploy-verification.md) | ✅ 2026-09-11 · PR #6 |
+| 01 | SEO foundations: sitemap, robots, canonicals, JSON-LD | [plans/01-seo-foundations.md](plans/01-seo-foundations.md) | ✅ PR #6 |
+| 02 | Self-hosted fonts | [plans/02-self-hosted-fonts.md](plans/02-self-hosted-fonts.md) | ✅ PR #6 |
+| 03 | Atom feed for Writing | [plans/03-rss-feed.md](plans/03-rss-feed.md) | ✅ PR #6 |
+| 04 | Accessibility pass (v3 design) | [plans/04-accessibility-pass.md](plans/04-accessibility-pass.md) | ✅ PR #6, superseded by 11 for v4 |
+| 05 | Project case-study pages | [plans/05-project-case-studies.md](plans/05-project-case-studies.md) | ✅ PR #6, rebuilt in PR #8 |
+| 06 | Deploy self-verification | [plans/06-deploy-verification.md](plans/06-deploy-verification.md) | ✅ PR #6 |
+| 07 | CI quality gates | [plans/07-ci-quality-gates.md](plans/07-ci-quality-gates.md) | ✅ PR #6, extended in PR #8 |
+| 08 | Per-page share cards | [plans/08-og-images-per-page.md](plans/08-og-images-per-page.md) | ✅ PR #6, restyled in PR #9 |
+| 09 | Real CV, About and email | [plans/09-cv-and-about-completion.md](plans/09-cv-and-about-completion.md) | ✅ PR #7, rebuilt in PR #8 |
+| 10a | Dark mode | [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md) | Shipped in PR #7, removed by the v4 design (PR #9) |
+| 10c | Custom domain www.boutalikakis.com | [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md) | ✅ PR #10 |
+| 10e | Guestbook avatars | [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md) | ✅ PR #7 |
+| | Content rebuild from the career context file | owner brief | ✅ PR #8 |
+| | v4 "Academic" redesign | [../brand/DESIGN_SYSTEM.md](../brand/DESIGN_SYSTEM.md) | ✅ PR #9 |
+| | Follow-ups: hello@ address, portrait on CV, tagline, vaguer client detail, About margin column, phone text alignment | owner requests | ✅ PRs #11 to #22 |
 
-**P2 — depth & durability (fully executable now)**
+## Working agreement for executors
 
-| # | Item | Plan | Status |
-|---|------|------|--------|
-| 05 | Project case-study pages with real screenshots (×6) | [plans/05-project-case-studies.md](plans/05-project-case-studies.md) | ✅ 2026-09-11 · PR #6 |
-| 03 | RSS feed for Writing | [plans/03-rss-feed.md](plans/03-rss-feed.md) | ✅ 2026-09-11 · PR #6 |
-| 07 | CI quality gates on PRs (links, markers, HTML sanity) | [plans/07-ci-quality-gates.md](plans/07-ci-quality-gates.md) | ✅ 2026-09-11 · PR #6 |
-| 08 | Per-page OG images | [plans/08-og-images-per-page.md](plans/08-og-images-per-page.md) | ✅ 2026-09-11 · PR #6 |
-| 10e | Guestbook avatars | [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md) | ✅ 2026-09-16 · PR #7 |
-| 10a | Dark mode (prefers-color-scheme) | [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md) | ✅ 2026-09-16 · PR #7 |
-
-**P3 — deferred / owner decisions** — see [plans/10-deferred-ideas.md](plans/10-deferred-ideas.md)
-(Now page (include: false until 2027), privacy-first analytics,
-uses/colophon page, i18n). Each was either explicitly deferred by Angelo or needs
-a decision only he can make. Do not start these unprompted.
-
-## Suggested execution order
-
-`01 → 02 → 04 → 06` (foundation, each independent, small) · then `05` (the big
-content win) · then `03 → 08 → 07`. Item 09 whenever Angelo supplies content —
-it jumps the queue when he does. One plan per branch/PR; don't batch.
-
-## Working agreement for executor models
-
-- Read `plans/_CONTEXT.md`, then the one plan you're executing. Plans are
-  self-contained by design; don't improvise scope.
-- Verify with the recipes the plan names (R1–R4 in `_CONTEXT.md`) before
-  declaring done. Look at your screenshots.
-- Update this table's Status column (☐ ready → ✅ done, with date + PR#) in the
-  same PR as the work.
-- If a plan conflicts with reality (file moved, markup drifted), the invariants
-  in `_CONTEXT.md` win; adapt the plan minimally and note the deviation in the
-  PR body.
+- Read `CLAUDE.md`, `plans/_CONTEXT.md`, then the one plan you execute.
+- Verify with the recipes the plan names and look at your screenshots.
+- Run `python3 scripts/check.py` before committing.
+- Update this table's Status column in the same PR as the work.
