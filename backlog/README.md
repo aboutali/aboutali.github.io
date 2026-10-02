@@ -36,7 +36,7 @@ verification.
 
 | # | Item | Plan | Status |
 |---|------|------|--------|
-| 11 | Accessibility re-audit of the v4 design | [plans/11-v4-accessibility-audit.md](plans/11-v4-accessibility-audit.md) | ☐ in progress |
+| 11 | Accessibility re-audit of the v4 design | [plans/11-v4-accessibility-audit.md](plans/11-v4-accessibility-audit.md) | ✅ 2026-10-02 |
 | 12 | Rebuild the CV PDF automatically when the CV changes | [plans/12-cv-pdf-automation.md](plans/12-cv-pdf-automation.md) | ✅ 2026-10-02 |
 | 13 | Offline projects: drop dead live and source links | [plans/13-offline-project-links.md](plans/13-offline-project-links.md) | ✅ 2026-10-02 |
 | 14 | Publications as structured data on the Writing page | [plans/14-publication-structured-data.md](plans/14-publication-structured-data.md) | ✅ 2026-10-02 |
