@@ -1,7 +1,8 @@
 <!-- The PDF at /cv/Angelo-Boutalikakis-CV.pdf is a static export of this page.
-     Regenerate it whenever this page's content changes: serve the repo root
-     (python3 -m http.server 8642), then run:
-     NODE_PATH=$(npm root -g) node -e "const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();await p.goto('http://localhost:8642/cv/');await p.emulateMedia({media:'print'});await p.evaluate(()=>document.fonts.ready);await p.pdf({path:'cv/Angelo-Boutalikakis-CV.pdf',format:'A4',printBackground:false,margin:{top:'15mm',right:'15mm',bottom:'15mm',left:'15mm'}});await b.close();})();" -->
+     .github/workflows/cv-pdf.yml rebuilds it when this page, assets/site.css,
+     the fonts or the headshot change on main. To rebuild it by hand, serve the
+     repo root (python3 -m http.server 8642), then run:
+     NODE_PATH=$(npm root -g) node scripts/cv_pdf.cjs http://localhost:8642 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

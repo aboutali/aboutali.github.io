@@ -83,6 +83,18 @@ failing. **A red run means the live site may be stale or broken.** Check
 the Actions log; if it couldn't self-heal (403/404 on the rebuild request),
 re-run the deploy manually from the Actions tab.
 
+### CV PDF
+
+`.github/workflows/cv-pdf.yml` rebuilds `cv/Angelo-Boutalikakis-CV.pdf` with
+`scripts/cv_pdf.cjs` (Playwright Chromium, print media, A4) whenever
+`cv/index.html`, `assets/site.css`, `assets/fonts/**` or `assets/headshot.jpg`
+change on `main`, and on demand. Chromium stamps a new creation date into
+every PDF, so the workflow compares the extracted text (`pdftotext`) and
+commits only when it differs or the PDF is missing. The PDF is not in the
+paths filter, so the bot's commit does not retrigger the workflow. To rebuild
+it by hand, serve the repo root and run
+`NODE_PATH=$(npm root -g) node scripts/cv_pdf.cjs http://localhost:8642`.
+
 ### Checks
 
 `.github/workflows/checks.yml` runs `scripts/check.py` (stdlib only) on
