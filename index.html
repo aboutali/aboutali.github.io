@@ -24,7 +24,7 @@
   <!-- type: Newsreader + JetBrains Mono, self-hosted, assets/fonts/ -->
   <link rel="preload" href="/assets/fonts/newsreader-roman-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="assets/site.css?v=5">
+  <link rel="stylesheet" href="assets/site.css?v=6">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Angelo Boutalikakis","honorificPrefix":"Dr.","url":"https://www.boutalikakis.com/","image":"https://www.boutalikakis.com/assets/headshot.jpg","jobTitle":"Engagement Manager","worksFor":{"@type":"Organization","name":"McKinsey & Company"},"address":{"@type":"PostalAddress","addressLocality":"Zurich","addressCountry":"CH"},"sameAs":["https://www.linkedin.com/in/angeloboutalikakis","https://scholar.google.com/citations?user=4E9KeKYAAAAJ","https://github.com/aboutali"]}
   </script>
@@ -114,8 +114,6 @@
             <span>Scrapes art print galleries, enriches new drops with market data and LLM
               descriptions, and emails a newsletter.</span>
             <span class="links" style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="mono" href="https://aboutali.github.io/edition-guru/">live</a>
-              <a class="mono" href="https://github.com/aboutali/edition-guru">src</a>
             </span>
           </div>
 
@@ -135,8 +133,6 @@
             <a class="mono" href="work/cloudy-plag/">cloudy-plag</a>
             <span>Documents credibility issues in dissertations.</span>
             <span class="links" style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="mono" href="https://aboutali.github.io/cloudy-plag/">live</a>
-              <a class="mono" href="https://github.com/aboutali/cloudy-plag">src</a>
             </span>
           </div>
 
@@ -152,8 +148,8 @@
           <!-- PROJECTS:END -->
         </div>
         <p style="margin:10px 0 0;font-size:14px;color:var(--graphite);font-style:italic">
-          <span class="led-up">&#9679;</span> live &nbsp;&middot;&nbsp;
-          <span class="led-down">&#9679;</span> offline, status refreshed daily.</p>
+          <span class="led-up" aria-hidden="true">&#9679;</span> live &nbsp;&middot;&nbsp;
+          <span class="led-down" aria-hidden="true">&#9679;</span> offline, status refreshed daily.</p>
       </section>
 
       <section>
@@ -179,9 +175,11 @@
         <h2 class="sec"><span>3</span><span>Guestbook</span></h2>
         <p>Drop a note, it's rendered straight from this site's GitHub issues.</p>
         <div class="box" style="margin-top:18px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap">
+<div class="gb-list" style="flex:1 1 20rem;min-width:0">
 <!--GUESTBOOK:BEGIN-->
 <p class="gb-empty">Be the first to sign the guestbook.</p>
 <!--GUESTBOOK:END-->
+</div>
           <a class="mono" href="https://github.com/aboutali/aboutali.github.io/issues/new?labels=guestbook&amp;title=A+note+for+Angelo">Sign the guestbook &rarr;</a>
         </div>
       </section>

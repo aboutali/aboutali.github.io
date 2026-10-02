@@ -1,0 +1,85 @@
+name: Rebuild CV PDF
+
+# Rebuilds cv/Angelo-Boutalikakis-CV.pdf from /cv/ and commits it back to
+# main when the printed text changes. The PDF is deliberately not in the
+# paths filter, so the bot's own commit does not retrigger this workflow.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cv/index.html'
+      - 'assets/site.css'
+      - 'assets/fonts/**'
+      - 'assets/headshot.jpg'
+  workflow_dispatch:        # run on demand from the Actions tab
+
+permissions:
+  contents: write   # commit the regenerated PDF
+
+concurrency:
+  group: cv-pdf
+  cancel-in-progress: false
+
+jobs:
+  cv-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Install Playwright (Chromium) and poppler-utils
+        run: |
+          npm install -g playwright
+          playwright install --with-deps chromium
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
+      - name: Serve the site
+        run: |
+          python3 -m http.server 8842 --bind 127.0.0.1 > "$RUNNER_TEMP/server.log" 2>&1 &
+          for i in $(seq 1 20); do
+            curl -fsS -o /dev/null http://127.0.0.1:8842/cv/ && exit 0
+            sleep 0.5
+          done
+          echo "::error::Static server did not start."
+          exit 1
+
+      - name: Rebuild and publish (race-safe)
+        run: |
+          export NODE_PATH="$(npm root -g)"
+          PDF=cv/Angelo-Boutalikakis-CV.pdf
+          NEW="$RUNNER_TEMP/cv-new.pdf"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Re-sync to the freshest remote and regenerate before each push
+          # attempt, so a concurrent refresh.yml commit can't reject the push
+          # for good. The server above serves the working tree, so it follows
+          # the reset.
+          for attempt in 1 2 3 4 5; do
+            git fetch --quiet origin main
+            git reset --hard --quiet origin/main
+            node scripts/cv_pdf.cjs http://127.0.0.1:8842 "$NEW"
+            # Chromium stamps a creation date and an ID into every PDF, so
+            # the bytes differ on every run. Compare the extracted text
+            # (pdftotext separates pages with form feeds, so a changed page
+            # count shows up too). Commit only when the text differs or the
+            # file is new.
+            if [ -f "$PDF" ] && [ "$(pdftotext "$PDF" - | sha256sum)" = "$(pdftotext "$NEW" - | sha256sum)" ]; then
+              echo "PDF text unchanged. Nothing to publish."
+              exit 0
+            fi
+            cp "$NEW" "$PDF"
+            git add "$PDF"
+            git commit --quiet -m "Rebuild CV PDF"
+            if git push origin HEAD:main; then
+              echo "Published on attempt $attempt."
+              exit 0
+            fi
+            echo "Push raced with another update; re-syncing and retrying ($attempt/5)."
+            sleep $((attempt * 3))
+          done
+          echo "::error::Failed to publish after 5 attempts."
+          exit 1
