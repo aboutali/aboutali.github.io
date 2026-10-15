@@ -94,7 +94,7 @@ const WORK_CARDS = [
   { slug: 'cleardoc',
     line: 'Optimizes invoices for Swiss healthcare practitioners.' },
   { slug: 'wasserkarte',
-    line: 'Family tree and map of 523 German rivers, lakes, and canals.' },
+    line: "Family tree and map of Germany's rivers, lakes, canals, and coastal waters." },
 ];
 
 /* One share card per post in content/writing/*.md (see scripts/build_posts.py).
