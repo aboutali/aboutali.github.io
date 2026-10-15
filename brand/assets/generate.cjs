@@ -93,6 +93,8 @@ const WORK_CARDS = [
     line: 'Documents credibility issues in dissertations.' },
   { slug: 'cleardoc',
     line: 'Optimizes invoices for Swiss healthcare practitioners.' },
+  { slug: 'wasserkarte',
+    line: "Family tree and map of Germany's rivers, lakes, canals, and coastal waters." },
 ];
 
 /* One share card per post in content/writing/*.md (see scripts/build_posts.py).

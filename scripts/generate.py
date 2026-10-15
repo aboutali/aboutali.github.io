@@ -34,6 +34,7 @@ PROJECTS = {
     "bxl_eda_worker": "https://aboutali.github.io/bxl_eda_worker/",
     "cloudy-plag": "https://aboutali.github.io/cloudy-plag/",
     "cleardoc": "https://aboutali.github.io/cleardoc/",
+    "wasserkarte": "https://aboutali.github.io/wasserkarte/",
 }
 
 # gesundheit-mcp's GitHub repo is private: the workflow's token cannot read
