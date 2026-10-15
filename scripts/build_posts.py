@@ -247,6 +247,7 @@ AUTHOR = {
     "worksFor": {"@type": "Organization", "name": "McKinsey & Company"},
     "address": {"@type": "PostalAddress", "addressLocality": "Zurich", "addressCountry": "CH"},
     "sameAs": ["https://www.linkedin.com/in/angeloboutalikakis",
+               "https://x.com/aboutali",
                "https://scholar.google.com/citations?user=4E9KeKYAAAAJ",
                "https://github.com/aboutali"],
 }
