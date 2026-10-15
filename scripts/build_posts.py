@@ -227,6 +227,7 @@ PAGE = Template("""<!DOCTYPE html>
     .article blockquote p{margin:0}
     .article code{font-family:var(--font-mono);font-size:.8em}
     .article .refs{text-align:left;hyphens:manual;overflow-wrap:anywhere}
+    .article .refs a{text-decoration:underline;text-decoration-thickness:.5px;text-underline-offset:3px}
     /* Justified text in a phone-width column leaves wide word gaps. */
     @media (max-width:560px){.article{text-align:left}}
   </style>
