@@ -6,8 +6,16 @@
   <link href="https://www.boutalikakis.com/writing/feed.xml" rel="self"/>
   <link href="https://www.boutalikakis.com/writing/"/>
   <id>https://www.boutalikakis.com/writing/</id>
-  <updated>2026-07-02T00:00:00Z</updated>
+  <updated>2026-10-15T00:00:00Z</updated>
   <author><name>Angelo Boutalikakis</name><uri>https://www.boutalikakis.com/</uri></author>
+  <entry>
+    <title>Who may know what: the judgement we are about to delegate to machines</title>
+    <link href="https://www.boutalikakis.com/writing/who-may-know-what/"/>
+    <id>https://www.boutalikakis.com/writing/who-may-know-what/</id>
+    <published>2026-10-15T00:00:00Z</published>
+    <updated>2026-10-15T00:00:00Z</updated>
+    <summary>Companies are pooling their knowledge into one layer that AI agents can read. Before they do, someone has to decide who may know what and answer for it, because an agent's default answer is yes.</summary>
+  </entry>
   <entry>
     <title>Hello, world, and what this site is</title>
     <link href="https://www.boutalikakis.com/writing/hello-world/"/>
