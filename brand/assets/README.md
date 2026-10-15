@@ -27,6 +27,7 @@ NODE_PATH=$(npm root -g) node brand/assets/generate.cjs
 | `og-work-bxl_eda_worker.png` | 1200x630 | Share card, Work case study: bxl_eda_worker |
 | `og-work-cloudy-plag.png` | 1200x630 | Share card, Work case study: cloudy-plag |
 | `og-work-cleardoc.png` | 1200x630 | Share card, Work case study: cleardoc |
+| `og-work-wasserkarte.png` | 1200x630 | Share card, Work case study: wasserkarte |
 
 ## Favicon `<head>` snippet
 
