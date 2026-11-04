@@ -1,7 +1,7 @@
 # Academic, design system for www.boutalikakis.com
 
-The personal site of Dr. Angelo Boutalikakis (operator, product builder,
-transformation leader, Zurich). This is the v4 identity, chosen over the
+The personal site of Dr. Angelo Boutalikakis (transformation leader, product builder,
+operator, Zurich). This is the v4 identity, chosen over the
 "Maison" and "Thread" directions. It replaces the v3 cobalt and Archivo
 identity.
 
