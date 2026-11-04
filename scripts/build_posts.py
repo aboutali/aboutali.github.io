@@ -288,7 +288,7 @@ $body
 AUTHOR = {
     "@type": "Person", "name": "Angelo Boutalikakis", "honorificPrefix": "Dr.",
     "url": f"{SITE}/", "image": f"{SITE}/assets/headshot.jpg",
-    "jobTitle": "Engagement Manager",
+    "jobTitle": "Senior Engagement Manager",
     "worksFor": {"@type": "Organization", "name": "McKinsey & Company"},
     "address": {"@type": "PostalAddress", "addressLocality": "Zurich", "addressCountry": "CH"},
     "sameAs": ["https://www.linkedin.com/in/angeloboutalikakis",

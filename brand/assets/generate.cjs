@@ -122,7 +122,7 @@ const JOBS = [
   { f: 'og-image.png',          html: doc(ogCard('Angelo Boutalikakis &middot; Selected work', 'Angelo Boutalikakis', 'Transformation leader, product builder, and operator'), DESK) },
   { f: 'og-about.png',          html: doc(ogCard('Angelo Boutalikakis &middot; About', 'Angelo Boutalikakis', 'Transformation leader, product builder, and operator.'), DESK) },
   { f: 'og-writing.png',        html: doc(ogCard('Angelo Boutalikakis &middot; Writing', 'Angelo Boutalikakis', 'Research, publications, and talks.'), DESK) },
-  { f: 'og-cv.png',             html: doc(ogCard('Angelo Boutalikakis &middot; Curriculum Vitae', 'Angelo Boutalikakis', 'Engagement Manager, McKinsey &amp; Company.'), DESK) },
+  { f: 'og-cv.png',             html: doc(ogCard('Angelo Boutalikakis &middot; Curriculum Vitae', 'Angelo Boutalikakis', 'Senior Engagement Manager, McKinsey &amp; Company.'), DESK) },
   ...POST_CARDS.map((p) => ({
     f: `og-post-${p.slug}.png`,
     html: doc(ogCard('Angelo Boutalikakis &middot; Writing', 'Angelo Boutalikakis', p.line), DESK),
