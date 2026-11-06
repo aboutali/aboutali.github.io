@@ -4,6 +4,9 @@ You are working on **aboutali.github.io**, Angelo Boutalikakis's personal site.
 Every plan in this directory assumes you have read this file. It encodes the
 repo's invariants, brand system, and verification recipes. Do not skip it.
 
+**This repo is public.** Rule 0 in `CLAUDE.md` lists what must never reach
+it or GitHub. It outranks every plan here.
+
 ## The five invariants (violating any of these fails the task)
 
 1. **No build step, no frameworks, no package manager.** Plain hand-written

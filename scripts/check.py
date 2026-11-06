@@ -15,8 +15,9 @@ Exits non-zero if any check fails, with a readable per-check report. Checks:
   4. XML validity — sitemap.xml / writing/feed.xml, when present.
   5. scripts/generate.py compiles.
   6. No em dashes in visible text (text, titles, meta/og, alt, JSON-LD, feed).
-  7. Guard terms: no client names or internal jargon in visible text. The
-     list lives in the GUARD_TERMS secret or a git-ignored .guard-terms file.
+  7. Guard terms: no client names or internal jargon in any tracked text
+     file (this repo is public) or in visible page text. The list lives in
+     the GUARD_TERMS secret or a git-ignored .guard-terms file.
 """
 
 import importlib.util
@@ -369,14 +370,48 @@ def check_guard_terms(files):
         (i + 1, re.compile(r"(?<![A-Za-z0-9_])%s(?![A-Za-z0-9_])" % re.escape(t)))
         for i, t in enumerate(terms)
     ]
-    failures = []
+    hits = set()
+    # Visible page text catches terms hidden behind entities such as &amp;.
     for rel in text_sources(files):
         for line, text in visible_text(rel):
             for idx, pat in patterns:
                 if pat.search(text):
-                    # Report the term's list position only: CI logs are public.
-                    failures.append("%s:%d: matches guard term #%d" % (rel, line, idx))
-    return failures
+                    hits.add((rel, line, idx))
+    # The repo is public, so a term anywhere in a tracked file is a leak.
+    for rel in tracked_text_files():
+        with open(os.path.join(ROOT, rel), encoding="utf-8") as fh:
+            for line, text in enumerate(fh, 1):
+                for idx, pat in patterns:
+                    if pat.search(text):
+                        hits.add((rel, line, idx))
+    # Report the term's list position only: CI logs are public.
+    return ["%s:%d: matches guard term #%d" % h for h in sorted(hits)]
+
+
+def tracked_text_files():
+    """Every tracked file that decodes as UTF-8 text, skipping binaries."""
+    try:
+        out = subprocess.run(
+            ["git", "-C", ROOT, "ls-files"],
+            check=True, capture_output=True, text=True,
+        ).stdout
+    except Exception:
+        return []
+    files = []
+    for rel in (l.strip() for l in out.splitlines()):
+        path = os.path.join(ROOT, rel)
+        if not rel or not os.path.isfile(path):
+            continue
+        with open(path, "rb") as fh:
+            data = fh.read()
+        if b"\0" in data:
+            continue
+        try:
+            data.decode("utf-8")
+        except UnicodeDecodeError:
+            continue
+        files.append(rel)
+    return sorted(files)
 
 
 # --- Runner ------------------------------------------------------------------

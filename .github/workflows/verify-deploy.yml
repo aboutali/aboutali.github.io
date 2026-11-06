@@ -44,6 +44,20 @@ jobs:
           target_sha="${GITHUB_SHA}"
           echo "Target commit: $target_sha"
 
+          # A newer push (e.g. the CV-PDF bot commit) can land before Pages
+          # builds. That build still contains the target, so accept any built
+          # commit that equals the target or is ahead of it.
+          covers_target() {
+            [ "$1" = "$target_sha" ] && return 0
+            [ -n "$1" ] || return 1
+            cmp="$(curl -fsS \
+              -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${OWNER}/${REPO}/compare/${target_sha}...$1" \
+              | jq -r '.status // empty' || true)"
+            [ "$cmp" = "ahead" ]
+          }
+
           # Give Pages a head start after a push before polling; schedule/
           # dispatch runs are checking a deploy that (should) already be old.
           if [ "${GITHUB_EVENT_NAME}" = "push" ]; then
@@ -53,7 +67,7 @@ jobs:
 
           poll_builds() {
             # Polls up to 16 * 30s (~8 min) for the latest Pages build to
-            # match $target_sha and report status "built".
+            # cover $target_sha and report status "built".
             for i in $(seq 1 16); do
               resp="$(curl -fsS \
                 -H "Authorization: Bearer ${GITHUB_TOKEN}" \
@@ -63,8 +77,8 @@ jobs:
                 commit="$(echo "$resp" | jq -r '.commit // empty')"
                 status="$(echo "$resp" | jq -r '.status // empty')"
                 echo "attempt $i/16: commit=$commit status=$status"
-                if [ "$commit" = "$target_sha" ] && [ "$status" = "built" ]; then
-                  echo "Pages build matches target commit and is built."
+                if covers_target "$commit" && [ "$status" = "built" ]; then
+                  echo "Pages build covers the target commit and is built."
                   return 0
                 fi
               else
@@ -106,6 +120,20 @@ jobs:
           set -u
           target_sha="${GITHUB_SHA}"
 
+          # A newer push (e.g. the CV-PDF bot commit) can land before Pages
+          # builds. That build still contains the target, so accept any built
+          # commit that equals the target or is ahead of it.
+          covers_target() {
+            [ "$1" = "$target_sha" ] && return 0
+            [ -n "$1" ] || return 1
+            cmp="$(curl -fsS \
+              -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${OWNER}/${REPO}/compare/${target_sha}...$1" \
+              | jq -r '.status // empty' || true)"
+            [ "$cmp" = "ahead" ]
+          }
+
           http_code="$(curl -s -o /tmp/build_resp.json -w '%{http_code}' \
             -X POST \
             -H "Authorization: Bearer ${GITHUB_TOKEN}" \
@@ -133,7 +161,7 @@ jobs:
               commit="$(echo "$resp" | jq -r '.commit // empty')"
               status="$(echo "$resp" | jq -r '.status // empty')"
               echo "re-poll $i/16: commit=$commit status=$status"
-              if [ "$commit" = "$target_sha" ] && [ "$status" = "built" ]; then
+              if covers_target "$commit" && [ "$status" = "built" ]; then
                 echo "Deploy verified after self-heal."
                 exit 0
               fi
