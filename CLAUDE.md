@@ -4,6 +4,35 @@ Angelo Boutalikakis's personal site. Plain hand-written HTML and stylesheets
 on GitHub Pages. No build step, no frameworks, no package manager. Read
 `README.md` for how the site works.
 
+## Rule 0: this repo is public (most important rule)
+
+Anyone can read every file, commit, commit message, branch name, issue, pull
+request and Actions log here. Git keeps every commit. Deleting a file later
+leaves it readable in the history.
+
+Never put any of these items into the repo or onto GitHub:
+
+1. Client names, engagement details, client figures and dates (rules 3–5).
+2. Names of colleagues, sponsors, client executives or other private
+   contacts. Co-authors of published work are fine.
+3. Employer-internal material: internal guides and documents, performance
+   reviews, ratings, internal role, group and process names.
+4. Career plans: job search, applications, exit plans, compensation.
+5. Personal data: home address, phone number, birth date, private email
+   addresses, family and health details.
+6. Content from private sources: the career context file, other private
+   career files and every private repo. Name no private file or repo
+   beyond those the repo already names.
+7. Secrets: API keys, tokens, passwords.
+
+These items are public on purpose: name, portrait, Zurich, the
+`hello@` address, the linked profiles, the CV page and PDF, employer names
+and published work.
+
+Check every diff and commit message against this list before you commit.
+Ask Angelo when in doubt. If private data reaches GitHub, stop and tell
+Angelo at once. The fix may need a history rewrite and new keys.
+
 ## Content rules (binding)
 
 1. **One content source.** Every career fact on the site comes from Angelo's
@@ -15,7 +44,7 @@ on GitHub Pages. No build step, no frameworks, no package manager. Read
    date ranges only. Write short declarative sentences; no dash-led or
    colon-led explanations, no "not X but Y", no filler words.
 3. **Guard terms.** A list of client names and internal jargon must never
-   appear in visible text. The list lives in the `GUARD_TERMS` Actions secret
+   appear in any tracked file. The list lives in the `GUARD_TERMS` Actions secret
    and in a git-ignored `.guard-terms` file for local runs. Never copy it
    into the repo, a commit message, or a CI log.
 4. **Anonymity.** Name employers only. Describe clients by their descriptor.
@@ -25,7 +54,8 @@ on GitHub Pages. No build step, no frameworks, no package manager. Read
    regenerating pages from that file.
 
 `python3 scripts/check.py` enforces rules 2 and 3 plus markers, links and
-HTML sanity. Run it before every commit.
+HTML sanity. Its guard-term check scans every tracked text file. It covers
+rule 0 only for listed terms. Run it before every commit.
 
 ## Before changing anything
 
